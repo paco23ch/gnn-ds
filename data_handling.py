@@ -55,7 +55,11 @@ def load_edge_csv(path, src_index_col, src_mapping, dst_index_col, dst_mapping, 
     edge_index = None
     src = [src_mapping[index] for index in df[src_index_col]]
     dst = [dst_mapping[index] for index in df[dst_index_col]]
-    edge_attr = torch.from_numpy(df[link_index_col].values).view(-1, 1).to(torch.long) >= rating_threshold
+
+    raw_values = df[link_index_col].to_numpy(copy=True)
+    edge_attr = torch.as_tensor(raw_values, dtype=torch.long).view(-1, 1) >= rating_threshold
+
+    #edge_attr = torch.from_numpy(df[link_index_col].values).view(-1, 1).to(torch.long) >= rating_threshold
 
 
     edge_index = [[], []]
@@ -66,8 +70,9 @@ def load_edge_csv(path, src_index_col, src_mapping, dst_index_col, dst_mapping, 
 
     return torch.tensor(edge_index)
 
+
 # function which random samples a mini-batch of positive and negative samples
-def sample_mini_batch(batch_size, edge_index):
+def sample_mini_batch_old(batch_size, edge_index):
     """Randomly samples indices of a minibatch given an adjacency matrix
 
     Args:
@@ -84,3 +89,24 @@ def sample_mini_batch(batch_size, edge_index):
     batch = edges[:, indices]
     user_indices, pos_item_indices, neg_item_indices = batch[0], batch[1], batch[2]
     return user_indices, pos_item_indices, neg_item_indices
+
+
+def sample_mini_batch(batch_size, edge_index):
+    # 1. Get unique users and the total number of items
+    num_edges = edge_index.shape[1]
+    num_items = edge_index[1].max().item() + 1
+    
+    # 2. Randomly sample 'batch_size' indices from existing edges (Positive samples)
+    indices = torch.randint(0, num_edges, (batch_size,))
+    user_indices = edge_index[0, indices]
+    pos_item_indices = edge_index[1, indices]
+    
+    # 3. Sample random items (Negative samples)
+    # Note: For strict PhD-level accuracy, you'd check if these are truly negative,
+    # but for a quick fix, random sampling is usually sufficient for training.
+    neg_item_indices = torch.randint(0, num_items, (batch_size,))
+    
+    return user_indices, pos_item_indices, neg_item_indices
+
+import torch
+
