@@ -93,7 +93,7 @@ class LightGCN(MessagePassing):
         return matmul(adj_t, x)
     
 
-def bpr_loss(users_emb_final, users_emb_0, pos_items_emb_final, pos_items_emb_0, neg_items_emb_final, neg_items_emb_0, lambda_val):
+def bpr_loss_old(users_emb_final, users_emb_0, pos_items_emb_final, pos_items_emb_0, neg_items_emb_final, neg_items_emb_0, lambda_val):
     """Bayesian Personalized Ranking Loss as described in https://arxiv.org/abs/1205.2618
 
     Args:
@@ -117,9 +117,35 @@ def bpr_loss(users_emb_final, users_emb_0, pos_items_emb_final, pos_items_emb_0,
     neg_scores = torch.mul(users_emb_final, neg_items_emb_final)
     neg_scores = torch.sum(neg_scores, dim=-1) # predicted scores of negative samples
 
-    loss = -torch.mean(torch.nn.functional.softplus(pos_scores - neg_scores)) + reg_loss
+    loss = -torch.mean(torch.nn.functional.softplus(-(pos_scores - neg_scores))) + reg_loss #softplus
 
     return loss
+
+def bpr_loss(users_emb_final, users_emb_0, pos_items_emb_final, pos_items_emb_0, neg_items_emb_final, neg_items_emb_0, lambda_val):
+    """
+    Optimized Bayesian Personalized Ranking Loss.
+    """
+    batch_size = users_emb_final.size(0)
+
+    # 1. Faster Regularization: sum of squares avoids unnecessary square roots
+    # We divide by batch_size to keep LAMBDA consistent across experiments
+    reg_loss = lambda_val * (
+        users_emb_0.pow(2).sum() + 
+        pos_items_emb_0.pow(2).sum() + 
+        neg_items_emb_0.pow(2).sum()
+    ) / batch_size
+
+    # 2. Optimized Scoring: Dot product via element-wise mul and sum
+    pos_scores = (users_emb_final * pos_items_emb_final).sum(dim=-1)
+    neg_scores = (users_emb_final * neg_items_emb_final).sum(dim=-1)
+
+    # 3. Stable BPR Term: logsigmoid is more numerically stable than softplus
+    # The objective is to maximize log(sigmoid(pos - neg))
+    # PyTorch minimizes, so we take the negative mean.
+    #bpr_loss_term = -torch.mean(torch.nn.functional.logsigmoid(pos_scores - neg_scores))
+    bpr_loss_term = -torch.mean(torch.nn.functional.softplus(-(pos_scores - neg_scores)))
+
+    return bpr_loss_term + reg_loss
 
 
 # helper function to get N_u
