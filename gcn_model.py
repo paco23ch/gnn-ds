@@ -117,7 +117,7 @@ def bpr_loss_old(users_emb_final, users_emb_0, pos_items_emb_final, pos_items_em
     neg_scores = torch.mul(users_emb_final, neg_items_emb_final)
     neg_scores = torch.sum(neg_scores, dim=-1) # predicted scores of negative samples
 
-    loss = -torch.mean(torch.nn.functional.softplus(-(pos_scores - neg_scores))) + reg_loss #softplus
+    loss = -torch.mean(torch.nn.functional.softplus(pos_scores - neg_scores)) + reg_loss #softplus
 
     return loss
 
@@ -143,7 +143,7 @@ def bpr_loss(users_emb_final, users_emb_0, pos_items_emb_final, pos_items_emb_0,
     # The objective is to maximize log(sigmoid(pos - neg))
     # PyTorch minimizes, so we take the negative mean.
     #bpr_loss_term = -torch.mean(torch.nn.functional.logsigmoid(pos_scores - neg_scores))
-    bpr_loss_term = -torch.mean(torch.nn.functional.softplus(-(pos_scores - neg_scores)))
+    bpr_loss_term = torch.mean(torch.nn.functional.softplus(-(pos_scores - neg_scores)))
 
     return bpr_loss_term + reg_loss
 
@@ -278,7 +278,7 @@ def get_metrics_old(model, edge_index, exclude_edge_indices, k):
     return recall, precision, ndcg
 
 @torch.no_grad()
-def get_metrics(model, edge_index, exclude_edge_indices, k, batch_size=512):
+def get_metrics(model, edge_index, exclude_edge_indices, k, batch_size=5000):
     """
     Computes recall, precision, and ndcg @ k using a memory-efficient 
     batching approach to avoid dense matrix explosion on limited RAM.

@@ -14,7 +14,13 @@ def load_node_csv(path, index_col, header=0, delimiter=',', col_names=None, inde
     Returns:
         dict: mapping of csv row to node id
     """
-    df = pd.read_csv(path, index_col=index_col, delimiter=delimiter, header=header)
+
+    if path.endswith('.dat'): 
+       df = pd.read_csv(path, index_col=index_col, delimiter=delimiter, header=header, engine='python', encoding='latin_1')
+    else:
+       df = pd.read_csv(path, index_col=index_col, delimiter=',')
+    
+    #df = pd.read_csv(path, index_col=index_col, delimiter=delimiter, header=header, engine='python', encoding='utf-8')
     if col_names: df.columns = col_names
     if index_name: df = df.rename_axis(index_name, axis='index')
     mapping = {index: i for i, index in enumerate(df.index.unique())}
@@ -49,7 +55,7 @@ def load_edge_csv(path, src_index_col, src_mapping, dst_index_col, dst_mapping, 
         torch.Tensor: 2 by N matrix containing the node ids of N user-item edges
     """
     if path.endswith('.dat'): 
-       df = pd.read_csv(path, delimiter='::', header=None, names=['userId', 'movieId', 'rating', 'timestamp'])
+       df = pd.read_csv(path, delimiter='::', header=None, names=['userId', 'movieId', 'rating', 'timestamp'], engine='python', encoding='utf-8')
     else:
        df = pd.read_csv(path)
     edge_index = None
@@ -60,7 +66,6 @@ def load_edge_csv(path, src_index_col, src_mapping, dst_index_col, dst_mapping, 
     edge_attr = torch.as_tensor(raw_values, dtype=torch.long).view(-1, 1) >= rating_threshold
 
     #edge_attr = torch.from_numpy(df[link_index_col].values).view(-1, 1).to(torch.long) >= rating_threshold
-
 
     edge_index = [[], []]
     for i in range(edge_attr.shape[0]):
