@@ -172,12 +172,17 @@ class ExperimentRunner():
 
         return(df)
 
-    def run_experiment(self, train_edge_index, train_sparse_edge_index, experiment_name, storage):
+    def run_experiment(self, train_edge_index, train_sparse_edge_index, experiment_name, storage, ds_data=None):
         objective = GNNObjective(self.edge_index, train_edge_index, train_sparse_edge_index, 
                                                 self.val_edge_index, self.val_sparse_edge_index, 
                                                 self.user_mapping, self.movie_mapping, self.parameters)
-        study = optuna.create_study(direction="maximize", study_name=f"Study_{experiment_name}", storage=storage,
-                                    load_if_exists=True)
+        study = optuna.create_study(direction="maximize", study_name=f"Study_{experiment_name}", 
+                                    storage=storage, load_if_exists=True, 
+                                    pruner=optuna.pruners.MedianPruner(
+                                        n_startup_trials=5,  # Don't prune until 5 trials are done
+                                        n_warmup_steps=1000  # Don't prune until at least epoch 1000
+                                    )
+                                )
         
         start_time = time.perf_counter()
         study.optimize(objective, n_trials=self.parameters['n_trials'])
@@ -212,10 +217,16 @@ class ExperimentRunner():
         results['val_edges']= len(self.val_edge_index[1])
         results['test_edges']= len(self.test_edge_index[1])
 
-        for m in best_params.keys():
-            results[m] = best_params[m]
+        if ds_data is not None:
+            results.update(ds_data)
 
-        for m in losses.keys():
-            results[m] = losses[m]
+        results.update(best_params)
+        results.update(losses)
+
+        #for m in best_params.keys():
+        #    results[m] = best_params[m]
+
+        #for m in losses.keys():
+        #    results[m] = losses[m]
 
         self.final_results[experiment_name] = results

@@ -70,7 +70,7 @@ def get_users_items(dom_set):
     ds_users = [int(x[1:]) for x in dom_set if x[0]=='u']
     ds_items = [int(x[1:]) for x in dom_set if x[0]=='i']
     
-    return [len(ds_users), len(ds_items)]
+    return {'ds_users':len(ds_users), 'ds_items': len(ds_items)}
 
 def split_data(edge_index):
     num_interactions = edge_index.shape[1]

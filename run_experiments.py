@@ -1,6 +1,7 @@
 from experiment_functions import *
 from helper_functions import *
 import logging
+import time
 
 # define constants
 parameters = {
@@ -8,15 +9,15 @@ parameters = {
         'ITERS_PER_EVAL' : 200,
         'ITERS_PER_LR_DECAY' : 200,
         'K' : 20, #K value for ranking metrics
-        'n_trials' : 100,
+        'n_trials' : 200,
         'n_dominance': 3,
         'random_runs' : 5,
-        'exp_name' : 'e_1M',
+        'exp_name' : 'e_100K',
         'verbose' : False,
-        #'movie_path' : './ml-latest-small/movies.csv',
-        #'rating_path' : './ml-latest-small/ratings.csv',
-        'movie_path' : './ml-1m/movies.dat',
-        'rating_path' : './ml-1m/ratings.dat'
+        'movie_path' : './ml-latest-small/movies.csv',
+        'rating_path' : './ml-latest-small/ratings.csv',
+        #'movie_path' : './ml-1m/movies.dat',
+        #'rating_path' : './ml-1m/ratings.dat'
     }
 
 exp_name = parameters['exp_name']
@@ -34,9 +35,6 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger()
-#logger.setLevel(logging.INFO)
-#file_handler = logging.FileHandler(f"{exp_name}.log", mode="w")
-#logger.addHandler(file_handler)
 
 optuna.logging.enable_propagation()
 optuna.logging.disable_default_handler()
@@ -52,6 +50,7 @@ train_indices, val_indices, test_indices, train_edge_index, val_edge_index, test
 train_sparse_edge_index, val_sparse_edge_index, test_sparse_edge_index = \
     get_initial_sparse_edge_indexes(edge_index, train_indices, val_indices, test_indices, user_mapping, movie_mapping)
 
+# Run the full graph experiment
 runner = ExperimentRunner(edge_index, val_edge_index, val_sparse_edge_index, test_edge_index, test_sparse_edge_index, 
                             user_mapping, movie_mapping, parameters)
 
@@ -63,7 +62,11 @@ for m in range(1, parameters['n_dominance'] + 1):
     logger.info(f'**** Training {exp}')
     logger.info(f'  ** {m}-Dominant stats:')
     logger.info('  ** Finding the dominant set:')
+    start = time.perf_counter()
     dom_set = dominating_set_fast(graph,m,optimize=True) #Optimized function to use sets and go through less node
+    ds_time = time.perf_counter() - start
+    ds_data = get_users_items(dom_set)
+    ds_data.update({'ds_time':ds_time})
 
     logger.info('  ** Getting the trainable edges:')
     ds_indices = get_ds_edges(dom_set, edge_index, graph)
@@ -73,7 +76,8 @@ for m in range(1, parameters['n_dominance'] + 1):
     logger.info(f'  **** Getting {len(ds_indices)} dominant set edges')
     ds_train_sparse_edge_index = get_sparse_tensor(edge_index, ds_train_indices, user_mapping, movie_mapping)
 
-    runner.run_experiment(ds_train_edge_index, ds_train_sparse_edge_index, experiment_name=exp, storage=optuna_storage)
+    # Run the Dominant Set experiment
+    runner.run_experiment(ds_train_edge_index, ds_train_sparse_edge_index, experiment_name=exp, storage=optuna_storage, ds_data=ds_data)
 
     for n in range(1, parameters['random_runs'] + 1):
         exp = f'{exp_name}_1c{m}dcs_rand{n}'
@@ -85,6 +89,7 @@ for m in range(1, parameters['n_dominance'] + 1):
         rnd_train_sparse_edge_index = get_sparse_tensor(edge_index, rnd_train_indices, user_mapping, movie_mapping)
         rnd_train_edge_index = edge_index[:, rnd_train_indices]
 
+        # Run a random experiment
         runner.run_experiment(rnd_train_edge_index, rnd_train_sparse_edge_index, experiment_name=exp, storage=optuna_storage)
 
 df = runner.get_final_results_df()
