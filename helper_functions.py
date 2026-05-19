@@ -3,11 +3,12 @@ from torch_sparse import SparseTensor
 from sklearn.model_selection import train_test_split
 import networkx as nx
 import logging
+import numpy as np
 
 # This creates a child logger that inherits from the root you configured above
 logger = logging.getLogger(__name__)
 
-def load_data(movie_path, rating_path):
+def load_data(movie_path, rating_path, rating_threshold=3):
     if movie_path.endswith('.dat'): 
         user_mapping = load_node_csv(rating_path, index_col=0, header=None, delimiter='::', col_names=['movieId', 'rating',	'timestamp'], index_name='userId')
         movie_mapping = load_node_csv(movie_path, index_col=0, header=None, delimiter='::', col_names=['title', 'genres'], index_name='movieId')
@@ -27,7 +28,7 @@ def load_data(movie_path, rating_path):
         dst_index_col='movieId',
         dst_mapping=movie_mapping,
         link_index_col='rating',
-        rating_threshold=3,
+        rating_threshold=rating_threshold,
     )
 
     logger.info(f'Edge index: {edge_index.shape}')
@@ -50,11 +51,15 @@ def generate_graph(edge_index):
 
     return G
 
-def get_ds_edges(dom_set, edge_index, G):
+def get_ds_edges(dom_set, edge_index, G, strict=False):
     ds_users = [int(x[1:]) for x in dom_set if x[0]=='u']
     ds_movies = [int(x[1:]) for x in dom_set if x[0]=='i']
 
-    ds_indices = torch.logical_or(torch.isin(edge_index[0], torch.tensor(ds_users)),
+    if strict:
+        ds_indices = torch.logical_and(torch.isin(edge_index[0], torch.tensor(ds_users)),
+                                torch.isin(edge_index[1], torch.tensor(ds_movies))).nonzero().reshape(-1).tolist()
+    else:
+        ds_indices = torch.logical_or(torch.isin(edge_index[0], torch.tensor(ds_users)),
                                 torch.isin(edge_index[1], torch.tensor(ds_movies))).nonzero().reshape(-1).tolist()
     
     logger.info(f'     Number of nodes: {len(dom_set)}')
@@ -84,6 +89,40 @@ def split_data(edge_index):
     test_edge_index = edge_index[:, test_indices]
 
     return train_indices, val_indices, test_indices, train_edge_index, val_edge_index, test_edge_index
+
+def split_data_stratified(edge_index, test_size=0.1, val_size=0.1):
+    # Convert to DataFrame for easier grouping
+    edges = edge_index.t().numpy()
+    df = pd.DataFrame(edges, columns=['user', 'item'])
+    
+    train_list, val_list, test_list = [], [], []
+    
+    # Stratify by user
+    for user, group in df.groupby('user'):
+        indices = group.index.tolist()
+        n = len(indices)
+        
+        if n < 3: 
+            # If user has very few edges, keep them in train to maintain connectivity
+            train_list.extend(indices)
+            continue
+            
+        # Shuffle user-specific edges
+        np.random.shuffle(indices)
+        
+        n_test = max(1, int(n * test_size))
+        n_val = max(1, int(n * val_size))
+        
+        test_list.extend(indices[:n_test])
+        val_list.extend(indices[n_test : n_test + n_val])
+        train_list.extend(indices[n_test + n_val:])
+
+    # Convert back to tensors
+    train_edge_index = edge_index[:, train_list]
+    val_edge_index = edge_index[:, val_list]
+    test_edge_index = edge_index[:, test_list]
+    
+    return train_list, val_list, test_list, train_edge_index, val_edge_index, test_edge_index
 
 def get_sparse_tensor(edge_index, indices, user_mapping, movie_mapping):
     num_users, num_movies = len(user_mapping), len(movie_mapping)

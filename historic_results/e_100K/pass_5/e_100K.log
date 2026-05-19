@@ -1,0 +1,329 @@
+2026-05-15 18:04:10,934 - root - INFO - **** Training e_100K_full
+2026-05-15 18:04:10,956 - helper_functions - INFO - Users: 610, Items: 9742
+2026-05-15 18:04:11,086 - helper_functions - INFO - Edge index: torch.Size([2, 100836])
+2026-05-15 18:04:11,086 - root - INFO - **** Generating the graph:
+2026-05-15 18:04:11,170 - helper_functions - INFO - Number of unique users: 610
+2026-05-15 18:04:11,171 - helper_functions - INFO - Number of unique items: 9724
+2026-05-15 18:04:11,171 - helper_functions - INFO - Number of nodes: 10334
+2026-05-15 18:04:11,173 - helper_functions - INFO - Number of edges: 100836
+2026-05-15 18:04:14,001 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_full
+2026-05-15 18:04:36,289 - experiment_functions - INFO - Early stopping at epoch 1500. Best Recall: 0.0527
+2026-05-15 18:04:36,453 - optuna.study.study - INFO - Trial 0 finished with value: 0.05265644603692082 and parameters: {'n_layers': 3, 'embedding_dim': 256, 'lr': 0.00014681750460010602, 'lambda_val': 0.0010533768643054187, 'batch_size': 2793, 'optimizer': 'RMSprop'}. Best is trial 0 with value: 0.05265644603692082.
+2026-05-15 18:04:55,545 - experiment_functions - INFO - Early stopping at epoch 3350. Best Recall: 0.0407
+2026-05-15 18:04:55,648 - optuna.study.study - INFO - Trial 1 finished with value: 0.04068963063916404 and parameters: {'n_layers': 2, 'embedding_dim': 32, 'lr': 0.00011149362293271709, 'lambda_val': 8.688089493181251e-06, 'batch_size': 1522, 'optimizer': 'Adam'}. Best is trial 0 with value: 0.05265644603692082.
+2026-05-15 18:04:59,660 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0020
+2026-05-15 18:04:59,772 - optuna.study.study - INFO - Trial 2 finished with value: 0.0019669556976394742 and parameters: {'n_layers': 4, 'embedding_dim': 64, 'lr': 0.0006079863381512751, 'lambda_val': 1.1470868086938963e-05, 'batch_size': 1159, 'optimizer': 'SGD'}. Best is trial 0 with value: 0.05265644603692082.
+2026-05-15 18:05:08,454 - experiment_functions - INFO - Early stopping at epoch 1100. Best Recall: 0.0487
+2026-05-15 18:05:08,554 - optuna.study.study - INFO - Trial 3 finished with value: 0.04871481650512075 and parameters: {'n_layers': 3, 'embedding_dim': 96, 'lr': 0.0005412062142304239, 'lambda_val': 0.0005038053686349283, 'batch_size': 3007, 'optimizer': 'Adam'}. Best is trial 0 with value: 0.05265644603692082.
+2026-05-15 18:05:12,539 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0024
+2026-05-15 18:05:12,630 - optuna.study.study - INFO - Trial 4 finished with value: 0.0024058513195747986 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 8.189533005532789e-05, 'lambda_val': 0.014193667057564655, 'batch_size': 4015, 'optimizer': 'SGD'}. Best is trial 0 with value: 0.05265644603692082.
+2026-05-15 18:05:16,533 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0028
+2026-05-15 18:05:16,636 - optuna.study.study - INFO - Trial 5 finished with value: 0.0027878996062709713 and parameters: {'n_layers': 3, 'embedding_dim': 64, 'lr': 0.00044379626015339345, 'lambda_val': 0.02465454477099039, 'batch_size': 914, 'optimizer': 'SGD'}. Best is trial 0 with value: 0.05265644603692082.
+2026-05-15 18:05:20,728 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0022
+2026-05-15 18:05:21,263 - optuna.study.study - INFO - Trial 6 finished with value: 0.0021542302773201183 and parameters: {'n_layers': 4, 'embedding_dim': 64, 'lr': 1.0036778400918165e-05, 'lambda_val': 0.008157296692530886, 'batch_size': 1203, 'optimizer': 'Adam'}. Best is trial 0 with value: 0.05265644603692082.
+2026-05-15 18:05:29,752 - experiment_functions - INFO - Early stopping at epoch 1150. Best Recall: 0.0456
+2026-05-15 18:05:29,869 - optuna.study.study - INFO - Trial 7 finished with value: 0.04555881158420233 and parameters: {'n_layers': 3, 'embedding_dim': 64, 'lr': 0.00042635088691794873, 'lambda_val': 1.064487743950471e-05, 'batch_size': 3336, 'optimizer': 'Adam'}. Best is trial 0 with value: 0.05265644603692082.
+2026-05-15 18:05:40,792 - optuna.study._optimize - INFO - Trial 8 pruned. 
+2026-05-15 18:05:49,742 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0029
+2026-05-15 18:05:50,095 - optuna.study.study - INFO - Trial 9 finished with value: 0.002941364487161042 and parameters: {'n_layers': 4, 'embedding_dim': 128, 'lr': 0.001787166291842523, 'lambda_val': 0.040701733681020764, 'batch_size': 512, 'optimizer': 'RMSprop'}. Best is trial 0 with value: 0.05265644603692082.
+2026-05-15 18:05:57,288 - optuna.study._optimize - INFO - Trial 10 pruned. 
+2026-05-15 18:06:02,261 - experiment_functions - INFO - Early stopping at epoch 600. Best Recall: 0.0284
+2026-05-15 18:06:02,364 - optuna.study.study - INFO - Trial 11 finished with value: 0.0284253692025639 and parameters: {'n_layers': 3, 'embedding_dim': 96, 'lr': 0.0035587302748719706, 'lambda_val': 0.0004913866630463639, 'batch_size': 2712, 'optimizer': 'RMSprop'}. Best is trial 0 with value: 0.05265644603692082.
+2026-05-15 18:06:10,628 - optuna.study._optimize - INFO - Trial 12 pruned. 
+2026-05-15 18:06:15,022 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0039
+2026-05-15 18:06:15,125 - optuna.study.study - INFO - Trial 13 finished with value: 0.003862263710078716 and parameters: {'n_layers': 2, 'embedding_dim': 256, 'lr': 1.1669938013060908e-05, 'lambda_val': 0.00010696446696640263, 'batch_size': 3580, 'optimizer': 'Adam'}. Best is trial 0 with value: 0.05265644603692082.
+2026-05-15 18:06:50,563 - optuna.study.study - INFO - Trial 14 finished with value: 0.06590855387989115 and parameters: {'n_layers': 3, 'embedding_dim': 96, 'lr': 0.0001436662979928142, 'lambda_val': 1.3890557254561403e-06, 'batch_size': 2059, 'optimizer': 'RMSprop'}. Best is trial 14 with value: 0.06590855387989115.
+2026-05-15 18:06:58,346 - optuna.study._optimize - INFO - Trial 15 pruned. 
+2026-05-15 18:07:05,623 - optuna.study._optimize - INFO - Trial 16 pruned. 
+2026-05-15 18:07:14,881 - optuna.study._optimize - INFO - Trial 17 pruned. 
+2026-05-15 18:07:19,841 - experiment_functions - INFO - Early stopping at epoch 650. Best Recall: 0.0338
+2026-05-15 18:07:19,999 - optuna.study.study - INFO - Trial 18 finished with value: 0.033763578711546914 and parameters: {'n_layers': 2, 'embedding_dim': 96, 'lr': 0.003935476764073638, 'lambda_val': 5.518783275934888e-05, 'batch_size': 2588, 'optimizer': 'RMSprop'}. Best is trial 14 with value: 0.06590855387989115.
+2026-05-15 18:07:31,422 - optuna.study._optimize - INFO - Trial 19 pruned. 
+2026-05-15 18:07:38,431 - experiment_functions - INFO - Early stopping at epoch 750. Best Recall: 0.0077
+2026-05-15 18:07:38,533 - optuna.study.study - INFO - Trial 20 finished with value: 0.007653738180961434 and parameters: {'n_layers': 3, 'embedding_dim': 256, 'lr': 0.0017677509029692868, 'lambda_val': 0.09117339270429964, 'batch_size': 2036, 'optimizer': 'RMSprop'}. Best is trial 14 with value: 0.06590855387989115.
+2026-05-15 18:07:43,761 - experiment_functions - INFO - Early stopping at epoch 650. Best Recall: 0.0419
+2026-05-15 18:07:43,884 - optuna.study.study - INFO - Trial 21 finished with value: 0.04185504160614762 and parameters: {'n_layers': 3, 'embedding_dim': 96, 'lr': 0.001103694267614594, 'lambda_val': 0.0014795031540072979, 'batch_size': 3408, 'optimizer': 'Adam'}. Best is trial 14 with value: 0.06590855387989115.
+2026-05-15 18:07:53,551 - optuna.study._optimize - INFO - Trial 22 pruned. 
+2026-05-15 18:07:57,727 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0024
+2026-05-15 18:07:57,875 - optuna.study.study - INFO - Trial 23 finished with value: 0.002448602320965776 and parameters: {'n_layers': 3, 'embedding_dim': 96, 'lr': 2.8127932846456633e-05, 'lambda_val': 0.0010343775900636515, 'batch_size': 3791, 'optimizer': 'SGD'}. Best is trial 14 with value: 0.06590855387989115.
+2026-05-15 18:08:11,900 - experiment_functions - INFO - Early stopping at epoch 750. Best Recall: 0.0556
+2026-05-15 18:08:12,024 - optuna.study.study - INFO - Trial 24 finished with value: 0.05558666417968942 and parameters: {'n_layers': 2, 'embedding_dim': 96, 'lr': 0.0007362196634031987, 'lambda_val': 0.00017443204017329915, 'batch_size': 2762, 'optimizer': 'RMSprop'}. Best is trial 14 with value: 0.06590855387989115.
+2026-05-15 18:08:16,254 - experiment_functions - INFO - Early stopping at epoch 600. Best Recall: 0.0296
+2026-05-15 18:08:16,369 - optuna.study.study - INFO - Trial 25 finished with value: 0.029550359018904678 and parameters: {'n_layers': 2, 'embedding_dim': 32, 'lr': 0.013555908717590002, 'lambda_val': 0.00014899219383329596, 'batch_size': 2381, 'optimizer': 'RMSprop'}. Best is trial 14 with value: 0.06590855387989115.
+2026-05-15 18:08:35,310 - experiment_functions - INFO - Early stopping at epoch 2000. Best Recall: 0.1049
+2026-05-15 18:08:35,837 - optuna.study.study - INFO - Trial 26 finished with value: 0.10485831093058236 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.00027091426808913176, 'lambda_val': 0.004702133138577381, 'batch_size': 2538, 'optimizer': 'RMSprop'}. Best is trial 26 with value: 0.10485831093058236.
+2026-05-15 18:08:41,347 - experiment_functions - INFO - Early stopping at epoch 600. Best Recall: 0.0799
+2026-05-15 18:08:41,461 - optuna.study.study - INFO - Trial 27 finished with value: 0.0798841456018233 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.001123277610757837, 'lambda_val': 0.005047189931303364, 'batch_size': 1866, 'optimizer': 'RMSprop'}. Best is trial 26 with value: 0.10485831093058236.
+2026-05-15 18:08:51,834 - experiment_functions - INFO - Early stopping at epoch 1650. Best Recall: 0.0576
+2026-05-15 18:08:51,946 - optuna.study.study - INFO - Trial 28 finished with value: 0.05759206892484617 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.005231495072251294, 'lambda_val': 0.005378546679910013, 'batch_size': 1791, 'optimizer': 'RMSprop'}. Best is trial 26 with value: 0.10485831093058236.
+2026-05-15 18:09:08,725 - experiment_functions - INFO - Early stopping at epoch 2850. Best Recall: 0.1032
+2026-05-15 18:09:08,827 - optuna.study.study - INFO - Trial 29 finished with value: 0.10319003501939303 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.0002761104954520826, 'lambda_val': 0.009146029115242309, 'batch_size': 1449, 'optimizer': 'RMSprop'}. Best is trial 26 with value: 0.10485831093058236.
+2026-05-15 18:09:17,451 - experiment_functions - INFO - Early stopping at epoch 1450. Best Recall: 0.0991
+2026-05-15 18:09:17,541 - optuna.study.study - INFO - Trial 30 finished with value: 0.09914173820641355 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.00034483596132742694, 'lambda_val': 0.009048730078602638, 'batch_size': 1377, 'optimizer': 'RMSprop'}. Best is trial 26 with value: 0.10485831093058236.
+2026-05-15 18:09:21,773 - experiment_functions - INFO - Early stopping at epoch 600. Best Recall: 0.0763
+2026-05-15 18:09:21,886 - optuna.study.study - INFO - Trial 31 finished with value: 0.07632655849362216 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.0012332895830980753, 'lambda_val': 0.011308831913268385, 'batch_size': 1337, 'optimizer': 'RMSprop'}. Best is trial 26 with value: 0.10485831093058236.
+2026-05-15 18:09:34,907 - experiment_functions - INFO - Early stopping at epoch 2250. Best Recall: 0.0973
+2026-05-15 18:09:34,977 - optuna.study.study - INFO - Trial 32 finished with value: 0.0973465841949573 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.0002969701005731511, 'lambda_val': 0.0048284070845790675, 'batch_size': 1549, 'optimizer': 'RMSprop'}. Best is trial 26 with value: 0.10485831093058236.
+2026-05-15 18:09:41,520 - optuna.study._optimize - INFO - Trial 33 pruned. 
+2026-05-15 18:09:47,090 - optuna.study._optimize - INFO - Trial 34 pruned. 
+2026-05-15 18:09:50,465 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0018
+2026-05-15 18:09:50,548 - optuna.study.study - INFO - Trial 35 finished with value: 0.0017603057496820061 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.0003399534118634905, 'lambda_val': 0.06283064933895592, 'batch_size': 1492, 'optimizer': 'SGD'}. Best is trial 26 with value: 0.10485831093058236.
+2026-05-15 18:09:56,480 - optuna.study._optimize - INFO - Trial 36 pruned. 
+2026-05-15 18:10:00,341 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0013
+2026-05-15 18:10:00,443 - optuna.study.study - INFO - Trial 37 finished with value: 0.0012500493462371837 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.0005208010699787531, 'lambda_val': 0.00621789022529614, 'batch_size': 1073, 'optimizer': 'SGD'}. Best is trial 26 with value: 0.10485831093058236.
+2026-05-15 18:10:07,005 - optuna.study._optimize - INFO - Trial 38 pruned. 
+2026-05-15 18:10:23,623 - experiment_functions - INFO - Early stopping at epoch 2800. Best Recall: 0.1034
+2026-05-15 18:10:23,746 - optuna.study.study - INFO - Trial 39 finished with value: 0.10338255847451366 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.00030930658765199263, 'lambda_val': 0.012891031664526502, 'batch_size': 557, 'optimizer': 'RMSprop'}. Best is trial 26 with value: 0.10485831093058236.
+2026-05-15 18:10:27,782 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0027
+2026-05-15 18:10:27,905 - optuna.study.study - INFO - Trial 40 finished with value: 0.002746292078679277 and parameters: {'n_layers': 2, 'embedding_dim': 128, 'lr': 0.0007553876615284746, 'lambda_val': 0.013059516855426731, 'batch_size': 574, 'optimizer': 'SGD'}. Best is trial 26 with value: 0.10485831093058236.
+2026-05-15 18:10:51,749 - optuna.study.study - INFO - Trial 41 finished with value: 0.11724153441012204 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.00025134894376159663, 'lambda_val': 0.003176951220971831, 'batch_size': 1295, 'optimizer': 'RMSprop'}. Best is trial 41 with value: 0.11724153441012204.
+2026-05-15 18:11:00,266 - optuna.study._optimize - INFO - Trial 42 pruned. 
+2026-05-15 18:11:04,136 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0036
+2026-05-15 18:11:04,270 - optuna.study.study - INFO - Trial 43 finished with value: 0.003614167042653855 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.00020118565786437912, 'lambda_val': 0.04290646186329875, 'batch_size': 1252, 'optimizer': 'RMSprop'}. Best is trial 41 with value: 0.11724153441012204.
+2026-05-15 18:11:10,050 - optuna.study._optimize - INFO - Trial 44 pruned. 
+2026-05-15 18:11:13,684 - experiment_functions - INFO - Early stopping at epoch 600. Best Recall: 0.0404
+2026-05-15 18:11:13,754 - optuna.study.study - INFO - Trial 45 finished with value: 0.04044942057317873 and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.002007296125357365, 'lambda_val': 0.019557766879864515, 'batch_size': 1086, 'optimizer': 'RMSprop'}. Best is trial 41 with value: 0.11724153441012204.
+2026-05-15 18:11:24,924 - experiment_functions - INFO - Early stopping at epoch 2350. Best Recall: 0.1042
+2026-05-15 18:11:25,006 - optuna.study.study - INFO - Trial 46 finished with value: 0.10417465415744841 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0003612548208151865, 'lambda_val': 0.002324187001627944, 'batch_size': 1293, 'optimizer': 'RMSprop'}. Best is trial 41 with value: 0.11724153441012204.
+2026-05-15 18:11:30,950 - optuna.study._optimize - INFO - Trial 47 pruned. 
+2026-05-15 18:11:52,230 - experiment_functions - INFO - Early stopping at epoch 3700. Best Recall: 0.1308
+2026-05-15 18:11:52,348 - optuna.study.study - INFO - Trial 48 finished with value: 0.13078430493282794 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0006730173366231471, 'lambda_val': 0.0008708034434858406, 'batch_size': 760, 'optimizer': 'RMSprop'}. Best is trial 48 with value: 0.13078430493282794.
+2026-05-15 18:12:03,344 - experiment_functions - INFO - Early stopping at epoch 1950. Best Recall: 0.1320
+2026-05-15 18:12:03,485 - optuna.study.study - INFO - Trial 49 finished with value: 0.1319916789381706 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0007193302405916007, 'lambda_val': 0.0007084961555251328, 'batch_size': 779, 'optimizer': 'Adam'}. Best is trial 49 with value: 0.1319916789381706.
+2026-05-15 18:12:18,834 - experiment_functions - INFO - Early stopping at epoch 2550. Best Recall: 0.1112
+2026-05-15 18:12:18,968 - optuna.study.study - INFO - Trial 50 finished with value: 0.11118529891960856 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0006560093639261714, 'lambda_val': 0.0009651649396405663, 'batch_size': 718, 'optimizer': 'Adam'}. Best is trial 49 with value: 0.1319916789381706.
+2026-05-15 18:12:31,481 - experiment_functions - INFO - Early stopping at epoch 2300. Best Recall: 0.1312
+2026-05-15 18:12:31,552 - optuna.study.study - INFO - Trial 51 finished with value: 0.1312211635999051 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0005866431713384173, 'lambda_val': 0.0007523897843088942, 'batch_size': 763, 'optimizer': 'Adam'}. Best is trial 49 with value: 0.1319916789381706.
+2026-05-15 18:12:40,712 - experiment_functions - INFO - Early stopping at epoch 1750. Best Recall: 0.1154
+2026-05-15 18:12:40,827 - optuna.study.study - INFO - Trial 52 finished with value: 0.11543709765574767 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.000735296685323868, 'lambda_val': 0.0007538620874934498, 'batch_size': 771, 'optimizer': 'Adam'}. Best is trial 49 with value: 0.1319916789381706.
+2026-05-15 18:13:01,421 - optuna.study.study - INFO - Trial 53 finished with value: 0.13716782145755746 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0007830706291438342, 'lambda_val': 0.0007049574765137968, 'batch_size': 745, 'optimizer': 'Adam'}. Best is trial 53 with value: 0.13716782145755746.
+2026-05-15 18:13:06,336 - experiment_functions - INFO - Early stopping at epoch 650. Best Recall: 0.0789
+2026-05-15 18:13:06,506 - optuna.study.study - INFO - Trial 54 finished with value: 0.07888737114525828 and parameters: {'n_layers': 2, 'embedding_dim': 64, 'lr': 0.0022112852284860403, 'lambda_val': 0.00033705352113317765, 'batch_size': 852, 'optimizer': 'Adam'}. Best is trial 53 with value: 0.13716782145755746.
+2026-05-15 18:13:17,104 - experiment_functions - INFO - Early stopping at epoch 1700. Best Recall: 0.1328
+2026-05-15 18:13:17,239 - optuna.study.study - INFO - Trial 55 finished with value: 0.13281258506956284 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0008876670274743012, 'lambda_val': 0.0006593081366843087, 'batch_size': 969, 'optimizer': 'Adam'}. Best is trial 53 with value: 0.13716782145755746.
+2026-05-15 18:13:21,521 - experiment_functions - INFO - Early stopping at epoch 600. Best Recall: 0.0889
+2026-05-15 18:13:21,635 - optuna.study.study - INFO - Trial 56 finished with value: 0.08889319334334897 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.002960119371784147, 'lambda_val': 0.0006327891139334605, 'batch_size': 988, 'optimizer': 'Adam'}. Best is trial 53 with value: 0.13716782145755746.
+2026-05-15 18:13:26,000 - experiment_functions - INFO - Early stopping at epoch 550. Best Recall: 0.0642
+2026-05-15 18:13:26,103 - optuna.study.study - INFO - Trial 57 finished with value: 0.06415193724206911 and parameters: {'n_layers': 2, 'embedding_dim': 64, 'lr': 0.0064220790435677725, 'lambda_val': 0.00024290619638083085, 'batch_size': 1179, 'optimizer': 'Adam'}. Best is trial 53 with value: 0.13716782145755746.
+2026-05-15 18:13:34,250 - experiment_functions - INFO - Early stopping at epoch 1350. Best Recall: 0.1094
+2026-05-15 18:13:34,364 - optuna.study.study - INFO - Trial 58 finished with value: 0.10935988264654417 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0016899464470911238, 'lambda_val': 5.4878978929379905e-05, 'batch_size': 627, 'optimizer': 'Adam'}. Best is trial 53 with value: 0.13716782145755746.
+2026-05-15 18:13:52,301 - experiment_functions - INFO - Early stopping at epoch 3050. Best Recall: 0.1239
+2026-05-15 18:13:52,414 - optuna.study.study - INFO - Trial 59 finished with value: 0.12393819901854271 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0008691806985484376, 'lambda_val': 0.0017838465403550545, 'batch_size': 516, 'optimizer': 'Adam'}. Best is trial 53 with value: 0.13716782145755746.
+2026-05-15 18:13:58,550 - experiment_functions - INFO - Early stopping at epoch 900. Best Recall: 0.0992
+2026-05-15 18:13:58,653 - optuna.study.study - INFO - Trial 60 finished with value: 0.09923091229569991 and parameters: {'n_layers': 2, 'embedding_dim': 64, 'lr': 0.0009199358370681434, 'lambda_val': 0.000470908540482374, 'batch_size': 530, 'optimizer': 'Adam'}. Best is trial 53 with value: 0.13716782145755746.
+2026-05-15 18:14:05,135 - experiment_functions - INFO - Early stopping at epoch 1000. Best Recall: 0.1033
+2026-05-15 18:14:05,251 - optuna.study.study - INFO - Trial 61 finished with value: 0.1033179466314644 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0013784161375098884, 'lambda_val': 0.0013932321516232505, 'batch_size': 843, 'optimizer': 'Adam'}. Best is trial 53 with value: 0.13716782145755746.
+2026-05-15 18:14:11,623 - optuna.study._optimize - INFO - Trial 62 pruned. 
+2026-05-15 18:14:22,289 - experiment_functions - INFO - Early stopping at epoch 1750. Best Recall: 0.1119
+2026-05-15 18:14:22,392 - optuna.study.study - INFO - Trial 63 finished with value: 0.11188605543969464 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0008888629049003459, 'lambda_val': 0.0007484620693888922, 'batch_size': 988, 'optimizer': 'Adam'}. Best is trial 53 with value: 0.13716782145755746.
+2026-05-15 18:14:26,671 - experiment_functions - INFO - Early stopping at epoch 650. Best Recall: 0.0889
+2026-05-15 18:14:26,785 - optuna.study.study - INFO - Trial 64 finished with value: 0.08892864244114841 and parameters: {'n_layers': 1, 'embedding_dim': 32, 'lr': 0.0027367464851479873, 'lambda_val': 0.00034233970232332763, 'batch_size': 1143, 'optimizer': 'Adam'}. Best is trial 53 with value: 0.13716782145755746.
+2026-05-15 18:14:32,982 - optuna.study._optimize - INFO - Trial 65 pruned. 
+2026-05-15 18:14:38,125 - experiment_functions - INFO - Early stopping at epoch 800. Best Recall: 0.0959
+2026-05-15 18:14:38,228 - optuna.study.study - INFO - Trial 66 finished with value: 0.09585440877394781 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0013704202389306667, 'lambda_val': 0.00021600320808682822, 'batch_size': 734, 'optimizer': 'Adam'}. Best is trial 53 with value: 0.13716782145755746.
+2026-05-15 18:14:42,386 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0031
+2026-05-15 18:14:42,510 - optuna.study.study - INFO - Trial 67 finished with value: 0.0030662022482214647 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.00018883727465337423, 'lambda_val': 0.003724805083868048, 'batch_size': 621, 'optimizer': 'Adam'}. Best is trial 53 with value: 0.13716782145755746.
+2026-05-15 18:15:03,198 - experiment_functions - INFO - Early stopping at epoch 3600. Best Recall: 0.1372
+2026-05-15 18:15:03,313 - optuna.study.study - INFO - Trial 68 finished with value: 0.13719254912556791 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0006083225630227094, 'lambda_val': 0.0009739121534602995, 'batch_size': 870, 'optimizer': 'Adam'}. Best is trial 68 with value: 0.13719254912556791.
+2026-05-15 18:15:16,072 - experiment_functions - INFO - Early stopping at epoch 2200. Best Recall: 0.1194
+2026-05-15 18:15:16,248 - optuna.study.study - INFO - Trial 69 finished with value: 0.11938631379375964 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0006186081823809451, 'lambda_val': 0.0005951827031102688, 'batch_size': 839, 'optimizer': 'Adam'}. Best is trial 68 with value: 0.13719254912556791.
+2026-05-15 18:15:20,609 - experiment_functions - INFO - Early stopping at epoch 550. Best Recall: 0.0206
+2026-05-15 18:15:20,722 - optuna.study.study - INFO - Trial 70 finished with value: 0.020572656113636283 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.07667657511582883, 'lambda_val': 0.0009373129162105207, 'batch_size': 525, 'optimizer': 'Adam'}. Best is trial 68 with value: 0.13719254912556791.
+2026-05-15 18:15:36,632 - optuna.study._optimize - INFO - Trial 71 pruned. 
+2026-05-15 18:15:49,066 - experiment_functions - INFO - Early stopping at epoch 2050. Best Recall: 0.1259
+2026-05-15 18:15:49,168 - optuna.study.study - INFO - Trial 72 finished with value: 0.12593074787440997 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0010101370660381705, 'lambda_val': 0.00026027952384362135, 'batch_size': 670, 'optimizer': 'Adam'}. Best is trial 68 with value: 0.13719254912556791.
+2026-05-15 18:15:55,308 - optuna.study._optimize - INFO - Trial 73 pruned. 
+2026-05-15 18:16:01,313 - experiment_functions - INFO - Early stopping at epoch 850. Best Recall: 0.1062
+2026-05-15 18:16:01,474 - optuna.study.study - INFO - Trial 74 finished with value: 0.10617960301975234 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0014447810548211335, 'lambda_val': 0.001772941205433685, 'batch_size': 938, 'optimizer': 'Adam'}. Best is trial 68 with value: 0.13719254912556791.
+2026-05-15 18:16:11,140 - experiment_functions - INFO - Early stopping at epoch 1400. Best Recall: 0.1299
+2026-05-15 18:16:11,263 - optuna.study.study - INFO - Trial 75 finished with value: 0.12993430102827025 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0009675420075285875, 'lambda_val': 0.00042344761130497986, 'batch_size': 1061, 'optimizer': 'Adam'}. Best is trial 68 with value: 0.13719254912556791.
+2026-05-15 18:16:31,810 - experiment_functions - INFO - Early stopping at epoch 3150. Best Recall: 0.1423
+2026-05-15 18:16:31,926 - optuna.study.study - INFO - Trial 76 finished with value: 0.14233964433499957 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.00044968473431498734, 'lambda_val': 0.0002583407361721385, 'batch_size': 1121, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:16:47,272 - experiment_functions - INFO - Early stopping at epoch 2300. Best Recall: 0.1154
+2026-05-15 18:16:47,360 - optuna.study.study - INFO - Trial 77 finished with value: 0.11541612384558406 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0004082626067966902, 'lambda_val': 0.00038888908074198266, 'batch_size': 1114, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:16:59,294 - experiment_functions - INFO - Early stopping at epoch 1850. Best Recall: 0.1225
+2026-05-15 18:16:59,408 - optuna.study.study - INFO - Trial 78 finished with value: 0.12248107220139007 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0004522982914965757, 'lambda_val': 0.00045979891657831843, 'batch_size': 1691, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:17:06,325 - experiment_functions - INFO - Early stopping at epoch 600. Best Recall: 0.0366
+2026-05-15 18:17:06,425 - optuna.study.study - INFO - Trial 79 finished with value: 0.03662339976537215 and parameters: {'n_layers': 4, 'embedding_dim': 256, 'lr': 0.0012106282659396902, 'lambda_val': 0.000990070167669693, 'batch_size': 1196, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:17:11,088 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0017
+2026-05-15 18:17:11,199 - optuna.study.study - INFO - Trial 80 finished with value: 0.0017111909784760762 and parameters: {'n_layers': 2, 'embedding_dim': 256, 'lr': 0.0022655738335733964, 'lambda_val': 0.00016469655849787738, 'batch_size': 975, 'optimizer': 'SGD'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:17:25,450 - experiment_functions - INFO - Early stopping at epoch 2050. Best Recall: 0.1365
+2026-05-15 18:17:25,552 - optuna.study.study - INFO - Trial 81 finished with value: 0.13650032036994433 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0007610252484717947, 'lambda_val': 0.0002763617603493133, 'batch_size': 796, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:17:39,495 - experiment_functions - INFO - Early stopping at epoch 1600. Best Recall: 0.1325
+2026-05-15 18:17:39,991 - optuna.study.study - INFO - Trial 82 finished with value: 0.13247303829688595 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0007695074102909868, 'lambda_val': 0.00021789148419883687, 'batch_size': 841, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:17:59,243 - experiment_functions - INFO - Early stopping at epoch 2150. Best Recall: 0.1379
+2026-05-15 18:17:59,434 - optuna.study.study - INFO - Trial 83 finished with value: 0.13785889235705573 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0006168384413511547, 'lambda_val': 3.792411027567874e-06, 'batch_size': 767, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:18:20,137 - experiment_functions - INFO - Early stopping at epoch 3150. Best Recall: 0.1399
+2026-05-15 18:18:20,269 - optuna.study.study - INFO - Trial 84 finished with value: 0.1399411761647795 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005399718319815892, 'lambda_val': 2.429318178167362e-06, 'batch_size': 887, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:18:27,529 - optuna.study._optimize - INFO - Trial 85 pruned. 
+2026-05-15 18:18:44,141 - experiment_functions - INFO - Early stopping at epoch 2550. Best Recall: 0.1279
+2026-05-15 18:18:44,253 - optuna.study.study - INFO - Trial 86 finished with value: 0.12787431265141008 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.00039789635290871545, 'lambda_val': 1.7798015402008497e-05, 'batch_size': 1418, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:18:50,834 - experiment_functions - INFO - Early stopping at epoch 900. Best Recall: 0.1087
+2026-05-15 18:18:50,946 - optuna.study.study - INFO - Trial 87 finished with value: 0.10871492253283077 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0015455226174843379, 'lambda_val': 4.659169485356053e-06, 'batch_size': 1248, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:19:02,754 - experiment_functions - INFO - Early stopping at epoch 1700. Best Recall: 0.1312
+2026-05-15 18:19:02,912 - optuna.study.study - INFO - Trial 88 finished with value: 0.13115674966166777 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.000774343636249915, 'lambda_val': 1.894570210695291e-06, 'batch_size': 1046, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:19:07,183 - experiment_functions - INFO - Early stopping at epoch 550. Best Recall: 0.0356
+2026-05-15 18:19:07,329 - optuna.study.study - INFO - Trial 89 finished with value: 0.03559993384655957 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.03529634460387369, 'lambda_val': 2.1744598066979308e-06, 'batch_size': 817, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:19:16,853 - experiment_functions - INFO - Early stopping at epoch 1300. Best Recall: 0.1234
+2026-05-15 18:19:16,964 - optuna.study.study - INFO - Trial 90 finished with value: 0.12344677459609067 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.000516855043987949, 'lambda_val': 3.526684232337571e-05, 'batch_size': 1636, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:19:27,457 - experiment_functions - INFO - Early stopping at epoch 1350. Best Recall: 0.1233
+2026-05-15 18:19:27,648 - optuna.study.study - INFO - Trial 91 finished with value: 0.12326281857179257 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.000559740316832973, 'lambda_val': 3.3901799553646307e-06, 'batch_size': 4058, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:19:35,205 - experiment_functions - INFO - Early stopping at epoch 1100. Best Recall: 0.1175
+2026-05-15 18:19:35,374 - optuna.study.study - INFO - Trial 92 finished with value: 0.11753409820353253 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0011409985479994681, 'lambda_val': 0.0002712391272536089, 'batch_size': 786, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:19:51,674 - experiment_functions - INFO - Early stopping at epoch 2800. Best Recall: 0.1315
+2026-05-15 18:19:51,815 - optuna.study.study - INFO - Trial 93 finished with value: 0.13146692740697002 and parameters: {'n_layers': 1, 'embedding_dim': 32, 'lr': 0.000750047034388205, 'lambda_val': 1.1687598664363964e-05, 'batch_size': 903, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:20:09,670 - optuna.study._optimize - INFO - Trial 94 pruned. 
+2026-05-15 18:20:16,054 - optuna.study._optimize - INFO - Trial 95 pruned. 
+2026-05-15 18:20:22,879 - optuna.study._optimize - INFO - Trial 96 pruned. 
+2026-05-15 18:20:26,776 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0023
+2026-05-15 18:20:26,933 - optuna.study.study - INFO - Trial 97 finished with value: 0.0022640286534885284 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0018098427027519704, 'lambda_val': 1.051520813261084e-06, 'batch_size': 604, 'optimizer': 'SGD'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:20:37,651 - experiment_functions - INFO - Early stopping at epoch 1650. Best Recall: 0.1280
+2026-05-15 18:20:37,765 - optuna.study.study - INFO - Trial 98 finished with value: 0.1279613473023909 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0007950480237359779, 'lambda_val': 1.831283335173848e-05, 'batch_size': 1021, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:20:45,141 - optuna.study._optimize - INFO - Trial 99 pruned. 
+2026-05-15 18:20:52,859 - optuna.study._optimize - INFO - Trial 100 pruned. 
+2026-05-15 18:21:05,008 - experiment_functions - INFO - Early stopping at epoch 1750. Best Recall: 0.1346
+2026-05-15 18:21:05,165 - optuna.study.study - INFO - Trial 101 finished with value: 0.13461874829806256 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0006054786663901256, 'lambda_val': 0.0012216369284385577, 'batch_size': 809, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:21:25,079 - experiment_functions - INFO - Early stopping at epoch 3000. Best Recall: 0.1350
+2026-05-15 18:21:25,233 - optuna.study.study - INFO - Trial 102 finished with value: 0.13502907579604798 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005856147361129989, 'lambda_val': 3.3025302435266023e-06, 'batch_size': 683, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:21:41,708 - experiment_functions - INFO - Early stopping at epoch 2400. Best Recall: 0.1349
+2026-05-15 18:21:41,820 - optuna.study.study - INFO - Trial 103 finished with value: 0.13492868214231962 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0006250919553752794, 'lambda_val': 0.0012290591664906015, 'batch_size': 697, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:21:50,338 - optuna.study._optimize - INFO - Trial 104 pruned. 
+2026-05-15 18:21:57,410 - optuna.study._optimize - INFO - Trial 105 pruned. 
+2026-05-15 18:22:04,196 - optuna.study._optimize - INFO - Trial 106 pruned. 
+2026-05-15 18:22:12,082 - optuna.study._optimize - INFO - Trial 107 pruned. 
+2026-05-15 18:22:22,929 - experiment_functions - INFO - Early stopping at epoch 1500. Best Recall: 0.1227
+2026-05-15 18:22:23,052 - optuna.study.study - INFO - Trial 108 finished with value: 0.12271005618784214 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0006323842084936535, 'lambda_val': 0.002458928828778275, 'batch_size': 963, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:22:30,227 - optuna.study._optimize - INFO - Trial 109 pruned. 
+2026-05-15 18:22:42,148 - experiment_functions - INFO - Early stopping at epoch 1800. Best Recall: 0.1259
+2026-05-15 18:22:42,269 - optuna.study.study - INFO - Trial 110 finished with value: 0.12586224081281894 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0009241538400401277, 'lambda_val': 0.00012403608546132668, 'batch_size': 875, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:22:52,176 - experiment_functions - INFO - Early stopping at epoch 1350. Best Recall: 0.1253
+2026-05-15 18:22:52,313 - optuna.study.study - INFO - Trial 111 finished with value: 0.12529466973056133 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0006303395556544446, 'lambda_val': 0.0005497438473330444, 'batch_size': 1912, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:23:01,144 - optuna.study._optimize - INFO - Trial 112 pruned. 
+2026-05-15 18:23:09,349 - optuna.study._optimize - INFO - Trial 113 pruned. 
+2026-05-15 18:23:25,844 - optuna.study._optimize - INFO - Trial 114 pruned. 
+2026-05-15 18:23:29,457 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0028
+2026-05-15 18:23:29,548 - optuna.study.study - INFO - Trial 115 finished with value: 0.002843751502326634 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0010642953407295887, 'lambda_val': 0.0003567629297533563, 'batch_size': 1013, 'optimizer': 'SGD'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:23:38,808 - experiment_functions - INFO - Early stopping at epoch 950. Best Recall: 0.1175
+2026-05-15 18:23:39,075 - optuna.study.study - INFO - Trial 116 finished with value: 0.11746151319763935 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0013629730845551571, 'lambda_val': 0.0014874288931464486, 'batch_size': 664, 'optimizer': 'Adam'}. Best is trial 76 with value: 0.14233964433499957.
+2026-05-15 18:24:03,427 - experiment_functions - INFO - Early stopping at epoch 2500. Best Recall: 0.1439
+2026-05-15 18:24:03,903 - optuna.study.study - INFO - Trial 117 finished with value: 0.14386181101190273 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0004960873357802519, 'lambda_val': 0.00030884632601104936, 'batch_size': 1108, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:24:11,646 - optuna.study._optimize - INFO - Trial 118 pruned. 
+2026-05-15 18:24:19,957 - experiment_functions - INFO - Early stopping at epoch 900. Best Recall: 0.0661
+2026-05-15 18:24:20,124 - optuna.study.study - INFO - Trial 119 finished with value: 0.06607878122543853 and parameters: {'n_layers': 3, 'embedding_dim': 256, 'lr': 0.0005664327491272916, 'lambda_val': 5.8878866363774145e-05, 'batch_size': 1278, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:24:27,243 - optuna.study._optimize - INFO - Trial 120 pruned. 
+2026-05-15 18:24:40,951 - experiment_functions - INFO - Early stopping at epoch 1900. Best Recall: 0.1266
+2026-05-15 18:24:41,097 - optuna.study.study - INFO - Trial 121 finished with value: 0.12660050667083494 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0006803393507825088, 'lambda_val': 0.0004885998484063172, 'batch_size': 1082, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:24:51,477 - experiment_functions - INFO - Early stopping at epoch 1550. Best Recall: 0.1256
+2026-05-15 18:24:51,599 - optuna.study.study - INFO - Trial 122 finished with value: 0.12564568759473302 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005257608747830529, 'lambda_val': 0.0006596438082240307, 'batch_size': 2219, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:25:06,499 - optuna.study._optimize - INFO - Trial 123 pruned. 
+2026-05-15 18:25:18,556 - experiment_functions - INFO - Early stopping at epoch 1900. Best Recall: 0.1268
+2026-05-15 18:25:18,667 - optuna.study.study - INFO - Trial 124 finished with value: 0.12677577244917332 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0007104955955553686, 'lambda_val': 0.0008651382904112824, 'batch_size': 885, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:25:25,641 - optuna.study._optimize - INFO - Trial 125 pruned. 
+2026-05-15 18:25:33,178 - optuna.study._optimize - INFO - Trial 126 pruned. 
+2026-05-15 18:25:40,332 - optuna.study._optimize - INFO - Trial 127 pruned. 
+2026-05-15 18:25:46,723 - experiment_functions - INFO - Early stopping at epoch 950. Best Recall: 0.1202
+2026-05-15 18:25:46,882 - optuna.study.study - INFO - Trial 128 finished with value: 0.120246227244943 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0012509801983663262, 'lambda_val': 1.5415498151365046e-06, 'batch_size': 1128, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:25:54,092 - optuna.study._optimize - INFO - Trial 129 pruned. 
+2026-05-15 18:25:59,272 - experiment_functions - INFO - Early stopping at epoch 750. Best Recall: 0.0939
+2026-05-15 18:25:59,382 - optuna.study.study - INFO - Trial 130 finished with value: 0.09386686279944062 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.0015786390646109756, 'lambda_val': 0.00029386537528760436, 'batch_size': 744, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:26:06,550 - optuna.study._optimize - INFO - Trial 131 pruned. 
+2026-05-15 18:26:12,942 - optuna.study._optimize - INFO - Trial 132 pruned. 
+2026-05-15 18:26:19,959 - optuna.study._optimize - INFO - Trial 133 pruned. 
+2026-05-15 18:26:34,973 - experiment_functions - INFO - Early stopping at epoch 2400. Best Recall: 0.1309
+2026-05-15 18:26:35,085 - optuna.study.study - INFO - Trial 134 finished with value: 0.13088973873099477 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005479463612307728, 'lambda_val': 0.001646088480341081, 'batch_size': 1065, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:26:43,233 - experiment_functions - INFO - Early stopping at epoch 800. Best Recall: 0.0459
+2026-05-15 18:26:43,335 - optuna.study.study - INFO - Trial 135 finished with value: 0.04587608892415402 and parameters: {'n_layers': 4, 'embedding_dim': 256, 'lr': 0.00046064725917204554, 'lambda_val': 0.000235449851615704, 'batch_size': 979, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:26:47,432 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0033
+2026-05-15 18:26:47,557 - optuna.study.study - INFO - Trial 136 finished with value: 0.0032735565556957797 and parameters: {'n_layers': 1, 'embedding_dim': 64, 'lr': 0.001045001659814922, 'lambda_val': 0.0010945715089500665, 'batch_size': 772, 'optimizer': 'SGD'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:27:13,038 - optuna.study.study - INFO - Trial 137 finished with value: 0.13622309613105413 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0003865687383968264, 'lambda_val': 0.0008388598742877076, 'batch_size': 934, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:27:23,563 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0027
+2026-05-15 18:27:24,083 - optuna.study.study - INFO - Trial 138 finished with value: 0.0027296823134515093 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 1.4655554082405611e-05, 'lambda_val': 0.0008130550771998716, 'batch_size': 634, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:27:32,916 - optuna.study._optimize - INFO - Trial 139 pruned. 
+2026-05-15 18:27:40,006 - optuna.study._optimize - INFO - Trial 140 pruned. 
+2026-05-15 18:27:46,881 - optuna.study._optimize - INFO - Trial 141 pruned. 
+2026-05-15 18:27:53,089 - optuna.study._optimize - INFO - Trial 142 pruned. 
+2026-05-15 18:27:58,495 - optuna.study._optimize - INFO - Trial 143 pruned. 
+2026-05-15 18:28:05,007 - optuna.study._optimize - INFO - Trial 144 pruned. 
+2026-05-15 18:28:11,149 - optuna.study._optimize - INFO - Trial 145 pruned. 
+2026-05-15 18:28:17,300 - optuna.study._optimize - INFO - Trial 146 pruned. 
+2026-05-15 18:28:28,559 - experiment_functions - INFO - Early stopping at epoch 1750. Best Recall: 0.1357
+2026-05-15 18:28:28,670 - optuna.study.study - INFO - Trial 147 finished with value: 0.13566843503384587 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0007556249262351241, 'lambda_val': 0.00034647935996340735, 'batch_size': 708, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:28:46,168 - experiment_functions - INFO - Early stopping at epoch 2600. Best Recall: 0.1357
+2026-05-15 18:28:46,279 - optuna.study.study - INFO - Trial 148 finished with value: 0.13565134665927076 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005219768568184553, 'lambda_val': 0.00034034392249962704, 'batch_size': 711, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:28:54,456 - optuna.study._optimize - INFO - Trial 149 pruned. 
+2026-05-15 18:29:01,759 - optuna.study._optimize - INFO - Trial 150 pruned. 
+2026-05-15 18:29:13,280 - experiment_functions - INFO - Early stopping at epoch 1650. Best Recall: 0.1386
+2026-05-15 18:29:13,401 - optuna.study.study - INFO - Trial 151 finished with value: 0.13857482065797477 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0006375916840626806, 'lambda_val': 0.00018352541434425574, 'batch_size': 759, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:29:20,665 - optuna.study._optimize - INFO - Trial 152 pruned. 
+2026-05-15 18:29:29,168 - experiment_functions - INFO - Early stopping at epoch 1250. Best Recall: 0.1230
+2026-05-15 18:29:29,281 - optuna.study.study - INFO - Trial 153 finished with value: 0.12304426224557422 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0009758876186459788, 'lambda_val': 0.00021609689235991907, 'batch_size': 739, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:29:42,731 - optuna.study._optimize - INFO - Trial 154 pruned. 
+2026-05-15 18:29:52,098 - optuna.study._optimize - INFO - Trial 155 pruned. 
+2026-05-15 18:30:02,526 - experiment_functions - INFO - Early stopping at epoch 1450. Best Recall: 0.1234
+2026-05-15 18:30:02,638 - optuna.study.study - INFO - Trial 156 finished with value: 0.12336624680433819 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0008195960423518574, 'lambda_val': 0.0004622662463895719, 'batch_size': 1047, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:30:09,526 - optuna.study._optimize - INFO - Trial 157 pruned. 
+2026-05-15 18:30:16,970 - experiment_functions - INFO - Early stopping at epoch 1050. Best Recall: 0.1213
+2026-05-15 18:30:17,093 - optuna.study.study - INFO - Trial 158 finished with value: 0.12132634436644524 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0012154838527908697, 'lambda_val': 0.00017738783458233772, 'batch_size': 838, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:30:20,967 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0022
+2026-05-15 18:30:21,566 - optuna.study.study - INFO - Trial 159 finished with value: 0.002221558065309113 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005546031881360685, 'lambda_val': 0.00010427310706304283, 'batch_size': 575, 'optimizer': 'SGD'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:30:33,999 - experiment_functions - INFO - Early stopping at epoch 1000. Best Recall: 0.1256
+2026-05-15 18:30:34,532 - optuna.study.study - INFO - Trial 160 finished with value: 0.12561026691961455 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0006367279529906739, 'lambda_val': 0.0003387535879555765, 'batch_size': 3599, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:30:43,836 - optuna.study._optimize - INFO - Trial 161 pruned. 
+2026-05-15 18:30:51,874 - optuna.study._optimize - INFO - Trial 162 pruned. 
+2026-05-15 18:30:59,752 - optuna.study._optimize - INFO - Trial 163 pruned. 
+2026-05-15 18:31:06,746 - optuna.study._optimize - INFO - Trial 164 pruned. 
+2026-05-15 18:31:15,248 - optuna.study._optimize - INFO - Trial 165 pruned. 
+2026-05-15 18:31:32,135 - experiment_functions - INFO - Early stopping at epoch 1400. Best Recall: 0.1261
+2026-05-15 18:31:32,235 - optuna.study.study - INFO - Trial 166 finished with value: 0.12609511961811604 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0007725384730520699, 'lambda_val': 0.0019091951892637308, 'batch_size': 681, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:31:42,754 - experiment_functions - INFO - Early stopping at epoch 1450. Best Recall: 0.1323
+2026-05-15 18:31:42,878 - optuna.study.study - INFO - Trial 167 finished with value: 0.13232542225624666 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.001140078452154465, 'lambda_val': 3.8213730398423045e-06, 'batch_size': 515, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:31:52,169 - experiment_functions - INFO - Early stopping at epoch 1300. Best Recall: 0.1280
+2026-05-15 18:31:52,313 - optuna.study.study - INFO - Trial 168 finished with value: 0.1279838704669305 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0011454609905470767, 'lambda_val': 2.6200501674432624e-06, 'batch_size': 540, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:31:59,498 - optuna.study._optimize - INFO - Trial 169 pruned. 
+2026-05-15 18:32:17,689 - experiment_functions - INFO - Early stopping at epoch 1300. Best Recall: 0.1259
+2026-05-15 18:32:17,833 - optuna.study.study - INFO - Trial 170 finished with value: 0.12588458831743687 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0009921172830659822, 'lambda_val': 8.263789175048378e-06, 'batch_size': 733, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:32:34,429 - experiment_functions - INFO - Early stopping at epoch 1700. Best Recall: 0.1295
+2026-05-15 18:32:35,466 - optuna.study.study - INFO - Trial 171 finished with value: 0.12946243464723525 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005443291273497474, 'lambda_val': 0.0007230500537915061, 'batch_size': 868, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:32:45,351 - optuna.study._optimize - INFO - Trial 172 pruned. 
+2026-05-15 18:32:53,567 - optuna.study._optimize - INFO - Trial 173 pruned. 
+2026-05-15 18:33:19,035 - experiment_functions - INFO - Early stopping at epoch 3300. Best Recall: 0.1433
+2026-05-15 18:33:19,536 - optuna.study.study - INFO - Trial 174 finished with value: 0.1433351777292274 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005056313148986039, 'lambda_val': 0.0006083524952149313, 'batch_size': 946, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:33:34,621 - optuna.study._optimize - INFO - Trial 175 pruned. 
+2026-05-15 18:33:43,920 - optuna.study._optimize - INFO - Trial 176 pruned. 
+2026-05-15 18:33:51,417 - optuna.study._optimize - INFO - Trial 177 pruned. 
+2026-05-15 18:34:07,485 - experiment_functions - INFO - Early stopping at epoch 2300. Best Recall: 0.1354
+2026-05-15 18:34:07,689 - optuna.study.study - INFO - Trial 178 finished with value: 0.1353654235282718 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0006290070856303795, 'lambda_val': 4.027186976465841e-06, 'batch_size': 923, 'optimizer': 'Adam'}. Best is trial 117 with value: 0.14386181101190273.
+2026-05-15 18:34:15,399 - optuna.study._optimize - INFO - Trial 179 pruned. 
+2026-05-15 18:34:34,188 - experiment_functions - INFO - Early stopping at epoch 2900. Best Recall: 0.1471
+2026-05-15 18:34:34,312 - optuna.study.study - INFO - Trial 180 finished with value: 0.14708089110431954 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005916182557595356, 'lambda_val': 3.0408489001574788e-06, 'batch_size': 918, 'optimizer': 'Adam'}. Best is trial 180 with value: 0.14708089110431954.
+2026-05-15 18:34:51,778 - experiment_functions - INFO - Early stopping at epoch 1550. Best Recall: 0.1270
+2026-05-15 18:34:52,299 - optuna.study.study - INFO - Trial 181 finished with value: 0.12698208787536713 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0006723936668854473, 'lambda_val': 2.809649759630804e-06, 'batch_size': 911, 'optimizer': 'Adam'}. Best is trial 180 with value: 0.14708089110431954.
+2026-05-15 18:35:12,671 - experiment_functions - INFO - Early stopping at epoch 2900. Best Recall: 0.1380
+2026-05-15 18:35:12,808 - optuna.study.study - INFO - Trial 182 finished with value: 0.1379687453505298 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005911263442588132, 'lambda_val': 1.7240325296591116e-06, 'batch_size': 945, 'optimizer': 'Adam'}. Best is trial 180 with value: 0.14708089110431954.
+2026-05-15 18:35:26,333 - experiment_functions - INFO - Early stopping at epoch 2100. Best Recall: 0.1472
+2026-05-15 18:35:26,431 - optuna.study.study - INFO - Trial 183 finished with value: 0.14715710990498074 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005794911557127337, 'lambda_val': 1.3191317046246152e-06, 'batch_size': 955, 'optimizer': 'Adam'}. Best is trial 183 with value: 0.14715710990498074.
+2026-05-15 18:35:43,860 - experiment_functions - INFO - Early stopping at epoch 2700. Best Recall: 0.1383
+2026-05-15 18:35:43,972 - optuna.study.study - INFO - Trial 184 finished with value: 0.13825215038869046 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005463795509870749, 'lambda_val': 1.222045206386871e-06, 'batch_size': 949, 'optimizer': 'Adam'}. Best is trial 183 with value: 0.14715710990498074.
+2026-05-15 18:35:50,882 - optuna.study._optimize - INFO - Trial 185 pruned. 
+2026-05-15 18:35:58,195 - optuna.study._optimize - INFO - Trial 186 pruned. 
+2026-05-15 18:36:08,931 - optuna.study._optimize - INFO - Trial 187 pruned. 
+2026-05-15 18:36:23,107 - experiment_functions - INFO - Early stopping at epoch 1300. Best Recall: 0.1298
+2026-05-15 18:36:23,208 - optuna.study.study - INFO - Trial 188 finished with value: 0.12976271314374602 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005663702132998011, 'lambda_val': 2.0597838459882332e-06, 'batch_size': 2886, 'optimizer': 'Adam'}. Best is trial 183 with value: 0.14715710990498074.
+2026-05-15 18:36:30,194 - optuna.study._optimize - INFO - Trial 189 pruned. 
+2026-05-15 18:36:33,809 - experiment_functions - INFO - Early stopping at epoch 500. Best Recall: 0.0022
+2026-05-15 18:36:33,910 - optuna.study.study - INFO - Trial 190 finished with value: 0.002177582798831137 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005281642743457979, 'lambda_val': 1.1664499484222958e-06, 'batch_size': 886, 'optimizer': 'SGD'}. Best is trial 183 with value: 0.14715710990498074.
+2026-05-15 18:36:50,155 - experiment_functions - INFO - Early stopping at epoch 2450. Best Recall: 0.1440
+2026-05-15 18:36:50,268 - optuna.study.study - INFO - Trial 191 finished with value: 0.1440419811678302 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0006205328789765246, 'lambda_val': 2.3524080215087863e-06, 'batch_size': 903, 'optimizer': 'Adam'}. Best is trial 183 with value: 0.14715710990498074.
+2026-05-15 18:37:00,809 - experiment_functions - INFO - Early stopping at epoch 1550. Best Recall: 0.1312
+2026-05-15 18:37:00,922 - optuna.study.study - INFO - Trial 192 finished with value: 0.1311679675732612 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0006377680652595507, 'lambda_val': 2.1951895861073414e-06, 'batch_size': 1171, 'optimizer': 'Adam'}. Best is trial 183 with value: 0.14715710990498074.
+2026-05-15 18:37:16,512 - optuna.study._optimize - INFO - Trial 193 pruned. 
+2026-05-15 18:37:26,291 - experiment_functions - INFO - Early stopping at epoch 1450. Best Recall: 0.1340
+2026-05-15 18:37:26,402 - optuna.study.study - INFO - Trial 194 finished with value: 0.13401309892432647 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0007716757944015121, 'lambda_val': 2.628506716823963e-06, 'batch_size': 1025, 'optimizer': 'Adam'}. Best is trial 183 with value: 0.14715710990498074.
+2026-05-15 18:37:46,122 - experiment_functions - INFO - Early stopping at epoch 3000. Best Recall: 0.1396
+2026-05-15 18:37:46,246 - optuna.study.study - INFO - Trial 195 finished with value: 0.13959471699071668 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005675691251413078, 'lambda_val': 1.2846074192148976e-06, 'batch_size': 858, 'optimizer': 'Adam'}. Best is trial 183 with value: 0.14715710990498074.
+2026-05-15 18:38:03,315 - experiment_functions - INFO - Early stopping at epoch 2700. Best Recall: 0.1425
+2026-05-15 18:38:03,436 - optuna.study.study - INFO - Trial 196 finished with value: 0.14251771009797498 and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0005198136060371086, 'lambda_val': 1.2993044266704685e-06, 'batch_size': 914, 'optimizer': 'Adam'}. Best is trial 183 with value: 0.14715710990498074.
+2026-05-15 18:38:09,569 - optuna.study._optimize - INFO - Trial 197 pruned. 
+2026-05-15 18:38:17,152 - optuna.study._optimize - INFO - Trial 198 pruned. 
+2026-05-15 18:38:23,992 - optuna.study._optimize - INFO - Trial 199 pruned. 
+2026-05-15 18:38:32,421 - experiment_functions - INFO - Early stopping at epoch 2250. Best Recall: 0.1341

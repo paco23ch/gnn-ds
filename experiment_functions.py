@@ -39,25 +39,29 @@ class GNNObjective:
 
     def __call__(self, trial):
         # 1. Suggest Hyperparameters
-        n_layers = trial.suggest_int("n_layers", 1, 4)
-        emb_dim = trial.suggest_categorical("embedding_dim", [32, 64, 96, 128, 256])
+        n_layers = trial.suggest_int("n_layers", 1, 4) # # 5/12 removing 4
+        emb_dim = trial.suggest_categorical("embedding_dim", [32, 64, 96, 128, 256]) # 5/12 removing 32
         LR = trial.suggest_float("lr", 1e-5, 1e-1, log=True)
         LAMBDA = trial.suggest_float("lambda_val", 1e-6, 1e-1, log=True)
         BATCH_SIZE = trial.suggest_int("batch_size", 512, 4096)
-        optimizer_name = trial.suggest_categorical("optimizer", ["Adam", "RMSprop", "SGD"])
+        optimizer_name = trial.suggest_categorical("optimizer", ["Adam", "RMSprop", "SGD"]) # 5/12 removing SGD
 
         # 2. Setup Model
         self.setup_model(emb_dim, n_layers, LR, BATCH_SIZE, LAMBDA, optimizer_name)
-        self.train_model(trial, verbose=self.parameters['verbose'])
+        train_results = self.train_model(trial, verbose=self.parameters['verbose'])
 
         # 5. Return final metric
-        self.model.eval()
-        _, recall, _, _ = evaluation(self.model, self.val_edge_index_no_offset, self.val_sparse_edge_index, 
-                                     [self.train_edge_index_no_offset], 20, self.LAMBDA)
+        if not train_results['early_stopping']:
+            self.model.eval()
+            _, recall, _, _ = evaluation(self.model, self.val_edge_index_no_offset, self.val_sparse_edge_index, 
+                                        [self.train_edge_index_no_offset], 20, self.LAMBDA)
+        else:
+            recall = train_results['best_recall']
 
         torch.cuda.empty_cache()
 
         return recall
+    
     def setup_model(self, emb_dim, n_layers, LR, BATCH_SIZE, LAMBDA, optimizer_name):
         self.BATCH_SIZE = BATCH_SIZE
         self.LAMBDA = LAMBDA
@@ -70,6 +74,14 @@ class GNNObjective:
     def train_model(self, trial=None, verbose=True):
         train_losses = []
         val_losses = []
+        recalls = []
+        precisions = []
+        ndcgs = []
+        
+        best_recall = 0.0
+        best_cycle = 0
+        early_stopping = False
+        counter = 0
 
         for iter in range(self.ITERATIONS):
             self.model.train()
@@ -105,16 +117,37 @@ class GNNObjective:
                     trial.report(recall, iter)
                     if trial.should_prune():
                         raise optuna.exceptions.TrialPruned()
+
+                if recall > best_recall:
+                    best_recall = recall
+                    best_cycle = iter
+                    counter = 0
+                    # Optional: torch.save(model.state_dict(), f"best_model_trial_{trial.number}.pt")
+                else:
+                    counter += 1
                 
                 train_losses.append(train_loss.item())
                 val_losses.append(val_loss)
-                
+                recalls.append(recall)
+                precisions.append(precision)
+                ndcgs.append(ndcg)
 
+                if counter >= self.parameters['patience']:
+                    logger.info(f"Early stopping at epoch {iter}. Best Recall: {best_recall:.4f}")
+                    early_stopping = True
+                    break
+                
             if iter % self.ITERS_PER_LR_DECAY == 0 and iter != 0:
                 self.scheduler.step()
 
         return {'train_losses': train_losses,
-                'val_losses': val_losses }
+                'val_losses': val_losses,
+                'recalls': recalls,
+                'precisions': precisions,
+                'ndcgs': ndcgs,
+                'best_recall': best_recall,
+                'cycle': best_cycle,
+                'early_stopping': early_stopping  }
 
     def test_model(self, test_edge_index, test_sparse_edge_index):
         self.model.eval()
@@ -171,25 +204,35 @@ class ExperimentRunner():
         df = pd.concat(dfs, axis = 0).set_index('experiment').reset_index()
 
         return(df)
+    
+    def save_final_results_parquet(self):
+        self.get_final_results_df().to_parquet(f'{self.parameters["exp_name"]}.parquet')
 
-    def run_experiment(self, train_edge_index, train_sparse_edge_index, experiment_name, storage, ds_data=None):
-        objective = GNNObjective(self.edge_index, train_edge_index, train_sparse_edge_index, 
-                                                self.val_edge_index, self.val_sparse_edge_index, 
-                                                self.user_mapping, self.movie_mapping, self.parameters)
-        study = optuna.create_study(direction="maximize", study_name=f"Study_{experiment_name}", 
-                                    storage=storage, load_if_exists=True, 
-                                    pruner=optuna.pruners.MedianPruner(
-                                        n_startup_trials=5,  # Don't prune until 5 trials are done
-                                        n_warmup_steps=1000  # Don't prune until at least epoch 1000
+    def run_experiment(self, train_edge_index, train_sparse_edge_index, experiment_name, storage, ds_data=None, input_params=None):
+        best_params=None
+        optim_time=0
+
+        if input_params is None:
+            objective = GNNObjective(self.edge_index, train_edge_index, train_sparse_edge_index, 
+                                                    self.val_edge_index, self.val_sparse_edge_index, 
+                                                    self.user_mapping, self.movie_mapping, self.parameters)
+            study = optuna.create_study(direction="maximize", study_name=f"Study_{experiment_name}", 
+                                        storage=storage, load_if_exists=True, 
+                                        pruner=optuna.pruners.MedianPruner(
+                                            n_startup_trials=5,  # Don't prune until 5 trials are done
+                                            n_warmup_steps=1000  # Don't prune until at least epoch 1000
+                                        )
                                     )
-                                )
-        
-        start_time = time.perf_counter()
-        study.optimize(objective, n_trials=self.parameters['n_trials'])
-        optim_time = time.perf_counter() - start_time
+            
+            start_time = time.perf_counter()
+            study.optimize(objective, n_trials=self.parameters['n_trials'])
+            optim_time = time.perf_counter() - start_time
 
-        best_params = study.best_params
+            best_params = study.best_params
+        else:
+            best_params = input_params
 
+        logger.info(f'Training the best model ... for {experiment_name}')
         best_model = GNNObjective(self.edge_index, train_edge_index, train_sparse_edge_index, 
                                                 self.val_edge_index, self.val_sparse_edge_index, 
                                                 self.user_mapping, self.movie_mapping, self.parameters)
@@ -216,6 +259,7 @@ class ExperimentRunner():
         results['train_edges']= len(train_edge_index[1])
         results['val_edges']= len(self.val_edge_index[1])
         results['test_edges']= len(self.test_edge_index[1])
+        results['epochs_per_eval'] = self.parameters['ITERS_PER_EVAL']
 
         if ds_data is not None:
             results.update(ds_data)
@@ -223,10 +267,7 @@ class ExperimentRunner():
         results.update(best_params)
         results.update(losses)
 
-        #for m in best_params.keys():
-        #    results[m] = best_params[m]
-
-        #for m in losses.keys():
-        #    results[m] = losses[m]
-
         self.final_results[experiment_name] = results
+        self.save_final_results_parquet()
+
+        return best_params
