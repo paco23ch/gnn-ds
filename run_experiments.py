@@ -27,15 +27,15 @@ parameters = {
         'n_trials' : 300,
         'n_dominance': 3,
         'random_runs' : 5,
-        'exp_name' : 'e_100K',
-        #'exp_name' : 'e_1M',
+        #'exp_name' : 'e_100K',
+        'exp_name' : 'e_1M',
         'verbose' : False,
         'rating_threshold' : 0,
         'patience' : 10, 
-        'movie_path' : './ml-latest-small/movies.csv',
-        'rating_path' : './ml-latest-small/ratings.csv',
-        #'movie_path' : './ml-1m/movies.dat',
-        #'rating_path' : './ml-1m/ratings.dat'
+        #'movie_path' : './ml-latest-small/movies.csv',
+        #'rating_path' : './ml-latest-small/ratings.csv',
+        'movie_path' : './ml-1m/movies.dat',
+        'rating_path' : './ml-1m/ratings.dat'
     }
 
 exp_name = parameters['exp_name']
