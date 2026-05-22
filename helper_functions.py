@@ -4,9 +4,21 @@ from sklearn.model_selection import train_test_split
 import networkx as nx
 import logging
 import numpy as np
+import torch
+import os
 
 # This creates a child logger that inherits from the root you configured above
 logger = logging.getLogger(__name__)
+
+def set_seed(seed=42):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    os.environ["PYTHONHASHSEED"] = str(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
 
 def load_data(movie_path, rating_path, rating_threshold=3):
     if movie_path.endswith('.dat'): 

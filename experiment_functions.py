@@ -3,12 +3,15 @@ import torch
 from torch import nn, optim, Tensor
 from gcn_model import *
 from dominating_set_algorithms import *
+from helper_functions import *
 from data_handling import *
 import optuna
 import logging
 
 # This creates a child logger that inherits from the root you configured above
 logger = logging.getLogger(__name__)
+
+objective_metrics = {'recall':0, 'precision':1, 'ndcg':2}
 
 class GNNObjective:
     def __init__(self, edge_index, train_edge_index, train_sparse_edge_index, 
@@ -53,14 +56,21 @@ class GNNObjective:
         # 5. Return final metric
         if not train_results['early_stopping']:
             self.model.eval()
-            _, recall, _, _ = evaluation(self.model, self.val_edge_index_no_offset, self.val_sparse_edge_index, 
+            _, recall, precision, ndcg = evaluation(self.model, self.val_edge_index_no_offset, self.val_sparse_edge_index, 
                                         [self.train_edge_index_no_offset], 20, self.LAMBDA)
         else:
             recall = train_results['best_recall']
+            precision = train_results['best_precision']
+            ndcg = train_results['best_ndcg']
+
+        metrics = (recall, precision, ndcg)
 
         torch.cuda.empty_cache()
-
-        return recall
+        
+        if self.parameters['multi_objective']:
+            return metrics #recall, precision, ndcg
+        else:
+            return metrics[objective_metrics[self.parameters['objective_metric']]]
     
     def setup_model(self, emb_dim, n_layers, LR, BATCH_SIZE, LAMBDA, optimizer_name):
         self.BATCH_SIZE = BATCH_SIZE
@@ -79,9 +89,14 @@ class GNNObjective:
         ndcgs = []
         
         best_recall = 0.0
+        best_precision = 0.0
+        best_ndcg = 0.0
+        best_metrics = (0.0, 0.0, 0.0)
         best_cycle = 0
         early_stopping = False
         counter = 0
+
+        set_seed(42)
 
         for iter in range(self.ITERATIONS):
             self.model.train()
@@ -113,13 +128,21 @@ class GNNObjective:
                         f"val_loss: {round(val_loss, 5)}, val_recall@{self.K}: {round(recall, 5)}, val_precision@{self.K}: ",
                         f"{round(precision, 5)}, val_ndcg@{self.K}: {round(ndcg, 5)}")
                 
-                if trial is not None:
-                    trial.report(recall, iter)
-                    if trial.should_prune():
-                        raise optuna.exceptions.TrialPruned()
+                metrics = (recall, precision, ndcg)
+                
+                #This will only work with single-objective optimization
+                if not self.parameters['multi_objective']:
+                    if trial is not None:
+                        trial.report(best_metrics[objective_metrics[self.parameters['objective_metric']]], iter) # (recall, precision, ndcg) Report ndcg for prunning logic
+                        if trial.should_prune():
+                            raise optuna.exceptions.TrialPruned()
 
-                if recall > best_recall:
+                #if ndcg > best_ndcg:  #recall > best_recall:
+                if metrics[objective_metrics[self.parameters['objective_metric']]] > best_metrics[objective_metrics[self.parameters['objective_metric']]]:
                     best_recall = recall
+                    best_precision = precision
+                    best_ndcg = ndcg
+                    best_metrics = (best_recall, best_precision, best_ndcg)
                     best_cycle = iter
                     counter = 0
                     # Optional: torch.save(model.state_dict(), f"best_model_trial_{trial.number}.pt")
@@ -133,7 +156,7 @@ class GNNObjective:
                 ndcgs.append(ndcg)
 
                 if counter >= self.parameters['patience']:
-                    logger.info(f"Early stopping at epoch {iter}. Best Recall: {best_recall:.4f}")
+                    logger.info(f"Early stopping at epoch {iter}. Best Metrics: {best_metrics}")
                     early_stopping = True
                     break
                 
@@ -146,6 +169,8 @@ class GNNObjective:
                 'precisions': precisions,
                 'ndcgs': ndcgs,
                 'best_recall': best_recall,
+                'best_precision': best_precision,
+                'best_ndcg': best_ndcg,
                 'cycle': best_cycle,
                 'early_stopping': early_stopping  }
 
@@ -216,19 +241,45 @@ class ExperimentRunner():
             objective = GNNObjective(self.edge_index, train_edge_index, train_sparse_edge_index, 
                                                     self.val_edge_index, self.val_sparse_edge_index, 
                                                     self.user_mapping, self.movie_mapping, self.parameters)
-            study = optuna.create_study(direction="maximize", study_name=f"Study_{experiment_name}", 
+            
+            if self.parameters['multi_objective']:
+                study = optuna.create_study(directions=["maximize", "maximize", "maximize"], #direction="maximize", 
+                                        study_name=f"Study_{experiment_name}", 
+                                        storage=storage, load_if_exists=True, 
+                                        sampler=optuna.samplers.NSGAIISampler(),
+                                        pruner=optuna.pruners.MedianPruner(
+                                            n_startup_trials=5,  # Don't prune until 5 trials are done
+                                            n_warmup_steps=1000  # Don't prune until at least epoch 1000
+                                        )
+                                    )
+            else:
+                study = optuna.create_study(direction="maximize", 
+                                        study_name=f"Study_{experiment_name}", 
                                         storage=storage, load_if_exists=True, 
                                         pruner=optuna.pruners.MedianPruner(
                                             n_startup_trials=5,  # Don't prune until 5 trials are done
                                             n_warmup_steps=1000  # Don't prune until at least epoch 1000
                                         )
                                     )
-            
+
+
             start_time = time.perf_counter()
             study.optimize(objective, n_trials=self.parameters['n_trials'])
             optim_time = time.perf_counter() - start_time
 
-            best_params = study.best_params
+            # #<<- This will work with single objective, but not mutli-objective
+            if self.parameters['multi_objective']:
+                best_trials = study.best_trials
+                # Trial.values is [Recall, Precision, NDCG]
+                best_trial = max(best_trials, key=lambda t: t.values[2])
+                # 3. Extract the parameters from that specific trial
+                best_params = best_trial.params
+
+                logging.info(f"Selected Trial {best_trial.number} based on Max NDCG: {best_trial.values[2]:.4f}")
+                logging.info(f"Associated Recall: {best_trial.values[0]:.4f}")
+            else:
+                best_params = study.best_params
+            
         else:
             best_params = input_params
 
@@ -260,6 +311,8 @@ class ExperimentRunner():
         results['val_edges']= len(self.val_edge_index[1])
         results['test_edges']= len(self.test_edge_index[1])
         results['epochs_per_eval'] = self.parameters['ITERS_PER_EVAL']
+        results['multi_objective'] = self.parameters['multi_objective']
+        results['objective_metric'] = self.parameters['objective_metric']
 
         if ds_data is not None:
             results.update(ds_data)

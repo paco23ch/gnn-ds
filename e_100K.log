@@ -1,0 +1,18 @@
+2026-05-22 22:01:02,123 - root - INFO - **** Training e_100K_full
+2026-05-22 22:01:02,146 - helper_functions - INFO - Users: 610, Items: 9742
+2026-05-22 22:01:02,278 - helper_functions - INFO - Edge index: torch.Size([2, 100836])
+2026-05-22 22:01:02,278 - root - INFO - **** Generating the graph:
+2026-05-22 22:01:02,364 - helper_functions - INFO - Number of unique users: 610
+2026-05-22 22:01:02,365 - helper_functions - INFO - Number of unique items: 9724
+2026-05-22 22:01:02,365 - helper_functions - INFO - Number of nodes: 10334
+2026-05-22 22:01:02,366 - helper_functions - INFO - Number of edges: 100836
+2026-05-22 22:01:02,785 - optuna.study.study - INFO - Using an existing study with name 'Study_e_100K_full' instead of creating a new one.
+2026-05-22 22:01:05,763 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.002746067767188848, 0.002131147540983607, 0.0028139735712507516)
+2026-05-22 22:01:06,987 - optuna.study.study - INFO - Trial 6 finished with values: [0.002746067767188848, 0.002131147540983607, 0.0028139735712507516] and parameters: {'n_layers': 3, 'embedding_dim': 64, 'lr': 0.0062805486645347505, 'lambda_val': 0.00021915723228546825, 'batch_size': 1488, 'optimizer': 'SGD'}.
+2026-05-22 22:01:10,862 - optuna.study.study - INFO - Trial 7 finished with values: [0.057268586633480056, 0.03098360655737705, 0.04623009114234631] and parameters: {'n_layers': 1, 'embedding_dim': 96, 'lr': 0.025224040422394053, 'lambda_val': 0.0034461162069974057, 'batch_size': 1809, 'optimizer': 'RMSprop'}.
+2026-05-22 22:01:14,369 - experiment_functions - INFO - Early stopping at epoch 600. Best Metrics: (0.06509303860445136, 0.03836065573770492, 0.06523226275423512)
+2026-05-22 22:01:15,644 - optuna.study.study - INFO - Trial 8 finished with values: [0.06509303860445136, 0.03836065573770492, 0.06523226275423512] and parameters: {'n_layers': 2, 'embedding_dim': 128, 'lr': 0.0018683375913177969, 'lambda_val': 3.560161562581555e-05, 'batch_size': 1898, 'optimizer': 'Adam'}.
+2026-05-22 22:01:15,651 - root - INFO - Selected Trial 8 based on Max NDCG: 0.0652
+2026-05-22 22:01:15,651 - root - INFO - Associated Recall: 0.0651
+2026-05-22 22:01:15,651 - experiment_functions - INFO - Training the best model ... for e_100K_full
+2026-05-22 22:01:18,155 - experiment_functions - INFO - Early stopping at epoch 650. Best Metrics: (0.06393495800223517, 0.03754098360655738, 0.055073536014072916)

@@ -3,39 +3,29 @@ from helper_functions import *
 import logging
 import time
 import random
-import numpy as np
-import torch
-import os
-
-def set_seed(seed=42):
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
-    os.environ["PYTHONHASHSEED"] = str(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
 
 set_seed(42)
 
 # define constants
 parameters = {
-        'ITERATIONS' : 4000,
+        'ITERATIONS' : 1000,
         'ITERS_PER_EVAL' : 50,
         'ITERS_PER_LR_DECAY' : 50,
         'K' : 20, #K value for ranking metrics
-        'n_trials' : 300,
-        'n_dominance': 3,
-        'random_runs' : 5,
-        #'exp_name' : 'e_100K',
-        'exp_name' : 'e_1M',
+        'n_trials' : 3,
+        'n_dominance': 0,
+        'random_runs' : 0,
+        'exp_name' : 'e_100K',
+        #'exp_name' : 'e_1M',
         'verbose' : False,
         'rating_threshold' : 0,
-        'patience' : 10, 
-        #'movie_path' : './ml-latest-small/movies.csv',
-        #'rating_path' : './ml-latest-small/ratings.csv',
-        'movie_path' : './ml-1m/movies.dat',
-        'rating_path' : './ml-1m/ratings.dat'
+        'patience' : 10,
+        'multi_objective' : True,
+        'objective_metric' : 'ndcg',
+        'movie_path' : './ml-latest-small/movies.csv',
+        'rating_path' : './ml-latest-small/ratings.csv',
+        #'movie_path' : './ml-1m/movies.dat',
+        #'rating_path' : './ml-1m/ratings.dat'
     }
 
 exp_name = parameters['exp_name']
@@ -104,18 +94,18 @@ for m in range(1, parameters['n_dominance'] + 1):
         # Run the Dominant Set experiment
         best_params = runner.run_experiment(ds_train_edge_index, ds_train_sparse_edge_index, experiment_name=exp+suffix, storage=optuna_storage, ds_data=ds_data)
 
-    for n in range(1, parameters['random_runs'] + 1):
-        exp = f'{exp_name}_1c{m}dcs_rand{n}'
+        for n in range(1, parameters['random_runs'] + 1):
+            rand = f'_rand{n}'
 
-        logger.info(f'  **** Training {exp}')
-        rnd_train_indices = random.sample(train_indices, len(ds_train_indices))
+            logger.info(f'  **** Training {exp+suffix+rand}')
+            rnd_train_indices = random.sample(train_indices, len(ds_train_indices))
 
-        logger.info(f'  **** Getting {len(ds_train_indices)}/{len(train_indices)} random edges')
-        rnd_train_sparse_edge_index = get_sparse_tensor(edge_index, rnd_train_indices, user_mapping, movie_mapping)
-        rnd_train_edge_index = edge_index[:, rnd_train_indices]
+            logger.info(f'  **** Getting {len(ds_train_indices)}/{len(train_indices)} random edges')
+            rnd_train_sparse_edge_index = get_sparse_tensor(edge_index, rnd_train_indices, user_mapping, movie_mapping)
+            rnd_train_edge_index = edge_index[:, rnd_train_indices]
 
-        # Run a random experiment
-        runner.run_experiment(rnd_train_edge_index, rnd_train_sparse_edge_index, experiment_name=exp, storage=optuna_storage, input_params=best_params)
+            # Run a random experiment
+            runner.run_experiment(rnd_train_edge_index, rnd_train_sparse_edge_index, experiment_name=exp+suffix+rand, storage=optuna_storage) #, input_params=best_params)
 
 df = runner.get_final_results_df()
 df.to_parquet(f'{exp_name}.parquet')
