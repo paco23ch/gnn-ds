@@ -8,24 +8,24 @@ set_seed(42)
 
 # define constants
 parameters = {
-        'ITERATIONS' : 1000,
+        'ITERATIONS' : 4000,
         'ITERS_PER_EVAL' : 50,
         'ITERS_PER_LR_DECAY' : 50,
         'K' : 20, #K value for ranking metrics
-        'n_trials' : 3,
-        'n_dominance': 0,
-        'random_runs' : 0,
-        'exp_name' : 'e_100K',
-        #'exp_name' : 'e_1M',
+        'n_trials' : 300,
+        'n_dominance': 3,
+        'random_runs' : 5,
+        #'exp_name' : 'e_100K',
+        'exp_name' : 'e_1M',
         'verbose' : False,
         'rating_threshold' : 0,
         'patience' : 10,
         'multi_objective' : True,
         'objective_metric' : 'ndcg',
-        'movie_path' : './ml-latest-small/movies.csv',
-        'rating_path' : './ml-latest-small/ratings.csv',
-        #'movie_path' : './ml-1m/movies.dat',
-        #'rating_path' : './ml-1m/ratings.dat'
+        #'movie_path' : './ml-latest-small/movies.csv',
+        #'rating_path' : './ml-latest-small/ratings.csv',
+        'movie_path' : './ml-1m/movies.dat',
+        'rating_path' : './ml-1m/ratings.dat'
     }
 
 exp_name = parameters['exp_name']
@@ -108,4 +108,6 @@ for m in range(1, parameters['n_dominance'] + 1):
             runner.run_experiment(rnd_train_edge_index, rnd_train_sparse_edge_index, experiment_name=exp+suffix+rand, storage=optuna_storage) #, input_params=best_params)
 
 df = runner.get_final_results_df()
+logger.info(f'Writing final results ...')
 df.to_parquet(f'{exp_name}.parquet')
+logger.info(f'Done.')

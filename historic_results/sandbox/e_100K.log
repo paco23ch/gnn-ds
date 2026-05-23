@@ -1,0 +1,209 @@
+2026-05-22 22:44:24,181 - root - INFO - **** Training e_100K_full
+2026-05-22 22:44:24,206 - helper_functions - INFO - Users: 610, Items: 9742
+2026-05-22 22:44:24,339 - helper_functions - INFO - Edge index: torch.Size([2, 100836])
+2026-05-22 22:44:24,339 - root - INFO - **** Generating the graph:
+2026-05-22 22:44:24,425 - helper_functions - INFO - Number of unique users: 610
+2026-05-22 22:44:24,426 - helper_functions - INFO - Number of unique items: 9724
+2026-05-22 22:44:24,426 - helper_functions - INFO - Number of nodes: 10334
+2026-05-22 22:44:24,427 - helper_functions - INFO - Number of edges: 100836
+2026-05-22 22:44:28,447 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_full
+2026-05-22 22:44:33,034 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0017031910519431765, 0.0012295081967213116, 0.0018520838093768434)
+2026-05-22 22:44:33,330 - optuna.study.study - INFO - Trial 0 finished with values: [0.0017031910519431765, 0.0012295081967213116, 0.0018520838093768434] and parameters: {'n_layers': 4, 'embedding_dim': 256, 'lr': 0.0008768732068715445, 'lambda_val': 0.039023264589843926, 'batch_size': 2664, 'optimizer': 'SGD'}.
+2026-05-22 22:44:38,935 - experiment_functions - INFO - Early stopping at epoch 650. Best Metrics: (0.02155911745597743, 0.010409836065573769, 0.016402248028515393)
+2026-05-22 22:44:39,260 - optuna.study.study - INFO - Trial 1 finished with values: [0.02155911745597743, 0.010409836065573769, 0.016402248028515393] and parameters: {'n_layers': 4, 'embedding_dim': 256, 'lr': 0.008100626744183053, 'lambda_val': 0.0003157173059988756, 'batch_size': 3530, 'optimizer': 'Adam'}.
+2026-05-22 22:44:44,772 - experiment_functions - INFO - Early stopping at epoch 850. Best Metrics: (0.04111217703988011, 0.02959016393442623, 0.04113537078531297)
+2026-05-22 22:44:45,529 - optuna.study.study - INFO - Trial 2 finished with values: [0.04111217703988011, 0.02959016393442623, 0.04113537078531297] and parameters: {'n_layers': 2, 'embedding_dim': 256, 'lr': 0.00023911563097645886, 'lambda_val': 0.012354535952136038, 'batch_size': 3681, 'optimizer': 'RMSprop'}.
+2026-05-22 22:44:45,532 - root - INFO - Selected Trial 2 based on Max NDCG: 0.0411
+2026-05-22 22:44:45,532 - root - INFO - Associated Recall: 0.0411
+2026-05-22 22:44:45,532 - experiment_functions - INFO - Training the best model ... for e_100K_full
+2026-05-22 22:44:49,427 - experiment_functions - INFO - Early stopping at epoch 850. Best Metrics: (0.04575049692793265, 0.029508196721311476, 0.04240467225786986)
+2026-05-22 22:44:49,525 - root - INFO - **** Training e_100K_1c1dcs
+2026-05-22 22:44:49,525 - root - INFO -   ** 1-Dominant stats:
+2026-05-22 22:44:49,525 - root - INFO -   ** Finding the dominant set:
+2026-05-22 22:45:10,216 - root - INFO -   ** Getting the trainable edges:
+2026-05-22 22:45:10,219 - helper_functions - INFO -      Number of nodes: 535
+2026-05-22 22:45:10,219 - helper_functions - INFO -      Ratio: 0.05177085349332301
+2026-05-22 22:45:10,219 - helper_functions - INFO -      Number of unique users: 303
+2026-05-22 22:45:10,219 - helper_functions - INFO -      Number of unique items: 232
+2026-05-22 22:45:10,220 - helper_functions - INFO -      Total dominant set edge: 8849
+2026-05-22 22:45:10,220 - helper_functions - INFO -      Trainable edges: 7079.200000000001
+2026-05-22 22:45:10,224 - root - INFO -   **** Getting 8849 dominant set edges
+2026-05-22 22:45:10,712 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_1c1dcs_strict
+2026-05-22 22:45:13,514 - experiment_functions - INFO - Early stopping at epoch 650. Best Metrics: (0.0036294823202966146, 0.002540983606557377, 0.0037000845513027237)
+2026-05-22 22:45:13,653 - optuna.study.study - INFO - Trial 0 finished with values: [0.0036294823202966146, 0.002540983606557377, 0.0037000845513027237] and parameters: {'n_layers': 2, 'embedding_dim': 96, 'lr': 0.016567993918573214, 'lambda_val': 1.05395777807601e-06, 'batch_size': 2548, 'optimizer': 'SGD'}.
+2026-05-22 22:45:18,643 - optuna.study.study - INFO - Trial 1 finished with values: [0.010517119383241437, 0.011311475409836066, 0.01401705993268214] and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.0001216177600428528, 'lambda_val': 2.968510404502382e-06, 'batch_size': 2922, 'optimizer': 'RMSprop'}.
+2026-05-22 22:45:24,457 - optuna.study.study - INFO - Trial 2 finished with values: [0.0013701339760751174, 0.0013934426229508196, 0.0015171874835141002] and parameters: {'n_layers': 4, 'embedding_dim': 32, 'lr': 0.09755563103781133, 'lambda_val': 0.0012729199019440938, 'batch_size': 4062, 'optimizer': 'SGD'}.
+2026-05-22 22:45:24,467 - root - INFO - Selected Trial 1 based on Max NDCG: 0.0140
+2026-05-22 22:45:24,467 - root - INFO - Associated Recall: 0.0105
+2026-05-22 22:45:24,467 - experiment_functions - INFO - Training the best model ... for e_100K_1c1dcs_strict
+2026-05-22 22:45:27,537 - root - INFO -   **** Training e_100K_1c1dcs_strict_rand1
+2026-05-22 22:45:27,539 - root - INFO -   **** Getting 7229/81200 random edges
+2026-05-22 22:45:27,661 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_1c1dcs_strict_rand1
+2026-05-22 22:45:31,009 - experiment_functions - INFO - Early stopping at epoch 950. Best Metrics: (0.011409586327359727, 0.010983606557377047, 0.012284040255841459)
+2026-05-22 22:45:31,107 - optuna.study.study - INFO - Trial 0 finished with values: [0.011409586327359727, 0.010983606557377047, 0.012284040255841459] and parameters: {'n_layers': 1, 'embedding_dim': 32, 'lr': 0.0006608326662194067, 'lambda_val': 0.07827259874173502, 'batch_size': 3380, 'optimizer': 'RMSprop'}.
+2026-05-22 22:45:33,821 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0014290366362385376, 0.0009836065573770494, 0.0012083472927184595)
+2026-05-22 22:45:33,913 - optuna.study.study - INFO - Trial 1 finished with values: [0.0014290366362385376, 0.0009836065573770494, 0.0012083472927184595] and parameters: {'n_layers': 4, 'embedding_dim': 32, 'lr': 7.103723277473696e-05, 'lambda_val': 0.00010259106996673944, 'batch_size': 1562, 'optimizer': 'SGD'}.
+2026-05-22 22:45:36,731 - experiment_functions - INFO - Early stopping at epoch 550. Best Metrics: (0.01788700727458155, 0.011639344262295084, 0.01682717906324418)
+2026-05-22 22:45:36,837 - optuna.study.study - INFO - Trial 2 finished with values: [0.01788700727458155, 0.011639344262295084, 0.01682717906324418] and parameters: {'n_layers': 4, 'embedding_dim': 128, 'lr': 0.0006705991315558986, 'lambda_val': 0.01407747146447447, 'batch_size': 2731, 'optimizer': 'RMSprop'}.
+2026-05-22 22:45:36,840 - root - INFO - Selected Trial 2 based on Max NDCG: 0.0168
+2026-05-22 22:45:36,840 - root - INFO - Associated Recall: 0.0179
+2026-05-22 22:45:36,840 - experiment_functions - INFO - Training the best model ... for e_100K_1c1dcs_strict_rand1
+2026-05-22 22:45:38,707 - experiment_functions - INFO - Early stopping at epoch 550. Best Metrics: (0.019118137410185407, 0.011885245901639344, 0.01697828609277884)
+2026-05-22 22:45:38,792 - root - INFO -   ** Getting the trainable edges:
+2026-05-22 22:45:38,797 - helper_functions - INFO -      Number of nodes: 535
+2026-05-22 22:45:38,797 - helper_functions - INFO -      Ratio: 0.05177085349332301
+2026-05-22 22:45:38,797 - helper_functions - INFO -      Number of unique users: 303
+2026-05-22 22:45:38,797 - helper_functions - INFO -      Number of unique items: 232
+2026-05-22 22:45:38,797 - helper_functions - INFO -      Total dominant set edge: 81241
+2026-05-22 22:45:38,797 - helper_functions - INFO -      Trainable edges: 64992.8
+2026-05-22 22:45:38,806 - root - INFO -   **** Getting 81241 dominant set edges
+2026-05-22 22:45:39,161 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_1c1dcs
+2026-05-22 22:45:42,957 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.002124590351135248, 0.0020491803278688526, 0.0021444711513686526)
+2026-05-22 22:45:43,059 - optuna.study.study - INFO - Trial 0 finished with values: [0.002124590351135248, 0.0020491803278688526, 0.0021444711513686526] and parameters: {'n_layers': 2, 'embedding_dim': 256, 'lr': 1.3994140701228622e-05, 'lambda_val': 0.00804314051175066, 'batch_size': 3110, 'optimizer': 'SGD'}.
+2026-05-22 22:45:45,752 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.002343602949563086, 0.0018032786885245904, 0.002182389409268667)
+2026-05-22 22:45:47,524 - optuna.study.study - INFO - Trial 1 finished with values: [0.002343602949563086, 0.0018032786885245904, 0.002182389409268667] and parameters: {'n_layers': 3, 'embedding_dim': 32, 'lr': 0.005282056733442728, 'lambda_val': 3.158735013567394e-05, 'batch_size': 1204, 'optimizer': 'SGD'}.
+2026-05-22 22:45:50,375 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0015930892498487376, 0.0017213114754098362, 0.00184663761276098)
+2026-05-22 22:45:50,734 - optuna.study.study - INFO - Trial 2 finished with values: [0.0015930892498487376, 0.0017213114754098362, 0.00184663761276098] and parameters: {'n_layers': 2, 'embedding_dim': 128, 'lr': 0.0038340717939808746, 'lambda_val': 0.011491120653623172, 'batch_size': 1825, 'optimizer': 'SGD'}.
+2026-05-22 22:45:50,737 - root - INFO - Selected Trial 1 based on Max NDCG: 0.0022
+2026-05-22 22:45:50,738 - root - INFO - Associated Recall: 0.0023
+2026-05-22 22:45:50,738 - experiment_functions - INFO - Training the best model ... for e_100K_1c1dcs
+2026-05-22 22:45:52,433 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0029451072058670246, 0.002131147540983607, 0.0026141794474718646)
+2026-05-22 22:45:52,516 - root - INFO -   **** Training e_100K_1c1dcs_rand1
+2026-05-22 22:45:52,529 - root - INFO -   **** Getting 65267/81200 random edges
+2026-05-22 22:45:52,840 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_1c1dcs_rand1
+2026-05-22 22:45:56,814 - experiment_functions - INFO - Early stopping at epoch 700. Best Metrics: (0.03434931074198371, 0.021475409836065575, 0.03329382548565051)
+2026-05-22 22:45:56,921 - optuna.study.study - INFO - Trial 0 finished with values: [0.03434931074198371, 0.021475409836065575, 0.03329382548565051] and parameters: {'n_layers': 3, 'embedding_dim': 128, 'lr': 0.001648367448506742, 'lambda_val': 7.611820133415988e-05, 'batch_size': 3432, 'optimizer': 'Adam'}.
+2026-05-22 22:46:01,680 - optuna.study.study - INFO - Trial 1 finished with values: [0.027537201766017087, 0.010819672131147541, 0.01988171404258109] and parameters: {'n_layers': 2, 'embedding_dim': 128, 'lr': 0.021299257919148423, 'lambda_val': 3.6214507013927626e-06, 'batch_size': 3874, 'optimizer': 'RMSprop'}.
+2026-05-22 22:46:05,063 - experiment_functions - INFO - Early stopping at epoch 550. Best Metrics: (0.01654744798645802, 0.008278688524590166, 0.012746224165126604)
+2026-05-22 22:46:05,202 - optuna.study.study - INFO - Trial 2 finished with values: [0.01654744798645802, 0.008278688524590166, 0.012746224165126604] and parameters: {'n_layers': 4, 'embedding_dim': 32, 'lr': 0.03877692147403843, 'lambda_val': 2.8331290360174415e-05, 'batch_size': 1161, 'optimizer': 'Adam'}.
+2026-05-22 22:46:05,205 - root - INFO - Selected Trial 0 based on Max NDCG: 0.0333
+2026-05-22 22:46:05,205 - root - INFO - Associated Recall: 0.0343
+2026-05-22 22:46:05,205 - experiment_functions - INFO - Training the best model ... for e_100K_1c1dcs_rand1
+2026-05-22 22:46:08,198 - experiment_functions - INFO - Early stopping at epoch 700. Best Metrics: (0.05443719722476715, 0.026311475409836065, 0.046542306603734235)
+2026-05-22 22:46:08,294 - root - INFO - **** Training e_100K_1c2dcs
+2026-05-22 22:46:08,294 - root - INFO -   ** 2-Dominant stats:
+2026-05-22 22:46:08,294 - root - INFO -   ** Finding the dominant set:
+2026-05-22 22:46:33,264 - root - INFO -   ** Getting the trainable edges:
+2026-05-22 22:46:33,269 - helper_functions - INFO -      Number of nodes: 4003
+2026-05-22 22:46:33,269 - helper_functions - INFO -      Ratio: 0.3873621056706019
+2026-05-22 22:46:33,269 - helper_functions - INFO -      Number of unique users: 324
+2026-05-22 22:46:33,269 - helper_functions - INFO -      Number of unique items: 3679
+2026-05-22 22:46:33,269 - helper_functions - INFO -      Total dominant set edge: 13252
+2026-05-22 22:46:33,269 - helper_functions - INFO -      Trainable edges: 10601.6
+2026-05-22 22:46:33,272 - root - INFO -   **** Getting 13252 dominant set edges
+2026-05-22 22:46:34,051 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_1c2dcs_strict
+2026-05-22 22:46:37,366 - experiment_functions - INFO - Early stopping at epoch 850. Best Metrics: (0.0022595254918140076, 0.001557377049180328, 0.0030892718436306282)
+2026-05-22 22:46:37,463 - optuna.study.study - INFO - Trial 0 finished with values: [0.0022595254918140076, 0.001557377049180328, 0.0030892718436306282] and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.08940271336436365, 'lambda_val': 0.026182167239067466, 'batch_size': 2427, 'optimizer': 'Adam'}.
+2026-05-22 22:46:39,636 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0019623903332985386, 0.0013114754098360656, 0.0017009439430698667)
+2026-05-22 22:46:39,818 - optuna.study.study - INFO - Trial 1 finished with values: [0.0019623903332985386, 0.0013114754098360656, 0.0017009439430698667] and parameters: {'n_layers': 1, 'embedding_dim': 96, 'lr': 1.864576768739277e-05, 'lambda_val': 0.025355150301940556, 'batch_size': 764, 'optimizer': 'RMSprop'}.
+2026-05-22 22:46:42,998 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0024675469796075046, 0.0018032786885245904, 0.002330614435190542)
+2026-05-22 22:46:43,831 - optuna.study.study - INFO - Trial 2 finished with values: [0.0024675469796075046, 0.0018032786885245904, 0.002330614435190542] and parameters: {'n_layers': 4, 'embedding_dim': 256, 'lr': 0.000673102929472928, 'lambda_val': 1.0748478390457056e-05, 'batch_size': 1284, 'optimizer': 'SGD'}.
+2026-05-22 22:46:43,834 - root - INFO - Selected Trial 0 based on Max NDCG: 0.0031
+2026-05-22 22:46:43,834 - root - INFO - Associated Recall: 0.0023
+2026-05-22 22:46:43,834 - experiment_functions - INFO - Training the best model ... for e_100K_1c2dcs_strict
+2026-05-22 22:46:46,679 - root - INFO -   **** Training e_100K_1c2dcs_strict_rand1
+2026-05-22 22:46:46,683 - root - INFO -   **** Getting 10763/81200 random edges
+2026-05-22 22:46:46,836 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_1c2dcs_strict_rand1
+2026-05-22 22:46:49,308 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0023723851570225224, 0.0015573770491803278, 0.002124731646521803)
+2026-05-22 22:46:49,547 - optuna.study.study - INFO - Trial 0 finished with values: [0.0023723851570225224, 0.0015573770491803278, 0.002124731646521803] and parameters: {'n_layers': 3, 'embedding_dim': 64, 'lr': 4.062024547387997e-05, 'lambda_val': 1.5207683636392873e-06, 'batch_size': 1356, 'optimizer': 'SGD'}.
+2026-05-22 22:46:52,964 - experiment_functions - INFO - Early stopping at epoch 550. Best Metrics: (0.03028159390189624, 0.019098360655737705, 0.028693968040762508)
+2026-05-22 22:46:53,073 - optuna.study.study - INFO - Trial 1 finished with values: [0.03028159390189624, 0.019098360655737705, 0.028693968040762508] and parameters: {'n_layers': 2, 'embedding_dim': 256, 'lr': 0.002606734308590463, 'lambda_val': 0.020755734292644726, 'batch_size': 3361, 'optimizer': 'Adam'}.
+2026-05-22 22:46:56,465 - experiment_functions - INFO - Early stopping at epoch 750. Best Metrics: (0.0014385269818650934, 0.001475409836065574, 0.0017667674239964604)
+2026-05-22 22:46:56,711 - optuna.study.study - INFO - Trial 2 finished with values: [0.0014385269818650934, 0.001475409836065574, 0.0017667674239964604] and parameters: {'n_layers': 2, 'embedding_dim': 256, 'lr': 1.1778074664671792e-05, 'lambda_val': 0.00018071001981854546, 'batch_size': 1450, 'optimizer': 'RMSprop'}.
+2026-05-22 22:46:56,714 - root - INFO - Selected Trial 1 based on Max NDCG: 0.0287
+2026-05-22 22:46:56,714 - root - INFO - Associated Recall: 0.0303
+2026-05-22 22:46:56,714 - experiment_functions - INFO - Training the best model ... for e_100K_1c2dcs_strict_rand1
+2026-05-22 22:46:58,721 - experiment_functions - INFO - Early stopping at epoch 550. Best Metrics: (0.029394345454333205, 0.016229508196721313, 0.024295141177963428)
+2026-05-22 22:46:58,809 - root - INFO -   ** Getting the trainable edges:
+2026-05-22 22:46:58,815 - helper_functions - INFO -      Number of nodes: 4003
+2026-05-22 22:46:58,815 - helper_functions - INFO -      Ratio: 0.3873621056706019
+2026-05-22 22:46:58,815 - helper_functions - INFO -      Number of unique users: 324
+2026-05-22 22:46:58,815 - helper_functions - INFO -      Number of unique items: 3679
+2026-05-22 22:46:58,815 - helper_functions - INFO -      Total dominant set edge: 84485
+2026-05-22 22:46:58,815 - helper_functions - INFO -      Trainable edges: 67588.0
+2026-05-22 22:46:58,823 - root - INFO -   **** Getting 84485 dominant set edges
+2026-05-22 22:46:58,936 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_1c2dcs
+2026-05-22 22:47:01,776 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.002657689811475282, 0.0021311475409836068, 0.0024124494231049847)
+2026-05-22 22:47:01,878 - optuna.study.study - INFO - Trial 0 finished with values: [0.002657689811475282, 0.0021311475409836068, 0.0024124494231049847] and parameters: {'n_layers': 3, 'embedding_dim': 32, 'lr': 0.006101855884205826, 'lambda_val': 0.0008444742791873225, 'batch_size': 3535, 'optimizer': 'SGD'}.
+2026-05-22 22:47:05,083 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.004031502333797651, 0.002377049180327869, 0.0033170239687206546)
+2026-05-22 22:47:05,203 - optuna.study.study - INFO - Trial 1 finished with values: [0.004031502333797651, 0.002377049180327869, 0.0033170239687206546] and parameters: {'n_layers': 1, 'embedding_dim': 128, 'lr': 0.004596322161018812, 'lambda_val': 0.0033592132839276256, 'batch_size': 2544, 'optimizer': 'SGD'}.
+2026-05-22 22:47:09,032 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.019110426753169433, 0.014098360655737708, 0.020650718959459684)
+2026-05-22 22:47:09,237 - optuna.study.study - INFO - Trial 2 finished with values: [0.019110426753169433, 0.014098360655737708, 0.020650718959459684] and parameters: {'n_layers': 3, 'embedding_dim': 256, 'lr': 0.029369421032000253, 'lambda_val': 2.0842965333601817e-05, 'batch_size': 3050, 'optimizer': 'RMSprop'}.
+2026-05-22 22:47:09,240 - root - INFO - Selected Trial 2 based on Max NDCG: 0.0207
+2026-05-22 22:47:09,240 - root - INFO - Associated Recall: 0.0191
+2026-05-22 22:47:09,240 - experiment_functions - INFO - Training the best model ... for e_100K_1c2dcs
+2026-05-22 22:47:12,142 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.02074241343992843, 0.013114754098360656, 0.02196470797123109)
+2026-05-22 22:47:12,235 - root - INFO -   **** Training e_100K_1c2dcs_rand1
+2026-05-22 22:47:12,248 - root - INFO -   **** Getting 67885/81200 random edges
+2026-05-22 22:47:12,363 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_1c2dcs_rand1
+2026-05-22 22:47:15,462 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.002632896180743309, 0.001639344262295082, 0.0024767152800900926)
+2026-05-22 22:47:15,603 - optuna.study.study - INFO - Trial 0 finished with values: [0.002632896180743309, 0.001639344262295082, 0.0024767152800900926] and parameters: {'n_layers': 3, 'embedding_dim': 128, 'lr': 0.0005575970554142569, 'lambda_val': 3.920145874588634e-05, 'batch_size': 2305, 'optimizer': 'SGD'}.
+2026-05-22 22:47:20,262 - optuna.study.study - INFO - Trial 1 finished with values: [0.05252066117419526, 0.028278688524590163, 0.041581303806502413] and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.029486032246202127, 'lambda_val': 0.0031972452418506194, 'batch_size': 2318, 'optimizer': 'RMSprop'}.
+2026-05-22 22:47:24,308 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.002143558690076605, 0.0014754098360655738, 0.0017956040943853486)
+2026-05-22 22:47:24,410 - optuna.study.study - INFO - Trial 2 finished with values: [0.002143558690076605, 0.0014754098360655738, 0.0017956040943853486] and parameters: {'n_layers': 1, 'embedding_dim': 96, 'lr': 3.9611035775812e-05, 'lambda_val': 0.012977296033486492, 'batch_size': 946, 'optimizer': 'SGD'}.
+2026-05-22 22:47:24,413 - root - INFO - Selected Trial 1 based on Max NDCG: 0.0416
+2026-05-22 22:47:24,413 - root - INFO - Associated Recall: 0.0525
+2026-05-22 22:47:24,413 - experiment_functions - INFO - Training the best model ... for e_100K_1c2dcs_rand1
+2026-05-22 22:47:28,175 - root - INFO - **** Training e_100K_1c3dcs
+2026-05-22 22:47:28,175 - root - INFO -   ** 3-Dominant stats:
+2026-05-22 22:47:28,175 - root - INFO -   ** Finding the dominant set:
+2026-05-22 22:47:55,393 - root - INFO -   ** Getting the trainable edges:
+2026-05-22 22:47:55,398 - helper_functions - INFO -      Number of nodes: 5324
+2026-05-22 22:47:55,398 - helper_functions - INFO -      Ratio: 0.515192568221405
+2026-05-22 22:47:55,398 - helper_functions - INFO -      Number of unique users: 333
+2026-05-22 22:47:55,398 - helper_functions - INFO -      Number of unique items: 4991
+2026-05-22 22:47:55,398 - helper_functions - INFO -      Total dominant set edge: 17514
+2026-05-22 22:47:55,398 - helper_functions - INFO -      Trainable edges: 14011.2
+2026-05-22 22:47:55,401 - root - INFO -   **** Getting 17514 dominant set edges
+2026-05-22 22:47:55,575 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_1c3dcs_strict
+2026-05-22 22:47:58,447 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.002871418308342638, 0.0017213114754098362, 0.0022707817594841946)
+2026-05-22 22:47:58,595 - optuna.study.study - INFO - Trial 0 finished with values: [0.002871418308342638, 0.0017213114754098362, 0.0022707817594841946] and parameters: {'n_layers': 2, 'embedding_dim': 256, 'lr': 6.149808591268575e-05, 'lambda_val': 0.02800937505125418, 'batch_size': 3212, 'optimizer': 'RMSprop'}.
+2026-05-22 22:48:01,128 - experiment_functions - INFO - Early stopping at epoch 550. Best Metrics: (0.00836149696385556, 0.010983606557377049, 0.012820287971935842)
+2026-05-22 22:48:01,282 - optuna.study.study - INFO - Trial 1 finished with values: [0.00836149696385556, 0.010983606557377049, 0.012820287971935842] and parameters: {'n_layers': 1, 'embedding_dim': 96, 'lr': 0.01578962735186189, 'lambda_val': 0.0005259113611857964, 'batch_size': 3710, 'optimizer': 'RMSprop'}.
+2026-05-22 22:48:03,826 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0018325588219876721, 0.0018032786885245904, 0.002004250372390253)
+2026-05-22 22:48:04,022 - optuna.study.study - INFO - Trial 2 finished with values: [0.0018325588219876721, 0.0018032786885245904, 0.002004250372390253] and parameters: {'n_layers': 4, 'embedding_dim': 96, 'lr': 0.004608159530401271, 'lambda_val': 0.0009522267796255085, 'batch_size': 1855, 'optimizer': 'SGD'}.
+2026-05-22 22:48:04,025 - root - INFO - Selected Trial 1 based on Max NDCG: 0.0128
+2026-05-22 22:48:04,025 - root - INFO - Associated Recall: 0.0084
+2026-05-22 22:48:04,025 - experiment_functions - INFO - Training the best model ... for e_100K_1c3dcs_strict
+2026-05-22 22:48:07,036 - root - INFO -   **** Training e_100K_1c3dcs_strict_rand1
+2026-05-22 22:48:07,041 - root - INFO -   **** Getting 14186/81200 random edges
+2026-05-22 22:48:07,176 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_1c3dcs_strict_rand1
+2026-05-22 22:48:09,492 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0013428305201546645, 0.0014754098360655738, 0.0015252446414044383)
+2026-05-22 22:48:09,652 - optuna.study.study - INFO - Trial 0 finished with values: [0.0013428305201546645, 0.0014754098360655738, 0.0015252446414044383] and parameters: {'n_layers': 1, 'embedding_dim': 32, 'lr': 4.483898181007765e-05, 'lambda_val': 4.7945307721469375e-05, 'batch_size': 3559, 'optimizer': 'SGD'}.
+2026-05-22 22:48:13,719 - optuna.study.study - INFO - Trial 1 finished with values: [0.030154564086590924, 0.017950819672131146, 0.027517840087459812] and parameters: {'n_layers': 1, 'embedding_dim': 256, 'lr': 0.00021723471481045113, 'lambda_val': 0.0021431689383362533, 'batch_size': 1205, 'optimizer': 'Adam'}.
+2026-05-22 22:48:16,328 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0036820096632050525, 0.0027049180327868854, 0.0037374934813301647)
+2026-05-22 22:48:16,467 - optuna.study.study - INFO - Trial 2 finished with values: [0.0036820096632050525, 0.0027049180327868854, 0.0037374934813301647] and parameters: {'n_layers': 4, 'embedding_dim': 128, 'lr': 0.04252890474093234, 'lambda_val': 0.07941289739983981, 'batch_size': 1313, 'optimizer': 'RMSprop'}.
+2026-05-22 22:48:16,470 - root - INFO - Selected Trial 1 based on Max NDCG: 0.0275
+2026-05-22 22:48:16,470 - root - INFO - Associated Recall: 0.0302
+2026-05-22 22:48:16,470 - experiment_functions - INFO - Training the best model ... for e_100K_1c3dcs_strict_rand1
+2026-05-22 22:48:19,541 - root - INFO -   ** Getting the trainable edges:
+2026-05-22 22:48:19,547 - helper_functions - INFO -      Number of nodes: 5324
+2026-05-22 22:48:19,547 - helper_functions - INFO -      Ratio: 0.515192568221405
+2026-05-22 22:48:19,547 - helper_functions - INFO -      Number of unique users: 333
+2026-05-22 22:48:19,547 - helper_functions - INFO -      Number of unique items: 4991
+2026-05-22 22:48:19,547 - helper_functions - INFO -      Total dominant set edge: 87527
+2026-05-22 22:48:19,547 - helper_functions - INFO -      Trainable edges: 70021.6
+2026-05-22 22:48:19,558 - root - INFO -   **** Getting 87527 dominant set edges
+2026-05-22 22:48:21,606 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_1c3dcs
+2026-05-22 22:48:28,843 - optuna.study.study - INFO - Trial 0 finished with values: [0.0023544651629786085, 0.0018852459016393446, 0.002796381736711801] and parameters: {'n_layers': 1, 'embedding_dim': 96, 'lr': 3.3874334474979094e-05, 'lambda_val': 0.0019413801655605394, 'batch_size': 3360, 'optimizer': 'Adam'}.
+2026-05-22 22:48:34,104 - experiment_functions - INFO - Early stopping at epoch 800. Best Metrics: (0.014943727170857297, 0.00778688524590164, 0.010841810329098698)
+2026-05-22 22:48:34,992 - optuna.study.study - INFO - Trial 1 finished with values: [0.014943727170857297, 0.00778688524590164, 0.010841810329098698] and parameters: {'n_layers': 4, 'embedding_dim': 128, 'lr': 0.02377690766630657, 'lambda_val': 8.409266931914761e-05, 'batch_size': 3827, 'optimizer': 'Adam'}.
+2026-05-22 22:48:37,826 - experiment_functions - INFO - Early stopping at epoch 550. Best Metrics: (0.04636520472404788, 0.0269672131147541, 0.039849037274871324)
+2026-05-22 22:48:37,922 - optuna.study.study - INFO - Trial 2 finished with values: [0.04636520472404788, 0.0269672131147541, 0.039849037274871324] and parameters: {'n_layers': 2, 'embedding_dim': 64, 'lr': 0.007357774016215564, 'lambda_val': 0.000643589889112405, 'batch_size': 3719, 'optimizer': 'Adam'}.
+2026-05-22 22:48:37,925 - root - INFO - Selected Trial 2 based on Max NDCG: 0.0398
+2026-05-22 22:48:37,925 - root - INFO - Associated Recall: 0.0464
+2026-05-22 22:48:37,925 - experiment_functions - INFO - Training the best model ... for e_100K_1c3dcs
+2026-05-22 22:48:39,874 - experiment_functions - INFO - Early stopping at epoch 550. Best Metrics: (0.031731652671406284, 0.02163934426229508, 0.028417683084617527)
+2026-05-22 22:48:39,973 - root - INFO -   **** Training e_100K_1c3dcs_rand1
+2026-05-22 22:48:39,986 - root - INFO -   **** Getting 70319/81200 random edges
+2026-05-22 22:48:40,218 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_100K_1c3dcs_rand1
+2026-05-22 22:48:42,807 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0015295397689439173, 0.0013114754098360656, 0.0013392055698959369)
+2026-05-22 22:48:42,984 - optuna.study.study - INFO - Trial 0 finished with values: [0.0015295397689439173, 0.0013114754098360656, 0.0013392055698959369] and parameters: {'n_layers': 3, 'embedding_dim': 64, 'lr': 0.00013180495975728435, 'lambda_val': 5.8467603757703854e-05, 'batch_size': 2255, 'optimizer': 'SGD'}.
+2026-05-22 22:48:46,975 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0009543574392925445, 0.001639344262295082, 0.0017487433476427252)
+2026-05-22 22:48:47,118 - optuna.study.study - INFO - Trial 1 finished with values: [0.0009543574392925445, 0.001639344262295082, 0.0017487433476427252] and parameters: {'n_layers': 3, 'embedding_dim': 32, 'lr': 1.205248733760666e-05, 'lambda_val': 0.010882688939896395, 'batch_size': 3803, 'optimizer': 'RMSprop'}.
+2026-05-22 22:48:50,298 - experiment_functions - INFO - Early stopping at epoch 600. Best Metrics: (0.045163533243058815, 0.027622950819672133, 0.038845651167615486)
+2026-05-22 22:48:51,019 - optuna.study.study - INFO - Trial 2 finished with values: [0.045163533243058815, 0.027622950819672133, 0.038845651167615486] and parameters: {'n_layers': 2, 'embedding_dim': 96, 'lr': 0.0012340362033827629, 'lambda_val': 0.002641572809419233, 'batch_size': 3298, 'optimizer': 'RMSprop'}.
+2026-05-22 22:48:51,022 - root - INFO - Selected Trial 2 based on Max NDCG: 0.0388
+2026-05-22 22:48:51,022 - root - INFO - Associated Recall: 0.0452
+2026-05-22 22:48:51,022 - experiment_functions - INFO - Training the best model ... for e_100K_1c3dcs_rand1
+2026-05-22 22:48:53,028 - experiment_functions - INFO - Early stopping at epoch 550. Best Metrics: (0.04374416097767019, 0.027868852459016394, 0.03967254313090281)

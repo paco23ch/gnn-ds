@@ -275,8 +275,8 @@ class ExperimentRunner():
                 # 3. Extract the parameters from that specific trial
                 best_params = best_trial.params
 
-                logging.info(f"Selected Trial {best_trial.number} based on Max NDCG: {best_trial.values[2]:.4f}")
-                logging.info(f"Associated Recall: {best_trial.values[0]:.4f}")
+                logging.info(f"Selected Trial {best_trial.number} based on Max {self.parameters['objective_metric']}: {best_trial.values[objective_metrics[self.parameters['objective_metric']]]:.4f}")
+                logging.info(f"Associated Recall: {best_trial.values[0]]:.4f}")
             else:
                 best_params = study.best_params
             
