@@ -1,0 +1,21 @@
+2026-06-03 02:22:44,687 - root - INFO - **** Training e_amazon_full
+2026-06-03 02:22:45,316 - helper_functions - INFO - Users: 52643, Items: 91599
+2026-06-03 02:22:45,316 - helper_functions - INFO - Edge index: torch.Size([2, 2984108])
+2026-06-03 02:22:45,316 - root - INFO - **** Generating the graph:
+2026-06-03 02:22:49,160 - helper_functions - INFO - Number of unique users: 52643
+2026-06-03 02:22:49,204 - helper_functions - INFO - Number of unique items: 91599
+2026-06-03 02:22:49,204 - helper_functions - INFO - Number of nodes: 144242
+2026-06-03 02:22:49,254 - helper_functions - INFO - Number of edges: 2984108
+2026-06-03 02:22:53,528 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_amazon_full
+2026-06-03 02:23:49,005 - experiment_functions - INFO - Early stopping at epoch 550. Best Metrics: (0.0071061128972356655, 0.0017267253006097677, 0.004517606584097839)
+2026-06-03 02:23:49,091 - optuna.study.study - INFO - Trial 0 finished with values: [0.0071061128972356655, 0.0017267253006097677, 0.004517606584097839] and parameters: {'n_layers': 2, 'embedding_dim': 96, 'lr': 0.011748631743771564, 'lambda_val': 0.01831133556470591, 'batch_size': 1581, 'optimizer': 'RMSprop'}.
+2026-06-03 02:24:37,436 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0002309686111059232, 6.933495431491367e-05, 0.0001249129334328642)
+2026-06-03 02:24:37,531 - optuna.study.study - INFO - Trial 1 finished with values: [0.0002309686111059232, 6.933495431491367e-05, 0.0001249129334328642] and parameters: {'n_layers': 4, 'embedding_dim': 32, 'lr': 0.028922670927810788, 'lambda_val': 3.3615742029136724e-06, 'batch_size': 1191, 'optimizer': 'SGD'}.
+2026-06-03 02:25:20,559 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.0002070569586118215, 6.648557263073914e-05, 0.0001514519784497263)
+2026-06-03 02:25:21,117 - optuna.study.study - INFO - Trial 2 finished with values: [0.0002070569586118215, 6.648557263073914e-05, 0.0001514519784497263] and parameters: {'n_layers': 1, 'embedding_dim': 32, 'lr': 0.00015476575215710734, 'lambda_val': 0.003932187742761618, 'batch_size': 3356, 'optimizer': 'SGD'}.
+2026-06-03 02:25:21,121 - root - INFO - Selected Trial 0 based on Max ndcg: 0.0045
+2026-06-03 02:25:21,121 - root - INFO - Associated Recall: 0.0071
+2026-06-03 02:25:21,121 - experiment_functions - INFO - Training the best model ... for e_amazon_full
+2026-06-03 02:26:15,387 - experiment_functions - INFO - Early stopping at epoch 550. Best Metrics: (0.007248449538273346, 0.0017685162319776612, 0.004658412924781976)
+2026-06-03 02:26:22,649 - root - INFO - Writing final results ...
+2026-06-03 02:26:22,652 - root - INFO - Done.

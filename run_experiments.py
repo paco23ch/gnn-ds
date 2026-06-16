@@ -3,6 +3,7 @@ from helper_functions import *
 import logging
 import time
 import random
+import torch
 
 set_seed(42)
 
@@ -15,17 +16,12 @@ parameters = {
         'n_trials' : 300,
         'n_dominance': 3,
         'random_runs' : 5,
-        #'exp_name' : 'e_100K',
-        'exp_name' : 'e_1M',
+        'exp_name' : 'e_gowalla',
         'verbose' : False,
         'rating_threshold' : 0,
         'patience' : 10,
         'multi_objective' : True,
         'objective_metric' : 'ndcg',
-        #'movie_path' : './ml-latest-small/movies.csv',
-        #'rating_path' : './ml-latest-small/ratings.csv',
-        'movie_path' : './ml-1m/movies.dat',
-        'rating_path' : './ml-1m/ratings.dat'
     }
 
 exp_name = parameters['exp_name']
@@ -49,7 +45,14 @@ optuna.logging.disable_default_handler()
 
 logger.info(f'**** Training {exp}')
 
-user_mapping, movie_mapping, edge_index = load_data(parameters['movie_path'], parameters['rating_path'], parameters['rating_threshold'])
+logger.info(f"--- Hardware Check ---")
+logger.info(f"PyTorch version {torch.__version__}")
+logger.info(f"Is CUDA available? {torch.cuda.is_available()}")
+logger.info(f"GPU Device Name: {torch.cuda.get_device_name(0)}")
+
+#user_mapping, movie_mapping, edge_index = load_data(parameters['movie_path'], parameters['rating_path'], parameters['rating_threshold'])
+
+user_mapping, movie_mapping, edge_index = load_data_generic(exp_name)
 
 logger.info('**** Generating the graph:')
 graph = generate_graph(edge_index)

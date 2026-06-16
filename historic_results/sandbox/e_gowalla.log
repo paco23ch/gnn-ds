@@ -1,0 +1,20 @@
+2026-06-03 02:26:32,826 - root - INFO - **** Training e_gowalla_full
+2026-06-03 02:26:35,172 - helper_functions - INFO - Users: 29858, Items: 40981
+2026-06-03 02:26:35,172 - helper_functions - INFO - Edge index: torch.Size([2, 1027370])
+2026-06-03 02:26:35,172 - root - INFO - **** Generating the graph:
+2026-06-03 02:26:36,438 - helper_functions - INFO - Number of unique users: 29858
+2026-06-03 02:26:36,451 - helper_functions - INFO - Number of unique items: 40981
+2026-06-03 02:26:36,451 - helper_functions - INFO - Number of nodes: 70839
+2026-06-03 02:26:36,473 - helper_functions - INFO - Number of edges: 1027370
+2026-06-03 02:26:40,923 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_gowalla_full
+2026-06-03 02:27:21,483 - experiment_functions - INFO - Early stopping at epoch 700. Best Metrics: (0.04118725968172043, 0.00490320852032956, 0.01836475502542851)
+2026-06-03 02:27:21,720 - optuna.study.study - INFO - Trial 0 finished with values: [0.04118725968172043, 0.00490320852032956, 0.01836475502542851] and parameters: {'n_layers': 2, 'embedding_dim': 256, 'lr': 0.0025718872511796154, 'lambda_val': 0.0024330437073463553, 'batch_size': 1517, 'optimizer': 'Adam'}.
+2026-06-03 02:31:50,460 - optuna.study.study - INFO - Trial 1 finished with values: [0.015626629204144187, 0.0021719472168263117, 0.007672837931514916] and parameters: {'n_layers': 4, 'embedding_dim': 256, 'lr': 0.00010730561702892253, 'lambda_val': 0.0077909288866793245, 'batch_size': 3282, 'optimizer': 'Adam'}.
+2026-06-03 02:32:14,662 - experiment_functions - INFO - Early stopping at epoch 550. Best Metrics: (0.00751886420403412, 0.0008791613637885993, 0.003516936158575987)
+2026-06-03 02:32:14,763 - optuna.study.study - INFO - Trial 2 finished with values: [0.00751886420403412, 0.0008791613637885993, 0.003516936158575987] and parameters: {'n_layers': 4, 'embedding_dim': 32, 'lr': 0.012349303335555731, 'lambda_val': 0.04959994469508309, 'batch_size': 1883, 'optimizer': 'Adam'}.
+2026-06-03 02:32:14,768 - root - INFO - Selected Trial 0 based on Max ndcg: 0.0184
+2026-06-03 02:32:14,769 - root - INFO - Associated Recall: 0.0412
+2026-06-03 02:32:14,769 - experiment_functions - INFO - Training the best model ... for e_gowalla_full
+2026-06-03 02:32:54,130 - experiment_functions - INFO - Early stopping at epoch 700. Best Metrics: (0.040670928229554634, 0.004976890615580413, 0.018200333449713408)
+2026-06-03 02:32:57,707 - root - INFO - Writing final results ...
+2026-06-03 02:32:57,710 - root - INFO - Done.

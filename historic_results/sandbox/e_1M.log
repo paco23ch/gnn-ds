@@ -1,0 +1,10 @@
+2026-06-03 02:22:08,525 - root - INFO - **** Training e_1M_full
+2026-06-03 02:22:13,861 - helper_functions - INFO - Users: 6040, Items: 3883
+2026-06-03 02:22:13,861 - helper_functions - INFO - Edge index: torch.Size([2, 1000209])
+2026-06-03 02:22:13,861 - root - INFO - **** Generating the graph:
+2026-06-03 02:22:14,893 - helper_functions - INFO - Number of unique users: 6040
+2026-06-03 02:22:14,902 - helper_functions - INFO - Number of unique items: 3706
+2026-06-03 02:22:14,902 - helper_functions - INFO - Number of nodes: 9746
+2026-06-03 02:22:14,906 - helper_functions - INFO - Number of edges: 1000209
+2026-06-03 02:22:15,492 - optuna.study.study - INFO - Using an existing study with name 'Study_e_1M_full' instead of creating a new one.
+2026-06-03 02:22:26,651 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.01373558767002922, 0.010902317880794703, 0.014613008517777129)

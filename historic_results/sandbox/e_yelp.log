@@ -1,0 +1,25 @@
+2026-06-03 02:35:28,431 - root - INFO - **** Training e_yelp_full
+2026-06-03 02:35:28,431 - root - INFO - --- Hardware Check ---
+2026-06-03 02:35:28,431 - root - INFO - PyTorch version 2.6.0+cu124
+2026-06-03 02:35:28,431 - root - INFO - Is CUDA available? True
+2026-06-03 02:35:28,451 - root - INFO - GPU Device Name: NVIDIA GeForce RTX 3090
+2026-06-03 02:35:31,991 - helper_functions - INFO - Users: 31668, Items: 38048
+2026-06-03 02:35:31,991 - helper_functions - INFO - Edge index: torch.Size([2, 1561406])
+2026-06-03 02:35:31,991 - root - INFO - **** Generating the graph:
+2026-06-03 02:35:33,905 - helper_functions - INFO - Number of unique users: 31668
+2026-06-03 02:35:33,923 - helper_functions - INFO - Number of unique items: 38048
+2026-06-03 02:35:33,923 - helper_functions - INFO - Number of nodes: 69716
+2026-06-03 02:35:33,947 - helper_functions - INFO - Number of edges: 1561406
+2026-06-03 02:35:37,764 - optuna.storages._rdb.storage - INFO - A new study created in RDB with name: Study_e_yelp_full
+2026-06-03 02:36:03,366 - experiment_functions - INFO - Early stopping at epoch 500. Best Metrics: (0.00036630387533484915, 0.00010262725779967159, 0.00026129101139456577)
+2026-06-03 02:36:03,472 - optuna.study.study - INFO - Trial 0 finished with values: [0.00036630387533484915, 0.00010262725779967159, 0.00026129101139456577] and parameters: {'n_layers': 3, 'embedding_dim': 64, 'lr': 4.082974425719992e-05, 'lambda_val': 0.0020816518120087154, 'batch_size': 1241, 'optimizer': 'SGD'}.
+2026-06-03 02:38:09,619 - experiment_functions - INFO - Early stopping at epoch 2800. Best Metrics: (0.0108047552621395, 0.0022720095995958068, 0.006083309726632694)
+2026-06-03 02:38:09,711 - optuna.study.study - INFO - Trial 1 finished with values: [0.0108047552621395, 0.0022720095995958068, 0.006083309726632694] and parameters: {'n_layers': 2, 'embedding_dim': 64, 'lr': 0.004611874387063676, 'lambda_val': 6.781391826400036e-06, 'batch_size': 3931, 'optimizer': 'RMSprop'}.
+2026-06-03 02:40:55,896 - experiment_functions - INFO - Early stopping at epoch 3850. Best Metrics: (0.012002294509805903, 0.002475685234305924, 0.006677446382210684)
+2026-06-03 02:40:55,988 - optuna.study.study - INFO - Trial 2 finished with values: [0.012002294509805903, 0.002475685234305924, 0.006677446382210684] and parameters: {'n_layers': 3, 'embedding_dim': 32, 'lr': 0.021283558599782152, 'lambda_val': 6.377563849737565e-05, 'batch_size': 2763, 'optimizer': 'RMSprop'}.
+2026-06-03 02:40:55,992 - root - INFO - Selected Trial 2 based on Max ndcg: 0.0067
+2026-06-03 02:40:55,992 - root - INFO - Associated Recall: 0.0120
+2026-06-03 02:40:55,992 - experiment_functions - INFO - Training the best model ... for e_yelp_full
+2026-06-03 02:43:09,317 - experiment_functions - INFO - Early stopping at epoch 3100. Best Metrics: (0.01139124744066777, 0.00235569028672477, 0.006342903478148721)
+2026-06-03 02:43:12,974 - root - INFO - Writing final results ...
+2026-06-03 02:43:12,977 - root - INFO - Done.

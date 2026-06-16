@@ -19,6 +19,45 @@ def set_seed(seed=42):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
+def load_data_generic(experiment):
+    movie_paths= { 'e_100K': './ml-latest-small/movies.csv', 'e_1M': './ml-1m/movies.dat'}
+    rating_paths = {'e_100K': './ml-latest-small/ratings.csv', 'e_1M': './ml-1m/ratings.dat'} 
+    other_files = {'e_amazon':'./other_sets/amazon-book.csv', 'e_gowalla':'./other_sets/gowalla.csv', 'e_yelp':'./other_sets/yelp2018.csv'}
+
+    if experiment in ['e_100K','e_1M']:
+        movie_path=movie_paths[experiment]
+        rating_path=rating_paths[experiment]
+        rating_threshold=0
+
+        if movie_path.endswith('.dat'): 
+            user_mapping = load_node_csv(rating_path, index_col=0, header=None, delimiter='::', col_names=['movieId', 'rating',	'timestamp'], index_name='userId')
+            movie_mapping = load_node_csv(movie_path, index_col=0, header=None, delimiter='::', col_names=['title', 'genres'], index_name='movieId')
+        else:
+            user_mapping = load_node_csv(rating_path, index_col='userId')
+            movie_mapping = load_node_csv(movie_path, index_col='movieId')
+
+        for key in movie_mapping:
+            movie_mapping[key] += len(user_mapping)
+
+        edge_index = load_edge_csv(
+            rating_path,
+            src_index_col='userId',
+            src_mapping=user_mapping,
+            dst_index_col='movieId',
+            dst_mapping=movie_mapping,
+            link_index_col='rating',
+            rating_threshold=rating_threshold,
+        )
+    else:
+        dataset = pd.read_csv(other_files[experiment])
+        user_mapping = {int(x):int(x) for x in dataset['user'].unique()}
+        movie_mapping = {int(x):int(x) for x in dataset['item'].unique()}
+        edge_index = torch.tensor([dataset['user'].astype(int), dataset['item'].astype(int)])
+
+    logger.info(f'Users: {len(user_mapping)}, Items: {len(movie_mapping)}')
+    logger.info(f'Edge index: {edge_index.shape}')
+
+    return(user_mapping, movie_mapping, edge_index)
 
 def load_data(movie_path, rating_path, rating_threshold=3):
     if movie_path.endswith('.dat'): 
