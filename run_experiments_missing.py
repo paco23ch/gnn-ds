@@ -16,7 +16,7 @@ parameters = {
         'n_trials' : 300,
         'n_dominance': 3,
         'random_runs' : 5,
-        'exp_name' : 'e_gowalla',
+        'exp_name' : 'e_yelp',
         'verbose' : False,
         'rating_threshold' : 0,
         'patience' : 10,
@@ -65,14 +65,14 @@ train_sparse_edge_index, val_sparse_edge_index, test_sparse_edge_index = \
 runner = ExperimentRunner(edge_index, val_edge_index, val_sparse_edge_index, test_edge_index, test_sparse_edge_index, 
                             user_mapping, movie_mapping, parameters)
 
-m = 3
+m = 1
 exp = f'{exp_name}_1c{m}dcs'
 
-ds_train_index_length = 140770
+ds_train_index_length = 421521
 
-suffix = '_strict'
+suffix = ''
 
-for n in range(5, parameters['random_runs'] + 1):
+for n in range(3, parameters['random_runs'] + 1):
     rand = f'_rand{n}'
 
     logger.info(f'  **** Training {exp+suffix+rand}')
@@ -87,7 +87,7 @@ for n in range(5, parameters['random_runs'] + 1):
 
 
 
-for m in range(3, parameters['n_dominance'] + 1):
+for m in range(2, parameters['n_dominance'] + 1):
     exp = f'{exp_name}_1c{m}dcs'
 
     logger.info(f'**** Training {exp}')
@@ -103,7 +103,7 @@ for m in range(3, parameters['n_dominance'] + 1):
     ds_train_indices = None
     ds_train_edge_index = None
 
-    for strict in [False]:
+    for strict in [True, False]:
         suffix = '_strict' if strict == True else ''
 
         logger.info('  ** Getting the trainable edges:')

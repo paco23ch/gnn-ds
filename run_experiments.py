@@ -16,7 +16,7 @@ parameters = {
         'n_trials' : 300,
         'n_dominance': 3,
         'random_runs' : 5,
-        'exp_name' : 'e_gowalla',
+        'exp_name' : 'e_amazon',
         'verbose' : False,
         'rating_threshold' : 0,
         'patience' : 10,
