@@ -19,6 +19,19 @@ def set_seed(seed=42):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
+def append_or_create_parquet(file_path, new_rows):
+  new_rows_df = pd.DataFrame(new_rows)
+  if os.path.exists(file_path):
+    # Read existing parquet file
+    existing_df = pd.read_parquet(file_path)
+    # Combine old and new rows
+    combined_df = pd.concat([existing_df, new_rows_df], ignore_index=True)
+    # Save back to parquet
+    combined_df.to_parquet(file_path, engine="pyarrow", index=False)
+  else:
+    # Create the parquet file fresh
+    new_rows_df.to_parquet(file_path, engine="pyarrow", index=False)
+
 def load_data_generic(experiment):
     movie_paths= { 'e_100K': './ml-latest-small/movies.csv', 'e_1M': './ml-1m/movies.dat'}
     rating_paths = {'e_100K': './ml-latest-small/ratings.csv', 'e_1M': './ml-1m/ratings.dat'} 
@@ -52,7 +65,8 @@ def load_data_generic(experiment):
         dataset = pd.read_csv(other_files[experiment])
         user_mapping = {int(x):int(x) for x in dataset['user'].unique()}
         movie_mapping = {int(x):int(x) for x in dataset['item'].unique()}
-        edge_index = torch.tensor([dataset['user'].astype(int), dataset['item'].astype(int)])
+        #edge_index = torch.tensor([dataset['user'].astype(int), dataset['item'].astype(int)])
+        edge_index = torch.from_numpy(np.vstack([dataset['user'].values, dataset['item'].values])).long()
 
     logger.info(f'Users: {len(user_mapping)}, Items: {len(movie_mapping)}')
     logger.info(f'Edge index: {edge_index.shape}')

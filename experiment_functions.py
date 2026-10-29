@@ -19,7 +19,7 @@ class GNNObjective:
                                     user_mapping, movie_mapping, params):
 
         # Store all pre-processed data as instance attributes
-        self.device = torch.device('cuda:1' if torch.cuda.is_available() else 'cpu')
+        self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
         self.edge_index = edge_index.to(self.device)
         self.train_edge_index = train_edge_index.to(self.device)
         self.train_sparse_edge_index = train_sparse_edge_index.to(self.device)
@@ -324,3 +324,76 @@ class ExperimentRunner():
         self.save_final_results_parquet()
 
         return best_params
+
+
+# Helper function to train, calculate size, and save
+def train_and_save(train_ei, train_sparse_ei, current_exp_name):
+    return_value = {}
+
+    if current_exp_name not in train_df.index:
+      logger.warning(f"No parameters found for {current_exp_name}, skipping.")
+      return
+
+    row = train_df.loc[current_exp_name]
+
+    # Extract best hyperparams
+    emb_dim = int(row["embedding_dim"])
+    n_layers = int(row["n_layers"])
+    lr = float(row["lr"])
+    batch_size = int(row["batch_size"])
+    lambda_val = float(row["lambda_val"])
+    optimizer_name = str(row["optimizer"])
+
+    logger.info(f'**** Initializing {current_exp_name}')    
+    # Instantiate objective/model runner with input params (bypassing Optuna)
+    objective = GNNObjective(
+        edge_index,
+        train_ei,
+        train_sparse_ei,
+        val_edge_index,
+        val_sparse_edge_index,
+        user_mapping,
+        movie_mapping,
+        parameters,
+    )
+    logger.info(f'**** Setting up the model {current_exp_name}')
+    objective.setup_model(emb_dim, n_layers, lr, batch_size, lambda_val, optimizer_name)
+
+    # 1. Calculate Model Size and Parameters
+    total_params = sum(p.numel() for p in objective.model.parameters())
+    trainable_params = sum( p.numel() for p in objective.model.parameters() if p.requires_grad )
+    param_size = sum( p.numel() * p.element_size() for p in objective.model.parameters() )
+    buffer_size = sum( b.numel() * b.element_size() for b in objective.model.buffers() )
+    model_size_mb = (param_size + buffer_size) / (1024 * 1024)
+
+    logger.info(
+        f"[{current_exp_name}] Params: {total_params:,} | Trainable params: {trainable_params:,} |Size:"
+        f" {model_size_mb:.4f} MB"
+    )
+
+    # 2. Train the model to completion
+    logger.info(f'**** Training the model {current_exp_name}')
+    train_results = objective.train_model(verbose=False)
+
+    # 3. Save model state dict & metadata needed for inference
+    checkpoint = {
+        "state_dict": objective.model.state_dict(),
+        "num_users": len(user_mapping),
+        "num_movies": len(movie_mapping),
+        "train_edges": len(train_ei[0]),
+        "embedding_dim": emb_dim,
+        "n_layers": n_layers,
+        "total_params": total_params,
+        "trainable_params": trainable_params,
+        "model_size_mb": model_size_mb,
+    }
+    torch.save(checkpoint, f"{parameters['store_path']}saved_model_{current_exp_name}.pt")
+    logger.info(f"Saved checkpoint: {parameters['store_path']}saved_model_{current_exp_name}.pt")
+
+    checkpoint.pop("state_dict")
+    return_value['experiment'] = current_exp_name
+    return_value.update(checkpoint)
+    return_value.update(train_results) 
+    append_or_create_parquet(parameters['store_path']+parameters['file_path'],[return_value])
+    
+    return return_value 
