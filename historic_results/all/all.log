@@ -1,0 +1,396 @@
+2026-10-31 20:15:58,889 - helper_functions - INFO - Processing dataset: e_100K
+2026-10-31 20:15:59,020 - helper_functions - INFO - Users: 610, Items: 9742
+2026-10-31 20:15:59,020 - helper_functions - INFO - Edge index: torch.Size([2, 100836])
+2026-10-31 20:15:59,020 - helper_functions - INFO - **** Generating the graph:
+2026-10-31 20:15:59,096 - helper_functions - INFO - Number of unique users: 610
+2026-10-31 20:15:59,097 - helper_functions - INFO - Number of unique items: 9724
+2026-10-31 20:15:59,097 - helper_functions - INFO - Number of nodes: 10334
+2026-10-31 20:15:59,098 - helper_functions - INFO - Number of edges: 100836
+2026-10-31 20:15:59,128 - helper_functions - INFO - **** Initializing e_100K_full
+2026-10-31 20:15:59,283 - helper_functions - INFO - **** Setting up the model e_100K_full
+2026-10-31 20:15:59,319 - helper_functions - INFO - [e_100K_full] Params: 2,650,112 | Trainable params: 2,650,112 |Size: 10.1094 MB
+2026-10-31 20:15:59,319 - helper_functions - INFO - **** Training the model e_100K_full
+2026-10-31 20:16:03,429 - experiment_functions - INFO - Early stopping at epoch 950. Best Metrics: (np.float64(0.1167881592599534), np.float64(0.0610655737704918), np.float64(0.10254964646942881))
+2026-10-31 20:16:03,440 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_100K_full.pt
+2026-10-31 20:16:03,444 - helper_functions - INFO - **** Training e_100K_1c1dcs
+2026-10-31 20:16:03,444 - helper_functions - INFO -   ** 1-Dominant stats:
+2026-10-31 20:16:03,444 - helper_functions - INFO -   ** Finding the dominant set:
+2026-10-31 20:16:22,873 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-10-31 20:16:22,879 - helper_functions - INFO -      Number of nodes: 535
+2026-10-31 20:16:22,879 - helper_functions - INFO -      Ratio: 0.05177085349332301
+2026-10-31 20:16:22,879 - helper_functions - INFO -      Number of unique users: 303
+2026-10-31 20:16:22,879 - helper_functions - INFO -      Number of unique items: 232
+2026-10-31 20:16:22,879 - helper_functions - INFO -      Total dominant set edge: 81241
+2026-10-31 20:16:22,879 - helper_functions - INFO -      Trainable edges: 64992.8
+2026-10-31 20:16:22,888 - helper_functions - INFO -   **** Getting 81241 dominant set edges
+2026-10-31 20:16:22,896 - helper_functions - INFO - **** Initializing e_100K_1c1dcs
+2026-10-31 20:16:22,919 - helper_functions - INFO - **** Setting up the model e_100K_1c1dcs
+2026-10-31 20:16:22,926 - helper_functions - INFO - [e_100K_1c1dcs] Params: 662,528 | Trainable params: 662,528 |Size: 2.5273 MB
+2026-10-31 20:16:22,926 - helper_functions - INFO - **** Training the model e_100K_1c1dcs
+2026-10-31 20:16:26,733 - experiment_functions - INFO - Early stopping at epoch 1500. Best Metrics: (np.float64(0.061860650620324184), np.float64(0.044508196721311476), np.float64(0.06322390607283905))
+2026-10-31 20:16:26,734 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_100K_1c1dcs.pt
+2026-10-31 20:16:26,760 - helper_functions - INFO - **** Initializing e_100K_1c1dcs_rand
+2026-10-31 20:16:26,761 - helper_functions - INFO - **** Setting up the model e_100K_1c1dcs_rand
+2026-10-31 20:16:26,779 - helper_functions - INFO - [e_100K_1c1dcs_rand] Params: 2,650,112 | Trainable params: 2,650,112 |Size: 10.1094 MB
+2026-10-31 20:16:26,779 - helper_functions - INFO - **** Training the model e_100K_1c1dcs_rand
+2026-10-31 20:16:31,278 - experiment_functions - INFO - Early stopping at epoch 1250. Best Metrics: (np.float64(0.11216883329305022), np.float64(0.05778688524590164), np.float64(0.09412688735767508))
+2026-10-31 20:16:31,287 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_100K_1c1dcs_rand.pt
+2026-10-31 20:16:31,294 - helper_functions - INFO - **** Training e_100K_1c2dcs
+2026-10-31 20:16:31,294 - helper_functions - INFO -   ** 2-Dominant stats:
+2026-10-31 20:16:31,294 - helper_functions - INFO -   ** Finding the dominant set:
+2026-10-31 20:16:55,008 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-10-31 20:16:55,015 - helper_functions - INFO -      Number of nodes: 4003
+2026-10-31 20:16:55,015 - helper_functions - INFO -      Ratio: 0.3873621056706019
+2026-10-31 20:16:55,015 - helper_functions - INFO -      Number of unique users: 324
+2026-10-31 20:16:55,015 - helper_functions - INFO -      Number of unique items: 3679
+2026-10-31 20:16:55,015 - helper_functions - INFO -      Total dominant set edge: 84485
+2026-10-31 20:16:55,015 - helper_functions - INFO -      Trainable edges: 67588.0
+2026-10-31 20:16:55,025 - helper_functions - INFO -   **** Getting 84485 dominant set edges
+2026-10-31 20:16:55,034 - helper_functions - INFO - **** Initializing e_100K_1c2dcs
+2026-10-31 20:16:55,056 - helper_functions - INFO - **** Setting up the model e_100K_1c2dcs
+2026-10-31 20:16:55,069 - helper_functions - INFO - [e_100K_1c2dcs] Params: 1,325,056 | Trainable params: 1,325,056 |Size: 5.0547 MB
+2026-10-31 20:16:55,069 - helper_functions - INFO - **** Training the model e_100K_1c2dcs
+2026-10-31 20:17:04,400 - experiment_functions - INFO - Early stopping at epoch 3150. Best Metrics: (np.float64(0.06814346720517431), np.float64(0.04795081967213115), np.float64(0.06866394461938691))
+2026-10-31 20:17:04,402 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_100K_1c2dcs.pt
+2026-10-31 20:17:04,429 - helper_functions - INFO - **** Initializing e_100K_1c2dcs_rand
+2026-10-31 20:17:04,429 - helper_functions - INFO - **** Setting up the model e_100K_1c2dcs_rand
+2026-10-31 20:17:04,448 - helper_functions - INFO - [e_100K_1c2dcs_rand] Params: 2,650,112 | Trainable params: 2,650,112 |Size: 10.1094 MB
+2026-10-31 20:17:04,448 - helper_functions - INFO - **** Training the model e_100K_1c2dcs_rand
+2026-10-31 20:17:17,014 - experiment_functions - INFO - Early stopping at epoch 3700. Best Metrics: (np.float64(0.11026370133402687), np.float64(0.05639344262295083), np.float64(0.09356028971970629))
+2026-10-31 20:17:17,018 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_100K_1c2dcs_rand.pt
+2026-10-31 20:17:17,023 - helper_functions - INFO - **** Training e_100K_1c3dcs
+2026-10-31 20:17:17,023 - helper_functions - INFO -   ** 3-Dominant stats:
+2026-10-31 20:17:17,023 - helper_functions - INFO -   ** Finding the dominant set:
+2026-10-31 20:17:43,208 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-10-31 20:17:43,213 - helper_functions - INFO -      Number of nodes: 5324
+2026-10-31 20:17:43,214 - helper_functions - INFO -      Ratio: 0.515192568221405
+2026-10-31 20:17:43,214 - helper_functions - INFO -      Number of unique users: 333
+2026-10-31 20:17:43,214 - helper_functions - INFO -      Number of unique items: 4991
+2026-10-31 20:17:43,214 - helper_functions - INFO -      Total dominant set edge: 87527
+2026-10-31 20:17:43,214 - helper_functions - INFO -      Trainable edges: 70021.6
+2026-10-31 20:17:43,222 - helper_functions - INFO -   **** Getting 87527 dominant set edges
+2026-10-31 20:17:43,229 - helper_functions - INFO - **** Initializing e_100K_1c3dcs
+2026-10-31 20:17:43,251 - helper_functions - INFO - **** Setting up the model e_100K_1c3dcs
+2026-10-31 20:17:43,272 - helper_functions - INFO - [e_100K_1c3dcs] Params: 2,650,112 | Trainable params: 2,650,112 |Size: 10.1094 MB
+2026-10-31 20:17:43,272 - helper_functions - INFO - **** Training the model e_100K_1c3dcs
+2026-10-31 20:17:46,502 - experiment_functions - INFO - Early stopping at epoch 850. Best Metrics: (np.float64(0.07522433596273635), np.float64(0.04131147540983607), np.float64(0.07313837421501505))
+2026-10-31 20:17:46,506 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_100K_1c3dcs.pt
+2026-10-31 20:17:46,532 - helper_functions - INFO - **** Initializing e_100K_1c3dcs_rand
+2026-10-31 20:17:46,533 - helper_functions - INFO - **** Setting up the model e_100K_1c3dcs_rand
+2026-10-31 20:17:46,549 - helper_functions - INFO - [e_100K_1c3dcs_rand] Params: 2,650,112 | Trainable params: 2,650,112 |Size: 10.1094 MB
+2026-10-31 20:17:46,549 - helper_functions - INFO - **** Training the model e_100K_1c3dcs_rand
+2026-10-31 20:17:55,502 - experiment_functions - INFO - Early stopping at epoch 2550. Best Metrics: (np.float64(0.12893809393009611), np.float64(0.06245901639344264), np.float64(0.10734376277964151))
+2026-10-31 20:17:55,506 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_100K_1c3dcs_rand.pt
+2026-10-31 20:17:55,511 - helper_functions - INFO - Processing dataset: e_1M
+2026-10-31 20:18:00,567 - helper_functions - INFO - Users: 6040, Items: 3883
+2026-10-31 20:18:00,567 - helper_functions - INFO - Edge index: torch.Size([2, 1000209])
+2026-10-31 20:18:00,567 - helper_functions - INFO - **** Generating the graph:
+2026-10-31 20:18:01,444 - helper_functions - INFO - Number of unique users: 6040
+2026-10-31 20:18:01,453 - helper_functions - INFO - Number of unique items: 3706
+2026-10-31 20:18:01,453 - helper_functions - INFO - Number of nodes: 9746
+2026-10-31 20:18:01,457 - helper_functions - INFO - Number of edges: 1000209
+2026-10-31 20:18:01,782 - helper_functions - INFO - **** Initializing e_1M_full
+2026-10-31 20:18:01,785 - helper_functions - INFO - **** Setting up the model e_1M_full
+2026-10-31 20:18:01,789 - helper_functions - INFO - [e_1M_full] Params: 317,536 | Trainable params: 317,536 |Size: 1.2113 MB
+2026-10-31 20:18:01,789 - helper_functions - INFO - **** Training the model e_1M_full
+2026-10-31 20:18:41,077 - experiment_functions - INFO - Early stopping at epoch 3200. Best Metrics: (np.float64(0.0976437347447358), np.float64(0.06791390728476822), np.float64(0.0960677807868917))
+2026-10-31 20:18:41,078 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_1M_full.pt
+2026-10-31 20:18:41,083 - helper_functions - INFO - **** Training e_1M_1c1dcs
+2026-10-31 20:18:41,083 - helper_functions - INFO -   ** 1-Dominant stats:
+2026-10-31 20:18:41,083 - helper_functions - INFO -   ** Finding the dominant set:
+2026-10-31 20:55:02,266 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-10-31 20:55:02,280 - helper_functions - INFO -      Number of nodes: 4740
+2026-10-31 20:55:02,280 - helper_functions - INFO -      Ratio: 0.4863533757438949
+2026-10-31 20:55:02,280 - helper_functions - INFO -      Number of unique users: 3156
+2026-10-31 20:55:02,281 - helper_functions - INFO -      Number of unique items: 1584
+2026-10-31 20:55:02,281 - helper_functions - INFO -      Total dominant set edge: 234063
+2026-10-31 20:55:02,281 - helper_functions - INFO -      Trainable edges: 187250.40000000002
+2026-10-31 20:55:02,332 - helper_functions - INFO -   **** Getting 234063 dominant set edges
+2026-10-31 20:55:02,348 - helper_functions - INFO - **** Initializing e_1M_1c1dcs
+2026-10-31 20:55:02,372 - helper_functions - INFO - **** Setting up the model e_1M_1c1dcs
+2026-10-31 20:55:02,374 - helper_functions - INFO - [e_1M_1c1dcs] Params: 317,536 | Trainable params: 317,536 |Size: 1.2113 MB
+2026-10-31 20:55:02,374 - helper_functions - INFO - **** Training the model e_1M_1c1dcs
+2026-10-31 20:55:28,371 - experiment_functions - INFO - Early stopping at epoch 2550. Best Metrics: (np.float64(0.06840845398677624), np.float64(0.03001655629139073), np.float64(0.062332523636204874))
+2026-10-31 20:55:28,372 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_1M_1c1dcs.pt
+2026-10-31 20:55:28,470 - helper_functions - INFO - **** Initializing e_1M_1c1dcs_rand
+2026-10-31 20:55:28,472 - helper_functions - INFO - **** Setting up the model e_1M_1c1dcs_rand
+2026-10-31 20:55:28,475 - helper_functions - INFO - [e_1M_1c1dcs_rand] Params: 317,536 | Trainable params: 317,536 |Size: 1.2113 MB
+2026-10-31 20:55:28,475 - helper_functions - INFO - **** Training the model e_1M_1c1dcs_rand
+2026-10-31 20:55:44,417 - experiment_functions - INFO - Early stopping at epoch 1600. Best Metrics: (np.float64(0.06949117838414658), np.float64(0.040215231788079474), np.float64(0.05904426038141161))
+2026-10-31 20:55:44,419 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_1M_1c1dcs_rand.pt
+2026-10-31 20:55:44,423 - helper_functions - INFO - **** Training e_1M_1c2dcs
+2026-10-31 20:55:44,423 - helper_functions - INFO -   ** 2-Dominant stats:
+2026-10-31 20:55:44,423 - helper_functions - INFO -   ** Finding the dominant set:
+2026-10-31 21:31:18,331 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-10-31 21:31:18,346 - helper_functions - INFO -      Number of nodes: 4753
+2026-10-31 21:31:18,346 - helper_functions - INFO -      Ratio: 0.48768725631028115
+2026-10-31 21:31:18,346 - helper_functions - INFO -      Number of unique users: 3162
+2026-10-31 21:31:18,346 - helper_functions - INFO -      Number of unique items: 1591
+2026-10-31 21:31:18,346 - helper_functions - INFO -      Total dominant set edge: 249067
+2026-10-31 21:31:18,346 - helper_functions - INFO -      Trainable edges: 199253.6
+2026-10-31 21:31:18,407 - helper_functions - INFO -   **** Getting 249067 dominant set edges
+2026-10-31 21:31:18,426 - helper_functions - INFO - **** Initializing e_1M_1c2dcs
+2026-10-31 21:31:18,449 - helper_functions - INFO - **** Setting up the model e_1M_1c2dcs
+2026-10-31 21:31:18,457 - helper_functions - INFO - [e_1M_1c2dcs] Params: 952,608 | Trainable params: 952,608 |Size: 3.6339 MB
+2026-10-31 21:31:18,457 - helper_functions - INFO - **** Training the model e_1M_1c2dcs
+2026-10-31 21:31:47,486 - experiment_functions - INFO - Early stopping at epoch 2650. Best Metrics: (np.float64(0.08474855386142187), np.float64(0.04410596026490066), np.float64(0.07548113435433274))
+2026-10-31 21:31:47,489 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_1M_1c2dcs.pt
+2026-10-31 21:31:47,636 - helper_functions - INFO - **** Initializing e_1M_1c2dcs_rand
+2026-10-31 21:31:47,638 - helper_functions - INFO - **** Setting up the model e_1M_1c2dcs_rand
+2026-10-31 21:31:47,641 - helper_functions - INFO - [e_1M_1c2dcs_rand] Params: 317,536 | Trainable params: 317,536 |Size: 1.2113 MB
+2026-10-31 21:31:47,641 - helper_functions - INFO - **** Training the model e_1M_1c2dcs_rand
+2026-10-31 21:32:06,016 - experiment_functions - INFO - Early stopping at epoch 1800. Best Metrics: (np.float64(0.07060315441098589), np.float64(0.04004966887417219), np.float64(0.05905123322657459))
+2026-10-31 21:32:06,017 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_1M_1c2dcs_rand.pt
+2026-10-31 21:32:06,023 - helper_functions - INFO - **** Training e_1M_1c3dcs
+2026-10-31 21:32:06,023 - helper_functions - INFO -   ** 3-Dominant stats:
+2026-10-31 21:32:06,023 - helper_functions - INFO -   ** Finding the dominant set:
+2026-10-31 22:07:18,458 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-10-31 22:07:18,473 - helper_functions - INFO -      Number of nodes: 4781
+2026-10-31 22:07:18,473 - helper_functions - INFO -      Ratio: 0.4905602298378822
+2026-10-31 22:07:18,473 - helper_functions - INFO -      Number of unique users: 3174
+2026-10-31 22:07:18,473 - helper_functions - INFO -      Number of unique items: 1607
+2026-10-31 22:07:18,473 - helper_functions - INFO -      Total dominant set edge: 272498
+2026-10-31 22:07:18,473 - helper_functions - INFO -      Trainable edges: 217998.40000000002
+2026-10-31 22:07:18,545 - helper_functions - INFO -   **** Getting 272498 dominant set edges
+2026-10-31 22:07:18,564 - helper_functions - INFO - **** Initializing e_1M_1c3dcs
+2026-10-31 22:07:18,587 - helper_functions - INFO - **** Setting up the model e_1M_1c3dcs
+2026-10-31 22:07:18,591 - helper_functions - INFO - [e_1M_1c3dcs] Params: 317,536 | Trainable params: 317,536 |Size: 1.2113 MB
+2026-10-31 22:07:18,591 - helper_functions - INFO - **** Training the model e_1M_1c3dcs
+2026-10-31 22:07:34,921 - experiment_functions - INFO - Early stopping at epoch 1500. Best Metrics: (np.float64(0.08958302020898255), np.float64(0.054561258278145695), np.float64(0.08447731293426251))
+2026-10-31 22:07:34,923 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_1M_1c3dcs.pt
+2026-10-31 22:07:35,135 - helper_functions - INFO - **** Initializing e_1M_1c3dcs_rand
+2026-10-31 22:07:35,138 - helper_functions - INFO - **** Setting up the model e_1M_1c3dcs_rand
+2026-10-31 22:07:35,144 - helper_functions - INFO - [e_1M_1c3dcs_rand] Params: 952,608 | Trainable params: 952,608 |Size: 3.6339 MB
+2026-10-31 22:07:35,144 - helper_functions - INFO - **** Training the model e_1M_1c3dcs_rand
+2026-10-31 22:08:16,467 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_1M_1c3dcs_rand.pt
+2026-10-31 22:08:16,473 - helper_functions - INFO - Processing dataset: e_amazon
+2026-10-31 22:08:16,979 - helper_functions - INFO - Users: 52643, Items: 91599
+2026-10-31 22:08:16,979 - helper_functions - INFO - Edge index: torch.Size([2, 2984108])
+2026-10-31 22:08:16,980 - helper_functions - INFO - **** Generating the graph:
+2026-10-31 22:08:22,881 - helper_functions - INFO - Number of unique users: 52643
+2026-10-31 22:08:22,933 - helper_functions - INFO - Number of unique items: 91599
+2026-10-31 22:08:22,933 - helper_functions - INFO - Number of nodes: 144242
+2026-10-31 22:08:22,996 - helper_functions - INFO - Number of edges: 2984108
+2026-10-31 22:08:24,119 - helper_functions - INFO - **** Initializing e_amazon_full
+2026-10-31 22:08:24,128 - helper_functions - INFO - **** Setting up the model e_amazon_full
+2026-10-31 22:08:24,377 - helper_functions - INFO - [e_amazon_full] Params: 36,925,952 | Trainable params: 36,925,952 |Size: 140.8613 MB
+2026-10-31 22:08:24,377 - helper_functions - INFO - **** Training the model e_amazon_full
+2026-10-31 22:15:21,699 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_amazon_full.pt
+2026-10-31 22:15:21,705 - helper_functions - INFO - **** Training e_amazon_1c1dcs
+2026-10-31 22:15:21,705 - helper_functions - INFO -   ** 1-Dominant stats:
+2026-10-31 22:15:21,705 - helper_functions - INFO -   ** Finding the dominant set:
+2026-11-01 21:20:17,033 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-11-01 21:20:17,125 - helper_functions - INFO -      Number of nodes: 19061
+2026-11-01 21:20:17,125 - helper_functions - INFO -      Ratio: 0.13214597689993207
+2026-11-01 21:20:17,125 - helper_functions - INFO -      Number of unique users: 4799
+2026-11-01 21:20:17,125 - helper_functions - INFO -      Number of unique items: 14262
+2026-11-01 21:20:17,125 - helper_functions - INFO -      Total dominant set edge: 1060523
+2026-11-01 21:20:17,125 - helper_functions - INFO -      Trainable edges: 848418.4
+2026-11-01 21:20:17,420 - helper_functions - INFO -   **** Getting 1060523 dominant set edges
+2026-11-01 21:20:17,523 - helper_functions - INFO - **** Initializing e_amazon_1c1dcs
+2026-11-01 21:20:17,548 - helper_functions - INFO - **** Setting up the model e_amazon_1c1dcs
+2026-11-01 21:20:17,827 - helper_functions - INFO - [e_amazon_1c1dcs] Params: 36,925,952 | Trainable params: 36,925,952 |Size: 140.8613 MB
+2026-11-01 21:20:17,827 - helper_functions - INFO - **** Training the model e_amazon_1c1dcs
+2026-11-01 21:26:33,525 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_amazon_1c1dcs.pt
+2026-11-01 21:26:34,449 - helper_functions - INFO - **** Initializing e_amazon_1c1dcs_rand
+2026-11-01 21:26:34,454 - helper_functions - INFO - **** Setting up the model e_amazon_1c1dcs_rand
+2026-11-01 21:26:34,732 - helper_functions - INFO - [e_amazon_1c1dcs_rand] Params: 36,925,952 | Trainable params: 36,925,952 |Size: 140.8613 MB
+2026-11-01 21:26:34,732 - helper_functions - INFO - **** Training the model e_amazon_1c1dcs_rand
+2026-11-01 21:32:44,213 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_amazon_1c1dcs_rand.pt
+2026-11-01 21:32:44,218 - helper_functions - INFO - **** Training e_amazon_1c2dcs
+2026-11-01 21:32:44,218 - helper_functions - INFO -   ** 2-Dominant stats:
+2026-11-01 21:32:44,218 - helper_functions - INFO -   ** Finding the dominant set:
+2026-11-02 19:37:21,983 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-11-02 19:37:22,070 - helper_functions - INFO -      Number of nodes: 22204
+2026-11-02 19:37:22,071 - helper_functions - INFO -      Ratio: 0.15393574686984374
+2026-11-02 19:37:22,071 - helper_functions - INFO -      Number of unique users: 6839
+2026-11-02 19:37:22,071 - helper_functions - INFO -      Number of unique items: 15365
+2026-11-02 19:37:22,071 - helper_functions - INFO -      Total dominant set edge: 1388739
+2026-11-02 19:37:22,071 - helper_functions - INFO -      Trainable edges: 1110991.2
+2026-11-02 19:37:22,362 - helper_functions - INFO -   **** Getting 1388739 dominant set edges
+2026-11-02 19:37:22,485 - helper_functions - INFO - **** Initializing e_amazon_1c2dcs
+2026-11-02 19:37:22,512 - helper_functions - INFO - **** Setting up the model e_amazon_1c2dcs
+2026-11-02 19:37:22,786 - helper_functions - INFO - [e_amazon_1c2dcs] Params: 36,925,952 | Trainable params: 36,925,952 |Size: 140.8613 MB
+2026-11-02 19:37:22,786 - helper_functions - INFO - **** Training the model e_amazon_1c2dcs
+2026-11-02 19:43:52,394 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_amazon_1c2dcs.pt
+2026-11-02 19:43:53,509 - helper_functions - INFO - **** Initializing e_amazon_1c2dcs_rand
+2026-11-02 19:43:53,515 - helper_functions - INFO - **** Setting up the model e_amazon_1c2dcs_rand
+2026-11-02 19:43:53,776 - helper_functions - INFO - [e_amazon_1c2dcs_rand] Params: 36,925,952 | Trainable params: 36,925,952 |Size: 140.8613 MB
+2026-11-02 19:43:53,776 - helper_functions - INFO - **** Training the model e_amazon_1c2dcs_rand
+2026-11-02 19:50:11,991 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_amazon_1c2dcs_rand.pt
+2026-11-02 19:50:11,998 - helper_functions - INFO - **** Training e_amazon_1c3dcs
+2026-11-02 19:50:11,998 - helper_functions - INFO -   ** 3-Dominant stats:
+2026-11-02 19:50:11,998 - helper_functions - INFO -   ** Finding the dominant set:
+2026-11-04 12:42:35,427 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-11-04 12:42:35,852 - helper_functions - INFO -      Number of nodes: 26010
+2026-11-04 12:42:35,852 - helper_functions - INFO -      Ratio: 0.1803219589301313
+2026-11-04 12:42:35,852 - helper_functions - INFO -      Number of unique users: 9137
+2026-11-04 12:42:35,853 - helper_functions - INFO -      Number of unique items: 16873
+2026-11-04 12:42:35,853 - helper_functions - INFO -      Total dominant set edge: 1646322
+2026-11-04 12:42:35,853 - helper_functions - INFO -      Trainable edges: 1317057.6
+2026-11-04 12:42:36,212 - helper_functions - INFO -   **** Getting 1646322 dominant set edges
+2026-11-04 12:42:36,631 - helper_functions - INFO - **** Initializing e_amazon_1c3dcs
+2026-11-04 12:42:36,659 - helper_functions - INFO - **** Setting up the model e_amazon_1c3dcs
+2026-11-04 12:42:36,783 - helper_functions - INFO - [e_amazon_1c3dcs] Params: 18,462,976 | Trainable params: 18,462,976 |Size: 70.4307 MB
+2026-11-04 12:42:36,783 - helper_functions - INFO - **** Training the model e_amazon_1c3dcs
+2026-11-04 12:48:53,413 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_amazon_1c3dcs.pt
+2026-11-04 12:48:55,414 - helper_functions - INFO - **** Initializing e_amazon_1c3dcs_rand
+2026-11-04 12:48:55,422 - helper_functions - INFO - **** Setting up the model e_amazon_1c3dcs_rand
+2026-11-04 12:48:55,646 - helper_functions - INFO - [e_amazon_1c3dcs_rand] Params: 36,925,952 | Trainable params: 36,925,952 |Size: 140.8613 MB
+2026-11-04 12:48:55,647 - helper_functions - INFO - **** Training the model e_amazon_1c3dcs_rand
+2026-11-04 12:55:49,000 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_amazon_1c3dcs_rand.pt
+2026-11-04 12:55:49,011 - helper_functions - INFO - Processing dataset: e_gowalla
+2026-11-04 12:55:49,249 - helper_functions - INFO - Users: 29858, Items: 40981
+2026-11-04 12:55:49,249 - helper_functions - INFO - Edge index: torch.Size([2, 1027370])
+2026-11-04 12:55:49,252 - helper_functions - INFO - **** Generating the graph:
+2026-11-04 12:55:52,209 - helper_functions - INFO - Number of unique users: 29858
+2026-11-04 12:55:52,230 - helper_functions - INFO - Number of unique items: 40981
+2026-11-04 12:55:52,230 - helper_functions - INFO - Number of nodes: 70839
+2026-11-04 12:55:52,265 - helper_functions - INFO - Number of edges: 1027370
+2026-11-04 12:55:53,046 - helper_functions - INFO - **** Initializing e_gowalla_full
+2026-11-04 12:55:53,051 - helper_functions - INFO - **** Setting up the model e_gowalla_full
+2026-11-04 12:55:53,160 - helper_functions - INFO - [e_gowalla_full] Params: 18,134,784 | Trainable params: 18,134,784 |Size: 69.1787 MB
+2026-11-04 12:55:53,160 - helper_functions - INFO - **** Training the model e_gowalla_full
+2026-11-04 12:59:35,445 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_gowalla_full.pt
+2026-11-04 12:59:35,454 - helper_functions - INFO - **** Training e_gowalla_1c1dcs
+2026-11-04 12:59:35,454 - helper_functions - INFO -   ** 1-Dominant stats:
+2026-11-04 12:59:35,454 - helper_functions - INFO -   ** Finding the dominant set:
+2026-11-04 19:00:09,868 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-11-04 19:00:09,940 - helper_functions - INFO -      Number of nodes: 10896
+2026-11-04 19:00:09,940 - helper_functions - INFO -      Ratio: 0.15381357726675984
+2026-11-04 19:00:09,940 - helper_functions - INFO -      Number of unique users: 2157
+2026-11-04 19:00:09,940 - helper_functions - INFO -      Number of unique items: 8739
+2026-11-04 19:00:09,940 - helper_functions - INFO -      Total dominant set edge: 450896
+2026-11-04 19:00:09,940 - helper_functions - INFO -      Trainable edges: 360716.80000000005
+2026-11-04 19:00:10,138 - helper_functions - INFO -   **** Getting 450896 dominant set edges
+2026-11-04 19:00:10,353 - helper_functions - INFO - **** Initializing e_gowalla_1c1dcs
+2026-11-04 19:00:10,378 - helper_functions - INFO - **** Setting up the model e_gowalla_1c1dcs
+2026-11-04 19:00:10,436 - helper_functions - INFO - [e_gowalla_1c1dcs] Params: 6,800,544 | Trainable params: 6,800,544 |Size: 25.9420 MB
+2026-11-04 19:00:10,436 - helper_functions - INFO - **** Training the model e_gowalla_1c1dcs
+2026-11-04 19:03:19,454 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_gowalla_1c1dcs.pt
+2026-11-04 19:03:20,096 - helper_functions - INFO - **** Initializing e_gowalla_1c1dcs_rand
+2026-11-04 19:03:20,099 - helper_functions - INFO - **** Setting up the model e_gowalla_1c1dcs_rand
+2026-11-04 19:03:20,208 - helper_functions - INFO - [e_gowalla_1c1dcs_rand] Params: 18,134,784 | Trainable params: 18,134,784 |Size: 69.1787 MB
+2026-11-04 19:03:20,208 - helper_functions - INFO - **** Training the model e_gowalla_1c1dcs_rand
+2026-11-04 19:06:45,581 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_gowalla_1c1dcs_rand.pt
+2026-11-04 19:06:45,595 - helper_functions - INFO - **** Training e_gowalla_1c2dcs
+2026-11-04 19:06:45,596 - helper_functions - INFO -   ** 2-Dominant stats:
+2026-11-04 19:06:45,596 - helper_functions - INFO -   ** Finding the dominant set:
+2026-11-05 00:39:05,959 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-11-05 00:39:06,016 - helper_functions - INFO -      Number of nodes: 13550
+2026-11-05 00:39:06,016 - helper_functions - INFO -      Ratio: 0.19127881534183147
+2026-11-05 00:39:06,016 - helper_functions - INFO -      Number of unique users: 3483
+2026-11-05 00:39:06,016 - helper_functions - INFO -      Number of unique items: 10067
+2026-11-05 00:39:06,016 - helper_functions - INFO -      Total dominant set edge: 582935
+2026-11-05 00:39:06,016 - helper_functions - INFO -      Trainable edges: 466348.0
+2026-11-05 00:39:06,209 - helper_functions - INFO -   **** Getting 582935 dominant set edges
+2026-11-05 00:39:06,369 - helper_functions - INFO - **** Initializing e_gowalla_1c2dcs
+2026-11-05 00:39:06,395 - helper_functions - INFO - **** Setting up the model e_gowalla_1c2dcs
+2026-11-05 00:39:06,438 - helper_functions - INFO - [e_gowalla_1c2dcs] Params: 6,800,544 | Trainable params: 6,800,544 |Size: 25.9420 MB
+2026-11-05 00:39:06,439 - helper_functions - INFO - **** Training the model e_gowalla_1c2dcs
+2026-11-05 00:42:20,989 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_gowalla_1c2dcs.pt
+2026-11-05 00:42:21,686 - helper_functions - INFO - **** Initializing e_gowalla_1c2dcs_rand
+2026-11-05 00:42:21,689 - helper_functions - INFO - **** Setting up the model e_gowalla_1c2dcs_rand
+2026-11-05 00:42:21,800 - helper_functions - INFO - [e_gowalla_1c2dcs_rand] Params: 18,134,784 | Trainable params: 18,134,784 |Size: 69.1787 MB
+2026-11-05 00:42:21,800 - helper_functions - INFO - **** Training the model e_gowalla_1c2dcs_rand
+2026-11-05 00:45:50,701 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_gowalla_1c2dcs_rand.pt
+2026-11-05 00:45:50,711 - helper_functions - INFO - **** Training e_gowalla_1c3dcs
+2026-11-05 00:45:50,711 - helper_functions - INFO -   ** 3-Dominant stats:
+2026-11-05 00:45:50,711 - helper_functions - INFO -   ** Finding the dominant set:
+2026-11-05 06:01:10,473 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-11-05 06:01:10,579 - helper_functions - INFO -      Number of nodes: 16568
+2026-11-05 06:01:10,579 - helper_functions - INFO -      Ratio: 0.23388246587331837
+2026-11-05 06:01:10,579 - helper_functions - INFO -      Number of unique users: 4930
+2026-11-05 06:01:10,579 - helper_functions - INFO -      Number of unique items: 11638
+2026-11-05 06:01:10,579 - helper_functions - INFO -      Total dominant set edge: 682633
+2026-11-05 06:01:10,579 - helper_functions - INFO -      Trainable edges: 546106.4
+2026-11-05 06:01:10,778 - helper_functions - INFO -   **** Getting 682633 dominant set edges
+2026-11-05 06:01:10,996 - helper_functions - INFO - **** Initializing e_gowalla_1c3dcs
+2026-11-05 06:01:11,020 - helper_functions - INFO - **** Setting up the model e_gowalla_1c3dcs
+2026-11-05 06:01:11,155 - helper_functions - INFO - [e_gowalla_1c3dcs] Params: 18,134,784 | Trainable params: 18,134,784 |Size: 69.1787 MB
+2026-11-05 06:01:11,155 - helper_functions - INFO - **** Training the model e_gowalla_1c3dcs
+2026-11-05 06:04:49,884 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_gowalla_1c3dcs.pt
+2026-11-05 06:04:50,889 - helper_functions - INFO - **** Initializing e_gowalla_1c3dcs_rand
+2026-11-05 06:04:50,897 - helper_functions - INFO - **** Setting up the model e_gowalla_1c3dcs_rand
+2026-11-05 06:04:51,065 - helper_functions - INFO - [e_gowalla_1c3dcs_rand] Params: 18,134,784 | Trainable params: 18,134,784 |Size: 69.1787 MB
+2026-11-05 06:04:51,065 - helper_functions - INFO - **** Training the model e_gowalla_1c3dcs_rand
+2026-11-05 06:08:27,043 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_gowalla_1c3dcs_rand.pt
+2026-11-05 06:08:27,052 - helper_functions - INFO - Processing dataset: e_yelp
+2026-11-05 06:08:27,525 - helper_functions - INFO - Users: 31668, Items: 38048
+2026-11-05 06:08:27,525 - helper_functions - INFO - Edge index: torch.Size([2, 1561406])
+2026-11-05 06:08:27,530 - helper_functions - INFO - **** Generating the graph:
+2026-11-05 06:08:31,422 - helper_functions - INFO - Number of unique users: 31668
+2026-11-05 06:08:31,473 - helper_functions - INFO - Number of unique items: 38048
+2026-11-05 06:08:31,473 - helper_functions - INFO - Number of nodes: 69716
+2026-11-05 06:08:31,519 - helper_functions - INFO - Number of edges: 1561406
+2026-11-05 06:08:32,461 - helper_functions - INFO - **** Initializing e_yelp_full
+2026-11-05 06:08:32,467 - helper_functions - INFO - **** Setting up the model e_yelp_full
+2026-11-05 06:08:32,521 - helper_functions - INFO - [e_yelp_full] Params: 8,923,648 | Trainable params: 8,923,648 |Size: 34.0410 MB
+2026-11-05 06:08:32,521 - helper_functions - INFO - **** Training the model e_yelp_full
+2026-11-05 06:12:01,984 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_yelp_full.pt
+2026-11-05 06:12:02,006 - helper_functions - INFO - **** Training e_yelp_1c1dcs
+2026-11-05 06:12:02,006 - helper_functions - INFO -   ** 1-Dominant stats:
+2026-11-05 06:12:02,006 - helper_functions - INFO -   ** Finding the dominant set:
+2026-11-05 08:39:34,567 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-11-05 08:39:34,655 - helper_functions - INFO -      Number of nodes: 2879
+2026-11-05 08:39:34,655 - helper_functions - INFO -      Ratio: 0.04129611566928682
+2026-11-05 08:39:34,655 - helper_functions - INFO -      Number of unique users: 1839
+2026-11-05 08:39:34,655 - helper_functions - INFO -      Number of unique items: 1040
+2026-11-05 08:39:34,655 - helper_functions - INFO -      Total dominant set edge: 519933
+2026-11-05 08:39:34,655 - helper_functions - INFO -      Trainable edges: 415946.4
+2026-11-05 08:39:34,880 - helper_functions - INFO -   **** Getting 519933 dominant set edges
+2026-11-05 08:39:35,006 - helper_functions - INFO - **** Initializing e_yelp_1c1dcs
+2026-11-05 08:39:35,030 - helper_functions - INFO - **** Setting up the model e_yelp_1c1dcs
+2026-11-05 08:39:35,113 - helper_functions - INFO - [e_yelp_1c1dcs] Params: 8,923,648 | Trainable params: 8,923,648 |Size: 34.0410 MB
+2026-11-05 08:39:35,113 - helper_functions - INFO - **** Training the model e_yelp_1c1dcs
+2026-11-05 08:42:13,923 - experiment_functions - INFO - Early stopping at epoch 3350. Best Metrics: (np.float64(0.03296184595601423), np.float64(0.007029177718832892), np.float64(0.018804655521372716))
+2026-11-05 08:42:13,940 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_yelp_1c1dcs.pt
+2026-11-05 08:42:14,519 - helper_functions - INFO - **** Initializing e_yelp_1c1dcs_rand
+2026-11-05 08:42:14,522 - helper_functions - INFO - **** Setting up the model e_yelp_1c1dcs_rand
+2026-11-05 08:42:14,598 - helper_functions - INFO - [e_yelp_1c1dcs_rand] Params: 8,923,648 | Trainable params: 8,923,648 |Size: 34.0410 MB
+2026-11-05 08:42:14,599 - helper_functions - INFO - **** Training the model e_yelp_1c1dcs_rand
+2026-11-05 08:44:54,007 - experiment_functions - INFO - Early stopping at epoch 3350. Best Metrics: (np.float64(0.034361218791093204), np.float64(0.007119173929518757), np.float64(0.019906540682897413))
+2026-11-05 08:44:54,024 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_yelp_1c1dcs_rand.pt
+2026-11-05 08:44:54,031 - helper_functions - INFO - **** Training e_yelp_1c2dcs
+2026-11-05 08:44:54,031 - helper_functions - INFO -   ** 2-Dominant stats:
+2026-11-05 08:44:54,031 - helper_functions - INFO -   ** Finding the dominant set:
+2026-11-05 11:20:34,460 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-11-05 11:20:34,552 - helper_functions - INFO -      Number of nodes: 4732
+2026-11-05 11:20:34,552 - helper_functions - INFO -      Ratio: 0.06787538011360376
+2026-11-05 11:20:34,552 - helper_functions - INFO -      Number of unique users: 2913
+2026-11-05 11:20:34,552 - helper_functions - INFO -      Number of unique items: 1819
+2026-11-05 11:20:34,552 - helper_functions - INFO -      Total dominant set edge: 709150
+2026-11-05 11:20:34,552 - helper_functions - INFO -      Trainable edges: 567320.0
+2026-11-05 11:20:34,798 - helper_functions - INFO -   **** Getting 709150 dominant set edges
+2026-11-05 11:20:34,975 - helper_functions - INFO - **** Initializing e_yelp_1c2dcs
+2026-11-05 11:20:35,002 - helper_functions - INFO - **** Setting up the model e_yelp_1c2dcs
+2026-11-05 11:20:35,042 - helper_functions - INFO - [e_yelp_1c2dcs] Params: 6,692,736 | Trainable params: 6,692,736 |Size: 25.5308 MB
+2026-11-05 11:20:35,042 - helper_functions - INFO - **** Training the model e_yelp_1c2dcs
+2026-11-05 11:23:32,095 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_yelp_1c2dcs.pt
+2026-11-05 11:23:32,823 - helper_functions - INFO - **** Initializing e_yelp_1c2dcs_rand
+2026-11-05 11:23:32,826 - helper_functions - INFO - **** Setting up the model e_yelp_1c2dcs_rand
+2026-11-05 11:23:32,918 - helper_functions - INFO - [e_yelp_1c2dcs_rand] Params: 8,923,648 | Trainable params: 8,923,648 |Size: 34.0410 MB
+2026-11-05 11:23:32,918 - helper_functions - INFO - **** Training the model e_yelp_1c2dcs_rand
+2026-11-05 11:26:37,061 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_yelp_1c2dcs_rand.pt
+2026-11-05 11:26:37,069 - helper_functions - INFO - **** Training e_yelp_1c3dcs
+2026-11-05 11:26:37,069 - helper_functions - INFO -   ** 3-Dominant stats:
+2026-11-05 11:26:37,069 - helper_functions - INFO -   ** Finding the dominant set:
+2026-11-05 13:36:03,290 - helper_functions - INFO -   ** Getting the trainable edges:
+2026-11-05 13:36:03,339 - helper_functions - INFO -      Number of nodes: 6865
+2026-11-05 13:36:03,339 - helper_functions - INFO -      Ratio: 0.09847093923919904
+2026-11-05 13:36:03,339 - helper_functions - INFO -      Number of unique users: 4334
+2026-11-05 13:36:03,339 - helper_functions - INFO -      Number of unique items: 2531
+2026-11-05 13:36:03,339 - helper_functions - INFO -      Total dominant set edge: 854700
+2026-11-05 13:36:03,339 - helper_functions - INFO -      Trainable edges: 683760.0
+2026-11-05 13:36:03,562 - helper_functions - INFO -   **** Getting 854700 dominant set edges
+2026-11-05 13:36:03,668 - helper_functions - INFO - **** Initializing e_yelp_1c3dcs
+2026-11-05 13:36:03,693 - helper_functions - INFO - **** Setting up the model e_yelp_1c3dcs
+2026-11-05 13:36:03,800 - helper_functions - INFO - [e_yelp_1c3dcs] Params: 17,847,296 | Trainable params: 17,847,296 |Size: 68.0820 MB
+2026-11-05 13:36:03,800 - helper_functions - INFO - **** Training the model e_yelp_1c3dcs
+2026-11-05 13:39:28,583 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_yelp_1c3dcs.pt
+2026-11-05 13:39:29,241 - helper_functions - INFO - **** Initializing e_yelp_1c3dcs_rand
+2026-11-05 13:39:29,245 - helper_functions - INFO - **** Setting up the model e_yelp_1c3dcs_rand
+2026-11-05 13:39:29,309 - helper_functions - INFO - [e_yelp_1c3dcs_rand] Params: 8,923,648 | Trainable params: 8,923,648 |Size: 34.0410 MB
+2026-11-05 13:39:29,309 - helper_functions - INFO - **** Training the model e_yelp_1c3dcs_rand
+2026-11-05 13:42:26,603 - experiment_functions - INFO - Early stopping at epoch 3850. Best Metrics: (np.float64(0.03466080010795465), np.float64(0.007340217254010358), np.float64(0.019781829333604603))
+2026-11-05 13:42:26,619 - helper_functions - INFO - Saved checkpoint: historic_results/all/saved_model_e_yelp_1c3dcs_rand.pt

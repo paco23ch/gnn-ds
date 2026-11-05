@@ -142,7 +142,7 @@ def train_and_save(train_ei, train_sparse_ei, current_exp_name):
     
     return return_value 
 
-for exp_name in ['e_100K']: #train_df['experiment_grp'].unique():
+for exp_name in train_df['experiment_grp'].unique():
     set_seed(42)
     
     logger.info(f"Processing dataset: {exp_name}")
