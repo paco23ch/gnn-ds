@@ -57,19 +57,9 @@ logging.basicConfig(
     ]
 )
 
-def append_or_create_parquet(file_path, new_rows):
-  new_rows_df = pd.DataFrame(new_rows)
-  if os.path.exists(file_path):
-    # Read existing parquet file
-    existing_df = pd.read_parquet(file_path)
-    # Combine old and new rows
-    combined_df = pd.concat([existing_df, new_rows_df], ignore_index=True)
-    # Save back to parquet
-    combined_df.to_parquet(file_path, engine="pyarrow", index=False)
-  else:
-    # Create the parquet file fresh
-    new_rows_df.to_parquet(file_path, engine="pyarrow", index=False)
 
+<<<<<<< HEAD
+=======
 # Helper function to train, calculate size, and save
 def train_and_save(train_ei, train_sparse_ei, current_exp_name):
     return_value = {}
@@ -142,9 +132,10 @@ def train_and_save(train_ei, train_sparse_ei, current_exp_name):
     
     return return_value 
 
+>>>>>>> 30bb339d6d2240709eb4d6faeed1ab4bf9bf7690
 for exp_name in train_df['experiment_grp'].unique():
     set_seed(42)
-    
+
     logger.info(f"Processing dataset: {exp_name}")
     user_mapping, movie_mapping, edge_index = load_data_generic(exp_name)
     logger.info('**** Generating the graph:')
