@@ -91,7 +91,14 @@ for exp_name in datasets:
             'inference_time_sec': infer_time
         })
 
-# Save final evaluation summary
-df_eval = pd.DataFrame(evaluation_results)
-df_eval.to_parquet("final_evaluation_metrics.parquet")
+        del model, checkpoint
+        import gc
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
+        # Save final evaluation summary
+        df_eval = pd.DataFrame(evaluation_results)
+        df_eval.to_parquet("final_evaluation_metrics.parquet")
+
 print("Evaluation complete. Results saved.")
