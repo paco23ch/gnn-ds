@@ -8,7 +8,7 @@ import glob
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(device)
-datasets = ['e_100K'] #, 'e_1M', 'e_gowalla', 'e_yelp', 'e_amazon']
+datasets = ['e_100K', 'e_1M', 'e_gowalla', 'e_yelp', 'e_amazon']
 evaluation_results = []
 
 for exp_name in datasets:
@@ -26,7 +26,7 @@ for exp_name in datasets:
     test_edge_index_no_offset = test_edge_index.clone().detach()
     test_edge_index_no_offset[1] = test_edge_index_no_offset[1] - len(user_mapping)
 
-      train_sparse_edge_index, val_sparse_edge_index, test_sparse_edge_index = (
+    train_sparse_edge_index, val_sparse_edge_index, test_sparse_edge_index = (
             get_initial_sparse_edge_indexes(
                 edge_index,
                 train_indices,
@@ -41,10 +41,10 @@ for exp_name in datasets:
 
     # List of all model variants you saved for this dataset
     # (Dynamically match your saved checkpoint files)
-    checkpoint_files = glob.glob(f"historic_results/all/saved_model_{exp_name}_*.pt") + glob.glob(f"historic_results/all/saved_model_{exp_name}_full.pt")
+    checkpoint_files = glob.glob(f"historic_results/all/saved_model_{exp_name}_*.pt") # + glob.glob(f"historic_results/all/saved_model_{exp_name}_full.pt")
 
     for ckpt_path in checkpoint_files:
-        model_name = ckpt_path.replace("saved_model_", "").replace(".pt", "")
+        model_name = ckpt_path.replace("historic_results/all/saved_model_", "").replace(".pt", "")
         print(f"Evaluating model: {model_name}")
 
         checkpoint = torch.load(ckpt_path, map_location=device)
@@ -76,6 +76,8 @@ for exp_name in datasets:
 
         evaluation_results.append({
             'experiment': model_name,
+            'num_users': checkpoint['num_users'],
+            'num_items': checkpoint['num_movies'],
             'total_edges': len(edge_index[0]),
             'total_train_edges': len(train_indices), 
             'total_val_edges': len(val_indices), 
