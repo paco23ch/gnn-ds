@@ -44,7 +44,7 @@ for exp_name in datasets:
     checkpoint_files = glob.glob(f"historic_results/all/saved_model_{exp_name}_*.pt") # + glob.glob(f"historic_results/all/saved_model_{exp_name}_full.pt")
 
     for ckpt_path in checkpoint_files:
-        model_name = ckpt_path.replace("historic_results/all/saved_model_", "").replace(".pt", "")
+        model_name = ckpt_path.replace("historic_results/all\\saved_model_", "").replace(".pt", "")
         print(f"Evaluating model: {model_name}")
 
         checkpoint = torch.load(ckpt_path, map_location=device)
