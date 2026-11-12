@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="final_results_files/libs/clipboard/clipboard.min.js"></script>
+<script src="final_results_files/libs/quarto-html/tabby.min.js"></script>
+<script src="final_results_files/libs/quarto-html/popper.min.js"></script>
+<script src="final_results_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="final_results_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="final_results_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="final_results_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <title>Dominating Graph Neural Networks for Efficient Recommender Systems</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="final_results_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="final_results_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="final_results_files/libs/revealjs/dist/theme/quarto-ae2a61028dc44d2266f9f15e09d1b9a8.css">
+  <link href="final_results_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="final_results_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="final_results_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="final_results_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="final_results_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="final_results_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+  <link rel="stylesheet" href="https://tikzjax.com/v1/fonts.css">
+  <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Dominating Graph Neural Networks for Efficient Recommender Systems</h1>
+  <p class="subtitle">Final Experiment Results</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section>
+<section id="objective" class="title-slide slide level1 center">
+<h1>Objective</h1>
+<ul>
+<li>Demonstrate that using a Dominant Set from a graph, we can still train and obtaing comparable results to a using the full data set or even a random dataset GNN</li>
+</ul>
+</section>
+<section id="introduction" class="slide level2">
+<h2>Introduction</h2>
+<ul>
+<li>Continuation from <em>“Sistema de recomendación basado en redes neuronales para grafos”</em>, Martinez, Alan (CIC)
+<ul>
+<li>Based on <em>“LightGCN: Simplifying and Powering Graph Convolution Network for Recommendation”</em>, Xiangnan, He, et. Al</li>
+</ul></li>
+<li>Experimentation with the impact of using Dominant Sets versus Random Sets to train a Graph NN</li>
+<li>MovieLens 100K and 1M input sets</li>
+<li>Uses LightGCN and Bayesian Personalized Ranking loss</li>
+<li>Original work ran 7 experiments
+<ul>
+<li>1 Full set</li>
+<li>3 Dominant sets (1,2 and 3 dominance)</li>
+<li>3 Random equivalent</li>
+</ul></li>
+<li>Proved effectiveness on reduced sets</li>
+</ul>
+</section>
+<section id="first-runs" class="slide level2 smaller">
+<h2>First runs</h2>
+<h3 id="k-dataset">100K Dataset</h3>
+<table class="caption-top">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Run</th>
+<th>Best</th>
+<th>Trials</th>
+<th>Epochs</th>
+<th>Eval<br>every</th>
+<th>Filter</th>
+<th>Train/test<br>split</th>
+<th>Epoch<br>metrics</th>
+<th>Stoppage</th>
+<th>Optuna<br>reporting</th>
+<th>Objective</th>
+<th>Prunning</th>
+<th>MOO</th>
+<th>Dominant set<br>calculation</th>
+<th>Models</th>
+<th>Results</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>8</td>
+<td>*</td>
+<td>300</td>
+<td>4,000</td>
+<td>50</td>
+<td><code>eval &gt; 0</code></td>
+<td>Structural</td>
+<td>Yes</td>
+<td>Early</td>
+<td>Best</td>
+<td>NDCG</td>
+<td>No</td>
+<td>Yes</td>
+<td>Loose/Strict</td>
+<td>All models</td>
+<td>Added the MOO and focused on NDCG</td>
+</tr>
+</tbody>
+</table>
+<h3 id="m-dataset">1M Dataset</h3>
+<table class="caption-top">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Run</th>
+<th>Best</th>
+<th>Trials</th>
+<th>Epochs</th>
+<th>Eval every</th>
+<th>Filter</th>
+<th>Train/test<br>split</th>
+<th>Epoch<br>metrics</th>
+<th>Stoppage</th>
+<th>Optuna<br>objective</th>
+<th>Objective</th>
+<th>Prunning</th>
+<th>MOO</th>
+<th>Dominant set<br>calculation</th>
+<th>Models</th>
+<th>Results</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>*</td>
+<td>300</td>
+<td>4,000</td>
+<td>50</td>
+<td><code>eval &gt; 0</code></td>
+<td>Structural</td>
+<td>Yes</td>
+<td>Early</td>
+<td>Best</td>
+<td>NDCG</td>
+<td>No</td>
+<td>Yes</td>
+<td>Loose/Strict</td>
+<td>All models</td>
+<td>Added the MOO and focused on NDCG</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dominating-sets-in-gnns" class="slide level2">
+<h2>Dominating Sets in GNNs</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Given a graph <span class="math inline">\(G = (V,E)\)</span>, a dominant set <span class="math inline">\(D \subseteq V\)</span> is that in which every node of V is adjecent to at last one vertex in <span class="math inline">\(D\)</span>.</li>
+<li>In other words, the nodes of the dominant set cover the rest of the graph nodes through their connections.</li>
+<li>The concept generalizes to the m-dominant set, where multi-coverage is demanded:
+<ul>
+<li><span class="math inline">\(D\)</span> is <span class="math inline">\(m-\)</span>dominant if every node <span class="math inline">\(V \setminus D\)</span> is adjecent to at least <span class="math inline">\(m\)</span> distinct nodes in <span class="math inline">\(D\)</span>.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<script type="text/tikz">
+\begin{document}
+\begin{tikzpicture}[
+    % --- GENERAL STYLES ---
+    % Increased minimum size slightly to nicely fit the letter labels
+    user_node/.style = {circle, fill=cyan!80!blue, minimum size=3.5mm, inner sep=0pt, thick, draw=black!90},
+    item_node/.style = {circle, fill=orange!90!red, minimum size=3.5mm, inner sep=0pt, thick, draw=black!90},
+    grey_node/.style = {circle, fill=gray!30, minimum size=3.5mm, inner sep=0pt, thin, draw=gray!80},
+    %
+    edge_dir/.style = {->, >=Stealth, black!60, thin},
+    edge_undir/.style = {black!40, thin},
+    edge_grey/.style = {gray!20, thin},
+    edge_ds/.style = {black!80, thick},
+    %
+    msg_arrow/.style = {->, >=Stealth, purple, thick, shorten >=2pt, shorten <=2pt},
+    embedding_halo/.style = {circle, draw=purple, thick, densely dashed, minimum size=6.5mm, inner sep=0pt},
+    %
+    % --- TREE STYLES for Message Passing (Col 4) ---
+    root_node/.style={user_node, draw=cyan, fill=cyan!15, text=black, font=\tiny\bfseries},
+    u_tree_node/.style={user_node, draw=cyan!80, fill=cyan!8, text=black, font=\tiny\bfseries},
+    i_tree_node/.style={item_node, draw=orange!90, fill=orange!8, text=black, font=\tiny\bfseries},
+    faded_node/.style={circle, minimum size=3.5mm, inner sep=0pt, draw=gray!40},
+    %
+    agg_arrow/.style={->, >=Stealth, purple!80, line width=1.5pt},
+    layer_line/.style={draw, thin, densely dashed, purple!60},
+    %
+    label_font/.style = {font=\sffamily\small\bfseries, align=center},
+    math_font/.style = {font=\sffamily\scriptsize, align=center},
+    scale=3, transform shape
+]
+
+% ==============================================================================
+% MACRO: Draw the 14-node layout (Compressed topology with DS updates)
+% Arguments: #1 determines the visualization mode (full, ds, full_msg, ds_msg)
+% ==============================================================================
+\newcommand{\drawGraph}[1]{
+    % Static Coordinates
+    \coordinate (U1) at (0, 0);          \coordinate (I1) at (0.6, 0.9);
+    \coordinate (U2) at (-0.9, 0.6);     \coordinate (I2) at (0.15, 1.65);
+    \coordinate (U3) at (1.1, 0.2);      \coordinate (I3) at (-1.1, -0.3);
+    \coordinate (U4) at (-0.45, -0.9);   \coordinate (I4) at (0.7, -0.75);
+    \coordinate (U5) at (-1.5, 0.15);    \coordinate (I5) at (1.65, -0.6);
+    \coordinate (U6) at (0.9, -1.5);     \coordinate (I6) at (-0.9, -1.65);
+    \coordinate (U7) at (1.8, 0.9);      \coordinate (I7) at (-1.65, 1.35);
+
+    % Parse modes for node styles
+    \ifnum\pdfstrcmp{#1}{full}=0 \def\uStyle{user_node} \def\iStyle{item_node} \def\eStyle{edge_undir} \def\dsEStyle{edge_undir} \fi
+    \ifnum\pdfstrcmp{#1}{full_msg}=0 \def\uStyle{user_node} \def\iStyle{item_node} \def\eStyle{edge_undir} \def\dsEStyle{edge_undir} \fi
+    \ifnum\pdfstrcmp{#1}{ds}=0 \def\uStyle{grey_node} \def\iStyle{grey_node} \def\eStyle{edge_grey} \def\dsEStyle{edge_ds} \fi
+    \ifnum\pdfstrcmp{#1}{ds_msg}=0 \def\uStyle{grey_node} \def\iStyle{grey_node} \def\eStyle{edge_grey} \def\dsEStyle{edge_ds} \fi
+
+    % Draw Non-DS Edges (thin)
+    % Removed U1/I4 and U4/I4 from here as I4 is now DS
+    \foreach \u/\i in {U2/I2, U3/I1, U3/I5, U4/I6, U5/I3, U5/I7, U6/I4, U6/I5, U7/I1, U7/I5, U2/I7} {
+        \draw[\eStyle] (\u) -- (\i);
+    }
+    
+    % Draw Dominating Set Edges (Internal connections thick)
+    % Added U1/I4 and U4/I4 since I4 (Node D) is now DS
+    \foreach \u/\i in {U1/I1, U1/I3, U1/I4, U4/I3, U4/I4, U4/I5, U2/I3} {
+        \draw[\dsEStyle] (\u) -- (\i);
+    }
+
+    % Draw Regular Nodes
+    \foreach \n in {U3, U5, U6, U7} { \node[\uStyle] (\n_node) at (\n) {}; }
+    \foreach \n in {I2, I6, I7} { \node[\iStyle] (\n_node) at (\n) {}; }
+    
+    % Corrected DS Node logic: U1, U2, U4, I1, I3, I4, I5 are colored in DS modes
+    \ifnum\pdfstrcmp{#1}{ds}=0 \def\dsU{user_node} \def\dsI{item_node} \else 
+    \ifnum\pdfstrcmp{#1}{ds_msg}=0 \def\dsU{user_node} \def\dsI{item_node} \else 
+    \def\dsU{user_node} \def\dsI{item_node} \fi\fi
+    
+    % Dominating Set Nodes (Added I4)
+    \foreach \n in {U1, U2, U4} { \node[\dsU] (\n_node) at (\n) {}; }
+    \foreach \n in {I1, I3, I4, I5} { \node[\dsI] (\n_node) at (\n) {}; }
+}
+
+% ==============================================================================
+% MACRO: Annotate labels A-F in Column 2 & 3
+% Trace: A(U1), B(I1), C(I3), D(I4), E(U5), F(I7)
+% Forced text to black for universal visibility across all node colors
+% ==============================================================================
+\newcommand{\annotateGraph}{
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (U1) {A};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (I1) {B};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (I3) {C};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (I4) {D};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (U5) {E};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (I7) {F};
+}
+
+% ==============================================================================
+% LAYOUT PARAMETERS (Compact 1x4 horizontal grid)
+% ==============================================================================
+\def\colOne{0}
+\def\colTwo{4}   
+\def\colThree{8}
+\def\colFour{11.5}
+\def\rowOne{0}
+\def\rowTwo{-5.5} 
+
+% ==============================================================================
+% ROW 1: STANDARD GNN (FULL GRAPH)
+% ==============================================================================
+
+% --- R1C1: Directed Bipartite Graph ---
+\begin{scope}[xshift=\colOne cm, yshift=\rowOne cm]
+    \node[label_font] at (0.75, 2.5) {Bipartite Graph};
+    \foreach \i in {1,...,7} {
+        \node[user_node] (B_U\i) at (0, 1.8 - \i*0.5) {};
+        \node[item_node] (B_I\i) at (1.5, 1.8 - \i*0.5) {};
+    }
+    % Explicitly label nodes A-F in the bipartite view
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (B_U1) {A};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (B_I1) {B};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (B_I3) {C};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (B_I4) {D};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (B_U5) {E};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (B_I7) {F};
+    
+    \foreach \u/\i in {1/1, 1/4, 2/2, 2/3, 3/1, 3/5, 4/3, 4/6, 4/4, 5/3, 5/7, 6/4, 6/5, 7/1, 7/5} {
+        \draw[edge_dir] (B_U\u) -- (B_I\i);
+    }
+\end{scope}
+
+
+% ==============================================================================
+% ROW 2: DS-REDUCED GNN
+% ==============================================================================
+
+% --- R2C2: DS Highlighted & Labels (Fixed DS for U2 & I4) ---
+\begin{scope}[xshift=\colTwo cm, yshift=\rowOne cm]
+    \node[label_font] at (0, 2.5) {Connected\\Dominating Set};
+    \drawGraph{ds}
+    \annotateGraph
+\end{scope}
+
+
+\end{tikzpicture}
+\end{document}
+</script>
+</div></div>
+</section>
+<section id="topological-reduction-via-dominant-sets" class="slide level2">
+<h2>Topological reduction via Dominant Sets</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>While stochastic sampling techniques can:
+<ul>
+<li>discard critical topological information,</li>
+<li>disrupt the structural integrity of the bipartite graph.</li>
+</ul></li>
+<li>Deterministic topological reduction with k-connected,m-dominating sets (kmCDS), in which:
+<ul>
+<li>every node not in the set is adjacent to at least m nodes within it</li>
+<li>The sub-graph induced by the set remains k-connected</li>
+</ul></li>
+<li>kmCDS are highly representative, reduced subgraph:
+<ul>
+<li>Global connectivity and essential structural relationships of the original network are explicitly preserved.</li>
+<li>Accelerated training without degrading the model’s representational capacity or recommendation quality.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<script type="text/tikz">
+\begin{document}
+\begin{tikzpicture}[
+    % --- GENERAL STYLES ---
+    % Increased minimum size slightly to nicely fit the letter labels
+    user_node/.style = {circle, fill=cyan!80!blue, minimum size=3.5mm, inner sep=0pt, thick, draw=black!90},
+    item_node/.style = {circle, fill=orange!90!red, minimum size=3.5mm, inner sep=0pt, thick, draw=black!90},
+    grey_node/.style = {circle, fill=gray!30, minimum size=3.5mm, inner sep=0pt, thin, draw=gray!80},
+    %
+    edge_dir/.style = {->, >=Stealth, black!60, thin},
+    edge_undir/.style = {black!40, thin},
+    edge_grey/.style = {gray!20, thin},
+    edge_ds/.style = {black!80, thick},
+    %
+    msg_arrow/.style = {->, >=Stealth, purple, thick, shorten >=2pt, shorten <=2pt},
+    embedding_halo/.style = {circle, draw=purple, thick, densely dashed, minimum size=6.5mm, inner sep=0pt},
+    %
+    % --- TREE STYLES for Message Passing (Col 4) ---
+    root_node/.style={user_node, draw=cyan, fill=cyan!15, text=black, font=\tiny\bfseries},
+    u_tree_node/.style={user_node, draw=cyan!80, fill=cyan!8, text=black, font=\tiny\bfseries},
+    i_tree_node/.style={item_node, draw=orange!90, fill=orange!8, text=black, font=\tiny\bfseries},
+    faded_node/.style={circle, minimum size=3.5mm, inner sep=0pt, draw=gray!40},
+    %
+    agg_arrow/.style={->, >=Stealth, purple!80, line width=1.5pt},
+    layer_line/.style={draw, thin, densely dashed, purple!60},
+    %
+    label_font/.style = {font=\sffamily\small\bfseries, align=center},
+    math_font/.style = {font=\sffamily\scriptsize, align=center},
+    scale=1.8, transform shape
+]
+
+% ==============================================================================
+% MACRO: Draw the 14-node layout (Compressed topology with DS updates)
+% Arguments: #1 determines the visualization mode (full, ds, full_msg, ds_msg)
+% ==============================================================================
+\newcommand{\drawGraph}[1]{
+    % Static Coordinates
+    \coordinate (U1) at (0, 0);          \coordinate (I1) at (0.6, 0.9);
+    \coordinate (U2) at (-0.9, 0.6);     \coordinate (I2) at (0.15, 1.65);
+    \coordinate (U3) at (1.1, 0.2);      \coordinate (I3) at (-1.1, -0.3);
+    \coordinate (U4) at (-0.45, -0.9);   \coordinate (I4) at (0.7, -0.75);
+    \coordinate (U5) at (-1.5, 0.15);    \coordinate (I5) at (1.65, -0.6);
+    \coordinate (U6) at (0.9, -1.5);     \coordinate (I6) at (-0.9, -1.65);
+    \coordinate (U7) at (1.8, 0.9);      \coordinate (I7) at (-1.65, 1.35);
+
+    % Parse modes for node styles
+    \ifnum\pdfstrcmp{#1}{full}=0 \def\uStyle{user_node} \def\iStyle{item_node} \def\eStyle{edge_undir} \def\dsEStyle{edge_undir} \fi
+    \ifnum\pdfstrcmp{#1}{full_msg}=0 \def\uStyle{user_node} \def\iStyle{item_node} \def\eStyle{edge_undir} \def\dsEStyle{edge_undir} \fi
+    \ifnum\pdfstrcmp{#1}{ds}=0 \def\uStyle{grey_node} \def\iStyle{grey_node} \def\eStyle{edge_grey} \def\dsEStyle{edge_ds} \fi
+    \ifnum\pdfstrcmp{#1}{ds_msg}=0 \def\uStyle{grey_node} \def\iStyle{grey_node} \def\eStyle{edge_grey} \def\dsEStyle{edge_ds} \fi
+
+    % Draw Non-DS Edges (thin)
+    % Removed U1/I4 and U4/I4 from here as I4 is now DS
+    \foreach \u/\i in {U2/I2, U3/I1, U3/I5, U4/I6, U5/I3, U5/I7, U6/I4, U6/I5, U7/I1, U7/I5, U2/I7} {
+        \draw[\eStyle] (\u) -- (\i);
+    }
+    
+    % Draw Dominating Set Edges (Internal connections thick)
+    % Added U1/I4 and U4/I4 since I4 (Node D) is now DS
+    \foreach \u/\i in {U1/I1, U1/I3, U1/I4, U4/I3, U4/I4, U4/I5, U2/I3} {
+        \draw[\dsEStyle] (\u) -- (\i);
+    }
+
+    % Draw Regular Nodes
+    \foreach \n in {U3, U5, U6, U7} { \node[\uStyle] (\n_node) at (\n) {}; }
+    \foreach \n in {I2, I6, I7} { \node[\iStyle] (\n_node) at (\n) {}; }
+    
+    % Corrected DS Node logic: U1, U2, U4, I1, I3, I4, I5 are colored in DS modes
+    \ifnum\pdfstrcmp{#1}{ds}=0 \def\dsU{user_node} \def\dsI{item_node} \else 
+    \ifnum\pdfstrcmp{#1}{ds_msg}=0 \def\dsU{user_node} \def\dsI{item_node} \else 
+    \def\dsU{user_node} \def\dsI{item_node} \fi\fi
+    
+    % Dominating Set Nodes (Added I4)
+    \foreach \n in {U1, U2, U4} { \node[\dsU] (\n_node) at (\n) {}; }
+    \foreach \n in {I1, I3, I4, I5} { \node[\dsI] (\n_node) at (\n) {}; }
+}
+
+% ==============================================================================
+% MACRO: Annotate labels A-F in Column 2 & 3
+% Trace: A(U1), B(I1), C(I3), D(I4), E(U5), F(I7)
+% Forced text to black for universal visibility across all node colors
+% ==============================================================================
+\newcommand{\annotateGraph}{
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (U1) {A};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (I1) {B};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (I3) {C};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (I4) {D};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (U5) {E};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (I7) {F};
+}
+
+% ==============================================================================
+% LAYOUT PARAMETERS (Compact 1x4 horizontal grid)
+% ==============================================================================
+\def\colOne{0}
+\def\colTwo{4}   
+\def\colThree{8}
+\def\colFour{11.5}
+\def\rowOne{0}
+\def\rowTwo{-5.5} 
+
+% ==============================================================================
+% ROW 1: STANDARD GNN (FULL GRAPH)
+% ==============================================================================
+
+% --- R1C1: Directed Bipartite Graph ---
+\begin{scope}[xshift=\colOne cm, yshift=\rowOne cm]
+    \node[label_font] at (0.75, 2.5) {Bipartite Graph};
+    \foreach \i in {1,...,7} {
+        \node[user_node] (B_U\i) at (0, 1.8 - \i*0.5) {};
+        \node[item_node] (B_I\i) at (1.5, 1.8 - \i*0.5) {};
+    }
+    % Explicitly label nodes A-F in the bipartite view
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (B_U1) {A};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (B_I1) {B};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (B_I3) {C};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (B_I4) {D};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (B_U5) {E};
+    \node[anchor=center, font=\tiny\bfseries, text=black] at (B_I7) {F};
+    
+    \foreach \u/\i in {1/1, 1/4, 2/2, 2/3, 3/1, 3/5, 4/3, 4/6, 4/4, 5/3, 5/7, 6/4, 6/5, 7/1, 7/5} {
+        \draw[edge_dir] (B_U\u) -- (B_I\i);
+    }
+\end{scope}
+
+% --- R1C2: Random Layout Full Graph & Labels ---
+\begin{scope}[xshift=\colTwo cm, yshift=\rowOne cm]
+    \node[label_font] at (0, 2.5) {Full Graph};
+    \drawGraph{full}
+    \annotateGraph
+\end{scope}
+
+% --- R1C3: MSG Passing Full Graph & Labels ---
+\begin{scope}[xshift=\colThree cm, yshift=\rowOne cm]
+    \node[label_font] at (0, 2.5) {Message passing\\in full graph};
+    \drawGraph{full_msg}
+    \annotateGraph
+    
+    % Trace deep traversal path
+    \path[draw, msg_arrow, bend left=15] (I7_node) to (U5_node); % F -> E
+    \path[draw, msg_arrow, bend left=15] (U5_node) to (I3_node); % E -> C
+    \path[draw, msg_arrow, bend left=15] (I3_node) to (U1_node); % C -> A
+    \path[draw, msg_arrow, bend right=15] (I1_node) to (U1_node); % B -> A
+    \path[draw, msg_arrow, bend left=15] (I4_node) to (U1_node); % D -> A
+    \node[embedding_halo] at (U1) {};
+\end{scope}
+
+% --- R1C4: 4-Hop Deep MSG Passing Tree (Root A) ---
+\begin{scope}[xshift=\colFour cm, yshift=\rowOne cm, node distance=10mm and 8mm]
+    \node[label_font] at (0, 2.5) {Deeper GNNs\\for full graph};
+
+    % Tree structure, top-down
+    \node[root_node] (A_tree) at (0, 1.5) {A};
+    
+    % Level 1 Neighbors of A: B, C, D
+    \node[i_tree_node] (C_tree) at (-0.8, 0.7) {C};
+    \node[i_tree_node] (B_tree) at (0, 0.7) {B};
+    \node[i_tree_node] (D_tree) at (0.8, 0.7) {D};
+    
+    % Level 2 Deep path branch (via C): E
+    \node[u_tree_node] (E_tree) at (-0.8, -0.1) {E};
+    \node[faded_node, thin, fill=gray!5] (U2_f) at (-0.3, -0.1) {};
+    \node[faded_node, thin, fill=gray!5] (U4_f) at (0, -0.1) {};
+    
+    % Level 3 Deep path branch (via E): F
+    \node[i_tree_node] (F_tree) at (-0.8, -0.9) {F};
+    
+    % Level 4 Deep path branch (via F): Show trace to deeper nodes example
+    \node[u_tree_node, draw=cyan!60, fill=cyan!5] (G_f_deep) at (-1.3, -1.7) {...};
+    \node[i_tree_node, draw=orange!60, fill=orange!5] (H_f_deep) at (-0.3, -1.7) {...};
+
+    % Draw Tree Edges
+    \draw[-] (A_tree) -- (B_tree);
+    \draw[-] (A_tree) -- (C_tree);
+    \draw[-] (A_tree) -- (D_tree);
+    \draw[-] (C_tree) -- (E_tree);
+    \draw[densely dashed, thin, gray!40] (C_tree) -- (U2_f);
+    \draw[-] (E_tree) -- (F_tree);
+    \draw[-] (F_tree) -- (G_f_deep);
+    \draw[-] (F_tree) -- (H_f_deep);
+    
+    % Arrows showing aggregation FLOW (Leaves to Root)
+    \draw[agg_arrow] (G_f_deep) -- (F_tree);
+    \draw[agg_arrow] (F_tree) -- (E_tree);
+    \draw[agg_arrow] (E_tree) -- (C_tree);
+    \draw[agg_arrow] (C_tree) -- (A_tree);
+    \draw[agg_arrow] (B_tree) -- (A_tree);
+    \draw[agg_arrow] (D_tree) -- (A_tree);
+    
+    % Annotate GNN Layers utilization
+    \draw[layer_line] (-1.5, -1.3) -- (1.5, -1.3) node[right, math_font, purple] {3 Layers};
+    \draw[->, purple, thin] (1.3, -1.3) -- (1.3, 1.5) node[midway, right, math_font] {Depth};
+\end{scope}
+
+% ==============================================================================
+% ROW 2: DS-REDUCED GNN
+% ==============================================================================
+
+% --- R2C2: DS Highlighted & Labels (Fixed DS for U2 & I4) ---
+\begin{scope}[xshift=\colTwo cm, yshift=\rowTwo cm]
+    \node[label_font] at (0, 2.5) {Connected\\Dominating Set};
+    \drawGraph{ds}
+    \annotateGraph
+\end{scope}
+
+% --- R2C3: DS MSG Passing (Labels & MSG) ---
+\begin{scope}[xshift=\colThree cm, yshift=\rowTwo cm]
+    \node[label_font] at (0, 2.5) {Message passing\\in connected\\dominating set};
+    \drawGraph{ds_msg}
+    \annotateGraph
+    
+    % DS trace path: A restricted to Dominating Set neighbors (B, C, D)
+    \path[draw, msg_arrow, bend left=15] (I1_node) to (U1_node); % B -> A
+    \path[draw, msg_arrow, bend right=15] (I3_node) to (U1_node); % C -> A
+    \path[draw, msg_arrow, bend left=15] (I4_node) to (U1_node); % D -> A (Now solid msg, as D is DS)
+    
+    % Trace around new U2 node logic
+    \path[draw, msg_arrow, gray, thin] (I3_node) to (U2_node); 
+    \path[draw, msg_arrow, gray, thin] (I7_node) to (U2_node);
+    \node[embedding_halo] at (U1) {};
+\end{scope}
+
+% --- R2C4: Shallow MSG Passing Tree (Optimized DS) ---
+\begin{scope}[xshift=\colFour cm, yshift=\rowTwo cm, node distance=10mm and 8mm]
+    \node[label_font] at (0, 2.5) {Shallower GNNs\\for dominating sets};
+
+    % Shallow structure: A restricted to Dominating neighbors B, C, D
+    \node[root_node] (A_ds_tree) at (0, 1.5) {A};
+    
+    % Dominating Set Level 1 children (D is now included)
+    \node[i_tree_node] (C_ds_tree) at (-0.8, 0.7) {C};
+    \node[i_tree_node] (B_ds_tree) at (0, 0.7) {B};
+    \node[i_tree_node] (D_ds_tree) at (0.8, 0.7) {D};
+
+    % Draw Tree Edges (All solid, as all are in DS)
+    \draw[-] (A_ds_tree) -- (B_ds_tree);
+    \draw[-] (A_ds_tree) -- (C_ds_tree);
+    \draw[-] (A_ds_tree) -- (D_ds_tree);
+    
+    % Information aggregation (DS only)
+    \draw[agg_arrow] (B_ds_tree) -- (A_ds_tree);
+    \draw[agg_arrow] (C_ds_tree) -- (A_ds_tree);
+    \draw[agg_arrow] (D_ds_tree) -- (A_ds_tree);
+    
+    % Annotate GNN Layers utilization
+    \draw[layer_line] (-1.0, 0.3) -- (1.0, 0.3) node[right, math_font, purple] {1 Layer};
+    \draw[->, purple, thin] (0.8, 0.3) -- (0.8, 1.5) node[midway, right, math_font] {Depth};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+</script>
+</div></div>
+</section>
+<section id="metrics" class="slide level2">
+<h2>Metrics</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Recall@20</strong>:
+<ul>
+<li>Quantifies the model’s ability to retrieve relevant items by measuring the fraction of ground-truth positive interactions in the top-20 recommendations</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+Recall &amp;= \frac{TP}{TP + FP}
+\end{aligned}
+\]</span></p>
+<ul>
+<li><strong>Precision@20</strong>:
+<ul>
+<li>Assesses the accuracy of recommendations by computing the fraction of the top-20 recommendations that are actually relevant to the user, serving as a proxy for user trust. <span class="math display">\[
+\begin{aligned}
+Precision &amp;= \frac{TP}{TP + FN}
+\end{aligned}
+\]</span></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><strong>nDCG@20 (Normalized Discounted Cumulative Gain)</strong>:
+<ul>
+<li>Evaluates the quality of the structural ranking.</li>
+<li>Unlike Recall and Precision, nDCG applies a logarithmic discount factor to penalize relevant items that appear lower in the recommendation list.</li>
+<li>This closely models real-world user behavior, in which items at the very top of the list carry a disproportionately higher value.</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+\text{DCG}_p &amp;= \sum_{i=1}^{p} \frac{2^{rel_i} - 1}{\log_2(i + 1)} \\
+\text{IDCG}_p &amp;= \sum_{i=1}^{|REL_p|} \frac{2^{rel_i} - 1}{\log_2(i + 1)} \\
+\text{nDCG}_p &amp;= \frac{\text{DCG}_p}{\text{IDCG}_p}
+\end{aligned}
+\]</span></p>
+</div></div>
+</section>
+<section id="datasets" class="slide level2">
+<h2>Datasets</h2>
+<div id="8c3acfb7" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<style type="text/css">
+#T_16b54_row0_col0, #T_16b54_row0_col1, #T_16b54_row0_col2, #T_16b54_row0_col3, #T_16b54_row0_col4, #T_16b54_row1_col0, #T_16b54_row1_col1, #T_16b54_row1_col2, #T_16b54_row1_col3, #T_16b54_row1_col4, #T_16b54_row2_col0, #T_16b54_row2_col1, #T_16b54_row2_col2, #T_16b54_row2_col3, #T_16b54_row2_col4, #T_16b54_row3_col0, #T_16b54_row3_col1, #T_16b54_row3_col2, #T_16b54_row3_col3, #T_16b54_row3_col4, #T_16b54_row4_col0, #T_16b54_row4_col1, #T_16b54_row4_col2, #T_16b54_row4_col3, #T_16b54_row4_col4, #T_16b54_row5_col0, #T_16b54_row5_col1, #T_16b54_row5_col2, #T_16b54_row5_col3, #T_16b54_row5_col4, #T_16b54_row6_col0, #T_16b54_row6_col1, #T_16b54_row6_col2, #T_16b54_row6_col3, #T_16b54_row6_col4, #T_16b54_row7_col0, #T_16b54_row7_col1, #T_16b54_row7_col2, #T_16b54_row7_col3, #T_16b54_row7_col4 {
+  text-align: right;
+}
+</style>
+
+<table id="T_16b54" class="caption-top">
+<thead>
+<tr class="header">
+<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th id="T_16b54_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">100K</th>
+<th id="T_16b54_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">1M</th>
+<th id="T_16b54_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">gowalla</th>
+<th id="T_16b54_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">yelp</th>
+<th id="T_16b54_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">amazon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th id="T_16b54_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">Total Interactions</th>
+<td id="T_16b54_row0_col0" class="data row0 col0">100,836</td>
+<td id="T_16b54_row0_col1" class="data row0 col1">1,000,209</td>
+<td id="T_16b54_row0_col2" class="data row0 col2">1,027,370</td>
+<td id="T_16b54_row0_col3" class="data row0 col3">1,561,406</td>
+<td id="T_16b54_row0_col4" class="data row0 col4">2,984,108</td>
+</tr>
+<tr class="even">
+<th id="T_16b54_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">Total Items</th>
+<td id="T_16b54_row1_col0" class="data row1 col0">9,724</td>
+<td id="T_16b54_row1_col1" class="data row1 col1">3,706</td>
+<td id="T_16b54_row1_col2" class="data row1 col2">40,981</td>
+<td id="T_16b54_row1_col3" class="data row1 col3">38,048</td>
+<td id="T_16b54_row1_col4" class="data row1 col4">91,599</td>
+</tr>
+<tr class="odd">
+<th id="T_16b54_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">Total Nodes</th>
+<td id="T_16b54_row2_col0" class="data row2 col0">10,334</td>
+<td id="T_16b54_row2_col1" class="data row2 col1">9,746</td>
+<td id="T_16b54_row2_col2" class="data row2 col2">70,839</td>
+<td id="T_16b54_row2_col3" class="data row2 col3">69,716</td>
+<td id="T_16b54_row2_col4" class="data row2 col4">144,242</td>
+</tr>
+<tr class="even">
+<th id="T_16b54_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">Total Users</th>
+<td id="T_16b54_row3_col0" class="data row3 col0">610</td>
+<td id="T_16b54_row3_col1" class="data row3 col1">6,040</td>
+<td id="T_16b54_row3_col2" class="data row3 col2">29,858</td>
+<td id="T_16b54_row3_col3" class="data row3 col3">31,668</td>
+<td id="T_16b54_row3_col4" class="data row3 col4">52,643</td>
+</tr>
+<tr class="odd">
+<th id="T_16b54_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">Train Interactions</th>
+<td id="T_16b54_row4_col0" class="data row4 col0">81,200</td>
+<td id="T_16b54_row4_col1" class="data row4 col1">805,443</td>
+<td id="T_16b54_row4_col2" class="data row4 col2">845,292</td>
+<td id="T_16b54_row4_col3" class="data row4 col3">1,274,132</td>
+<td id="T_16b54_row4_col4" class="data row4 col4">2,429,444</td>
+</tr>
+<tr class="even">
+<th id="T_16b54_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">Train Items</th>
+<td id="T_16b54_row5_col0" class="data row5 col0">9,003</td>
+<td id="T_16b54_row5_col1" class="data row5 col1">3,682</td>
+<td id="T_16b54_row5_col2" class="data row5 col2">40,981</td>
+<td id="T_16b54_row5_col3" class="data row5 col3">38,048</td>
+<td id="T_16b54_row5_col4" class="data row5 col4">91,599</td>
+</tr>
+<tr class="odd">
+<th id="T_16b54_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">Train Nodes</th>
+<td id="T_16b54_row6_col0" class="data row6 col0">9,613</td>
+<td id="T_16b54_row6_col1" class="data row6 col1">9,722</td>
+<td id="T_16b54_row6_col2" class="data row6 col2">70,839</td>
+<td id="T_16b54_row6_col3" class="data row6 col3">69,716</td>
+<td id="T_16b54_row6_col4" class="data row6 col4">144,242</td>
+</tr>
+<tr class="even">
+<th id="T_16b54_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">Train Users</th>
+<td id="T_16b54_row7_col0" class="data row7 col0">610</td>
+<td id="T_16b54_row7_col1" class="data row7 col1">6,040</td>
+<td id="T_16b54_row7_col2" class="data row7 col2">29,858</td>
+<td id="T_16b54_row7_col3" class="data row7 col3">31,668</td>
+<td id="T_16b54_row7_col4" class="data row7 col4">52,643</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section></section>
+<section>
+<section id="optimization" class="title-slide slide level1 center">
+<h1>Optimization</h1>
+
+</section>
+<section id="key-experiment-updates" class="slide level2">
+<h2>Key experiment updates</h2>
+<ul>
+<li>Removed filtering on user-movie interaction rating, since <span class="math inline">\(BPR\)</span> is only about implicit rating in “seen” items</li>
+<li>Originally, we ran 100 trials, the set is running 200 and 300 in the latest</li>
+<li>Originally, we ran 10,000 epochs for training, but noticed 4,000 sufficed</li>
+<li>Updated the Optuna pruner to make sure trials are pruned in with warmup time and minimum epochs</li>
+<li>Implemented early stoppage with patience=10 rather than running full epochs</li>
+<li>Implemented strict dominant set calculation mode to compare results to loose dominant sets</li>
+<li>Implemented structural sampling rather than sklearn train_test_split() for edges.</li>
+<li>Implemented directory structure and logged changes by experiment, saving trials, train, val, test results for comparison</li>
+</ul>
+</section>
+<section id="experiment-design" class="slide level2">
+<h2>Experiment design</h2>
+<ul>
+<li>Bi-partite graph generation from the dataset without evaluation filtering</li>
+<li>Do structural sampling train 0.8/ validation 0.1/ test 0.1</li>
+<li>Run Optuna HPO for full graph and train the best model(1)</li>
+<li>For every Dominance level [1,2,3]
+<ul>
+<li>Determine the dominant set and edges for that dominance level [strict, loose]</li>
+<li>Run Optuna HPO for those dominant set edges and train the best model (2)
+<ul>
+<li>Run random experiments to compare versus the loose/strict dominant set (5)
+<ul>
+<li>Run Optuna HPO for a number of random edges equal to the loose/strict dominant set and train the best model</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Total runs: <span class="math display">\[1 \text{ full} + 3 \text{ dominance} * ( (2 \text{ loose/strict}) * 5 \text{ random} ) = 31\]</span></li>
+</ul>
+</section>
+<section id="hyperparameters" class="slide level2">
+<h2>Hyperparameters</h2>
+<ul>
+<li>The following hyper parameters were used:</li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Hyperparameter</th>
+<th>Type</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>n_layers</code></td>
+<td><code>IntDistribution</code></td>
+<td><span class="math inline">\([1,4]\)</span></td>
+</tr>
+<tr class="even">
+<td><code>embedding_dim</code></td>
+<td><code>CategoricalDistribution</code></td>
+<td>[<span class="math inline">\(32, 64, 96, 128, 256\)</span>]</td>
+</tr>
+<tr class="odd">
+<td><code>lr</code></td>
+<td><code>FloatDistribution</code> (log)</td>
+<td><span class="math inline">\([1x10^{-5}, 1x10^{-1}]\)</span></td>
+</tr>
+<tr class="even">
+<td><code>lambda_val</code></td>
+<td><code>FloatDistribution</code> (log)</td>
+<td><span class="math inline">\([1x10^{-6}, 1x10^{-1}]\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>batch_size</code></td>
+<td><code>IntDistribution</code></td>
+<td>[<span class="math inline">\(512, 4096\)</span>]</td>
+</tr>
+<tr class="even">
+<td><code>optimizer</code></td>
+<td><code>CategoricalDistribution</code></td>
+<td>[<code>Adam</code>, <code>RMSprop</code>, <code>SGD</code>]</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="inference-results" class="title-slide slide level1 center">
+<h1>Inference Results</h1>
+
+</section>
+<section id="inference-setup" class="slide level2">
+<h2>Inference Setup</h2>
+<ul>
+<li>Loaded the best parameters from the best trained models for the five datasets</li>
+<li>Compared different machine tiers</li>
+<li>Trained a new model with the parameters</li>
+<li>Only selected the loose dominant set experiments
+<ul>
+<li>Since we have 5 random experiments, we choose the <strong>BEST</strong> random run</li>
+</ul></li>
+<li>Used the train/validation/test (80/10/10) split data</li>
+<li>Passed the test set through the model</li>
+<li>Calculated:
+<ul>
+<li>Metrics</li>
+<li>Inference time</li>
+<li>Model size</li>
+<li>Trainable parameters</li>
+</ul></li>
+</ul>
+</section>
+<section id="machine-setup" class="slide level2">
+<h2>Machine setup</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 27%">
+<col style="width: 27%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Specification</th>
+<th style="text-align: left;">Windows Desktop</th>
+<th style="text-align: left;">NVIDIA Jetson Orin</th>
+<th style="text-align: left;">Markov</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Relative Compute Tier</strong></td>
+<td style="text-align: left;">Entry-Level Display GPU</td>
+<td style="text-align: left;">Embedded AI / Edge SoC</td>
+<td style="text-align: left;">High-End Dual-GPU Compute</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>GPU Model</strong></td>
+<td style="text-align: left;">NVIDIA GeForce GT 1030</td>
+<td style="text-align: left;">Orin (<code>nvgpu</code> integrated)</td>
+<td style="text-align: left;">2x NVIDIA GeForce RTX 3090</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>GPU Count</strong></td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2 (GPU 0 &amp; GPU 1)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>VRAM Capacity</strong></td>
+<td style="text-align: left;">4,096 MiB (4 GB)</td>
+<td style="text-align: left;">Shared System Memory<br><em>(Reported as Not Supported)</em></td>
+<td style="text-align: left;">24,576 MiB (24 GB) per GPU<br><em>(49,152 MiB / 48 GB total)</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Power Cap (TDP)</strong></td>
+<td style="text-align: left;">19 W</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">350 W per GPU<br><em>(700 W total)</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Driver Version</strong></td>
+<td style="text-align: left;">580.97 (WDDM)</td>
+<td style="text-align: left;">N/A <em>(L4T / SMI 540.3.0)</em></td>
+<td style="text-align: left;">580.178.04</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>CUDA Version</strong></td>
+<td style="text-align: left;">13.0</td>
+<td style="text-align: left;">12.2</td>
+<td style="text-align: left;">13.0</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+
+<img data-src="all/consolidated_experiments_hyperparmeters.png" class="r-stretch"></section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+
+<img data-src="all/consolidated_experiments_inference_times.png" class="r-stretch"></section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+
+<img data-src="all/consolidated_experiments_metrics_gt1080.png" class="r-stretch"></section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+
+<img data-src="all/consolidated_experiments_metrics_gt1080_no_rand.png" class="r-stretch"></section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+
+<img data-src="all/consolidated_experiments_metrics_edge.png" class="r-stretch"></section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+
+<img data-src="all/consolidated_experiments_metrics_edge_no_rand.png" class="r-stretch"></section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+
+<img data-src="all/consolidated_experiments_metrics_rtx3080.png" class="r-stretch"></section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+
+
+<img data-src="all/consolidated_experiments_metrics_rtx3080_no_rand.png" class="r-stretch"></section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Dominating Graph Neural Networks for Efficient Recommender Systems</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="final_results_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="final_results_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="final_results_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="final_results_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="final_results_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="final_results_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="final_results_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="final_results_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="final_results_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="final_results_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="final_results_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+
+        height: 1080,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 3.0e-2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
