@@ -3,7 +3,7 @@ title: "Dominating Graph Neural Networks for Efficient Recommender Systems"
 subtitle: "Final Experiment Results"
 format:
   revealjs:
-    theme: default
+    theme: beige
     transition: slide
     slide-number: true
     controls: true
@@ -26,7 +26,7 @@ tikz:
 
 # Objective
 
-- Demonstrate that using a Dominant Set from a graph, we can still train and obtaing comparable results to a using the full data set or even a random dataset GNN
+- Experiment using a Dominant Set from a graph, to determine if we can still train and obtain comparable results to using the full data set or even a random dataset GNN
 
 ## Introduction
 - Continuation from *“Sistema de recomendación basado en redes neuronales para grafos”*, Martinez, Alan (CIC)
@@ -640,6 +640,10 @@ $$1 \text{ full} + 3 \text{ dominance} * ( (2 \text{ loose/strict}) * 5 \text{ r
 ##
 
 ![](all/consolidated_experiments_metrics_gt1080_no_rand.png)
+
+##
+
+![](all/experiments_hyperparmeters.png)
 
 ## 
 
