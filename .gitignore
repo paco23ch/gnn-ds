@@ -1,3 +1,30 @@
 .venv/
 __pycache__/
 *.pt
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python Caches & Build Artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Quarto Render Artifacts
+*_files/
+/.quarto/
+_site/
+*.html
+
+# OS and Editor files
+.DS_Store
+.vscode/
+.idea/
+**/*.quarto_ipynb
+
+node_modules/
